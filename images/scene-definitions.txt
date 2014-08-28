@@ -1,0 +1,13 @@
+#scene1 - desert(introductory) and farmland 
+
+#scene2 - forest
+
+#scene3 - bridge and city 
+
+#scene4 - carnival
+
+#scene5 - dock and underwater
+
+#scene6 - beach
+
+#scene7 - cave
