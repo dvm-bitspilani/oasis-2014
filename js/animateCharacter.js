@@ -1,3 +1,6 @@
+var prev_scroll = 0;
+var curr_scroll = 0;
+
 var move;				//Handles setInterval to move character on continuous scrolling
 var motion = 0;			//Handles whether or not animation of character is in progress
 var motion_time = 600;	//Time for character animation in ms
@@ -36,6 +39,13 @@ $(window).scroll(function scrollevent() {
 
 });
 
+//=============================POSITIONING CHARACTER================================//
+function position_character()
+{	var bottomOffset = $("#ground").height();
+	$("#main_character").css("bottom",bottomOffset - 25);//Height of player is 175
+	$("#main_character").css("left",0.5*window.innerWidth -100);//Width of player is 100
+}
+
 //=============================ANIMATING CHARACTER==================================//
 function animate_main_character()
 {	if(1)//Run main character
@@ -47,4 +57,3 @@ function animate_main_character()
 	}
 	
 }
-

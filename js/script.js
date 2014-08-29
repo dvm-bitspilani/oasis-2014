@@ -1,9 +1,7 @@
 //=============================GLOBAL VARIABLES======================================//
-var prev_scroll = 0;
-var curr_scroll = 0;
 
-var multiplier32 = 1.2;
-var multiplier31 = 1.4;
+var multiplier32 = 1.15;
+var multiplier31 = 1.3;
 
 var layerMinus3Length = 3200;
 var layerMinus2Length = layerMinus3Length*multiplier32;
@@ -23,24 +21,25 @@ var multiplier31;
 var scrollDone;
 var sceneLength = 4300;
 
-//==============================POSITIONING OF CHARACTER=============================//
+//==============================POSITIONING ELEMENTS=============================//
 function position_elements()
-{	var bottomOffset = $("#ground").height();
-	$("#main_character").css("bottom",bottomOffset - 25);//Height of player is 175
-	$("#main_character").css("left",0.5*window.innerWidth -100);//Width of player is 100
-	$(".layer img").css("bottom",bottomOffset);
+{	$(".layer img").css("bottom",$("#ground").height());
 }
 
 //==============================RENDER SCENE 1======================================//
 function renderScene1()
-{	$("#backgroundPyramids").css("left","0px");
+{	
+	//layer-3
+	$("#backgroundPyramids").css("left","0px");
 	$("#blueMountain").css("left","1600px");
 	
+	//layer-2
 	$("#frontPyramids").css("left","0px");
 	$("#bigWind").css("left",2660*layerMinus2Speed/layerMinus3Speed+"px");
 	
-	$("#singlePyramid").css("left",635*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#thisWay").css("left",750*layerMinus1Speed/layerMinus3Speed+"px");
+	//layer-1
+	$("#singlePyramid").css("left",600*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#thisWay").css("left",700*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#cactusBig1").css("left",150*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#cactusBig2").css("left",500*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#cactusSmall3").css("left",900*layerMinus1Speed/layerMinus3Speed+"px");
@@ -55,8 +54,8 @@ function renderScene1()
 //=========================ADD GRADIENTS==============================================//
 function addGradients(main_container)
 {	main_container.attr("data-0","background: linear-gradient(rgb(243,148,66),rgb(247,174,108));");
-	main_container.attr("data-"+(900 - window.innerWidth)/layerMinus3Speed,"background: linear-gradient(rgb(243,148,66),rgb(238,159,90));");
-	main_container.attr("data-"+(2000 - window.innerWidth)/layerMinus3Speed,"background:linear-gradient(rgb(129,200,246),rgb(129,200,246));");
+	main_container.attr("data-"+(1100 - window.innerWidth)/layerMinus3Speed,"background: linear-gradient(rgb(243,148,66),rgb(238,159,90));");
+	main_container.attr("data-"+(2200 - window.innerWidth)/layerMinus3Speed,"background:linear-gradient(rgb(129,200,246),rgb(129,200,246));");
 	main_container.attr("data-"+totalScroll,"background:linear-gradient(rgb(129,200,246),rgb(129,200,246));");
 	//main_container.attr("data-8400","background:linear-gradient(rgb(129,200,246),rgb(129,200,246));");
 	//main_container.attr("data-12400","background:linear-gradient(rgb(16,22,38),rgb(16,22,38));");
@@ -67,13 +66,15 @@ function addGradients(main_container)
 
 window.onload = function(){
 	position_elements();
-	prev_scroll = $(window).scrollTop();
-	curr_scroll = $(window).scrollTop();
 	
 	totalScroll = (layerMinus3Length - window.innerWidth)/layerMinus3Speed;
 	layerMinus2Speed = (layerMinus2Length - window.innerWidth)/totalScroll;
 	layerMinus1Speed = (layerMinus1Length - window.innerWidth)/totalScroll;
-	
+
+	prev_scroll = $(window).scrollTop();
+	curr_scroll = $(window).scrollTop();
+	position_character();
+
 	addGradients($("#main_container"));
 	
 	//$("#ground").attr("data-0","left:0px;");
@@ -91,5 +92,6 @@ window.onload = function(){
 
 $(window).resize( function(){
 	position_elements();
+	position_character();
 	totalScroll = (sceneLength - window.innerWidth)/layerMinus1Speed;
 });
