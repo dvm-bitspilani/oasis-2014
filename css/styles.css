@@ -12,7 +12,6 @@ body
 {	width:200px;
 	height:200px;
 	position:absolute;
-	z-index:15;
 	background-image:url('./../images/main_character.png');
 }
 
