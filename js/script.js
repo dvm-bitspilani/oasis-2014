@@ -3,7 +3,7 @@
 var multiplier32 = 1.15;
 var multiplier31 = 1.3;
 
-var layerMinus3Length = 6900;
+var layerMinus3Length = 11400;
 var layerMinus2Length = layerMinus3Length*multiplier32;
 var layerMinus1Length = layerMinus3Length*multiplier31;
 
@@ -16,6 +16,7 @@ var layerMinus2Speed = 0;
 var scene1Offset = 0;
 var scene2Offset = 1600;
 var scene3Offset = 3200;
+var scene4Offset = 6900;
 
 var multiplier32; 
 var multiplier31;
@@ -83,6 +84,33 @@ function renderScene3() {
 		
 }
 
+function renderScene4() {
+	//layer-3
+	
+	//layer-2
+	$("#build1").css("left",(scene4Offset+1150)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#build2").css("left",(scene4Offset+3200)*layerMinus2Speed/layerMinus3Speed+"px");
+
+	//layer-1
+	$("#phoneBooth1").css("left",(scene4Offset+1020)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#phoneBooth2").css("left",(scene4Offset+3700)*layerMinus1Speed/layerMinus3Speed+"px");	
+	
+	//layer1
+	$("#bridgeRope").css("left",(scene4Offset)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#bridgeTower1").css("left",(scene4Offset+219)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#bridgeTower2").css("left",(scene4Offset+670)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#streetLamp1").css("left",(scene4Offset+1090)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#streetLamp2").css("left",(scene4Offset+1440)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#streetLamp3").css("left",(scene4Offset+1790)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#streetLamp4").css("left",(scene4Offset+2140)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#streetLamp5").css("left",(scene4Offset+2490)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#streetLamp6").css("left",(scene4Offset+2840)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#streetLamp7").css("left",(scene4Offset+3190)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#streetLamp8").css("left",(scene4Offset+3540)*layerMinus1Speed/layerMinus3Speed+"px");	
+		
+}
+
+
 //=========================ADD GRADIENTS==============================================//
 function addGradients(main_container)
 {	main_container.attr("data-0","background: linear-gradient(rgb(243,148,66),rgb(247,174,108));");
@@ -124,6 +152,7 @@ window.onload = function(){
 	renderScene1();
 	renderScene2();
 	renderScene3();
+	renderScene4()
 	var s = skrollr.init();
 };
 
