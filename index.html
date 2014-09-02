@@ -2,15 +2,28 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 	<script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
-	<script type="text/javascript" src="./js/detect-browser-device.js"></script>
-	<script type="text/javascript" src="./js/controls.js"></script>
-	
-	<script type="text/javascript" src="./js/script.js"></script>
-	<script type="text/javascript" src="./js/animateCharacter.js"></script>
 	<script type="text/javascript" src="./js/skrollr.js"></script>
+	
 	</head>
 	
 <body>
+	<div id="blackout" class="blackout">
+    	<div id="closeBox" class="closeBox" onclick="closeLightbox()">CLOSE</div>
+    	<div id="blackoutContent" class="blackoutContent">
+    		<div id="blackoutContentWrapper" class="blackoutContentWrapper"></div>
+    	</div>
+	</div>
+
+	<div id='header'>
+		<div id='socialMedia' class='headerContent'>social media</div>
+		<div id='profshows' class='headerContent'>profshows</div>
+		<div id='contacts' class='headerContent'>contacts</div>
+		<div id='about' class='headerContent'>about</div>
+		<div id='events' class='headerContent'>events</div>
+		<div id='sponsors' class='headerContent'>sponsors</div>
+		<div id='archives' class='headerContent'>archives</div>
+	</div>
+
 	<div id="main_container" >
 		<div id="layer-3" class="layer">
 			<img src="./images/scene1/backgroundPyramids.png" id="backgroundPyramids">
@@ -100,6 +113,11 @@
 		</div>
 		<img class="ground" id="ground" src="./images/ground.png">
 	</div>
-
+	<script type="text/javascript" src="./js/controls.js"></script>
+	<script type="text/javascript" src="./js/ioOperations.js"></script>
+	
+	<script type="text/javascript" src="./js/script.js"></script>
+	<script type="text/javascript" src="./js/animateCharacter.js"></script>
+	
 </body>
 </html>

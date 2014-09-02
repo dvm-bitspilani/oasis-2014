@@ -3,7 +3,7 @@
 var multiplier32 = 1.15;
 var multiplier31 = 1.3;
 
-var layerMinus3Length = 16400;
+var layerMinus3Length = 13500;
 var layerMinus2Length = layerMinus3Length*multiplier32;
 var layerMinus1Length = layerMinus3Length*multiplier31;
 
@@ -21,6 +21,34 @@ var scene5Offset = 11100;
 
 var multiplier32; 
 var multiplier31;
+
+function openLightbox() {
+    $('#blackout').fadeIn();
+    $('#blackoutContent').delay(400).fadeIn();
+}
+
+function closeLightbox() {
+    $('#blackout').fadeOut();
+    $('.blackoutContent').fadeOut();
+}
+
+function setVitals() {
+	totalScroll = (layerMinus3Length - window.innerWidth)/layerMinus3Speed;
+	layerMinus2Speed = (layerMinus2Length - window.innerWidth)/totalScroll;
+	layerMinus1Speed = (layerMinus1Length - window.innerWidth)/totalScroll;
+
+	//$("#ground").attr("data-0","left:0px;");
+	//$("#ground").attr("data-12400","left:-200px;");
+	$("#layer-3").attr("data-0","left:0px;");
+	$("#layer-3").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus3Speed) +"px;");
+	$("#layer-2").attr("data-0","left:0px;");
+	$("#layer-2").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus2Speed) +"px;");
+	$("#layer-1").attr("data-0","left:0px;");
+	$("#layer-1").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus1Speed) +"px;");
+	$("#layer1").attr("data-0","left:0px;");
+	$("#layer1").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus1Speed) +"px;");
+
+}
 
 //==============================POSITIONING ELEMENTS FROM BOTTOM =============================//
 function position_elements()
@@ -149,41 +177,34 @@ function addGradients(main_container)
 //============================DOCUMENT READY AND WINDOW RESIZE========================//
 
 window.onload = function(){
-	if (deviceName != "computer")
-	{
+	detectBrowser();
+	detectDevice();
+
+	if (deviceName != "computer") {
 		setupTouch();
-		console.log('touch service initialized !');
 	}
 
+	// position all the elements of the layer
 	position_elements();
-	
-	totalScroll = (layerMinus3Length - window.innerWidth)/layerMinus3Speed;
-	layerMinus2Speed = (layerMinus2Length - window.innerWidth)/totalScroll;
-	layerMinus1Speed = (layerMinus1Length - window.innerWidth)/totalScroll;
 
-	prev_scroll = $(window).scrollTop();
-	curr_scroll = $(window).scrollTop();
+	// set the layer speeds and layer travel lengths
+	setVitals();
+	
+	// position the main character
+	prev_scroll = scrollPageX;
+	curr_scroll = scrollPageX;
 	position_character();
 
+	// add the gradient of the background
 	addGradients($("#main_container"));
 	
-	//$("#ground").attr("data-0","left:0px;");
-	//$("#ground").attr("data-12400","left:-200px;");
-	$("#layer-3").attr("data-0","left:0px;");
-	$("#layer-3").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus3Speed) +"px;");
-	$("#layer-2").attr("data-0","left:0px;");
-	$("#layer-2").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus2Speed) +"px;");
-	$("#layer-1").attr("data-0","left:0px;");
-	$("#layer-1").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus1Speed) +"px;");
-	$("#layer1").attr("data-0","left:0px;");
-	$("#layer1").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus1Speed) +"px;");
-
-
+	// render scenes
 	renderScene1();
 	renderScene2();
 	renderScene3();
 	renderScene4();
 	renderScene5();
+
 	var s = skrollr.init();
 };
 
