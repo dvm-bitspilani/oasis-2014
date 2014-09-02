@@ -7,7 +7,7 @@ var layerMinus3Length = 16400;
 var layerMinus2Length = layerMinus3Length*multiplier32;
 var layerMinus1Length = layerMinus3Length*multiplier31;
 
-var layerMinus3Speed = 0.20;
+var layerMinus3Speed = 0.40;
 var totalScroll;
 
 var layerMinus1Speed = 0;
@@ -22,7 +22,7 @@ var scene5Offset = 11100;
 var multiplier32; 
 var multiplier31;
 
-//==============================POSITIONING ELEMENTS=============================//
+//==============================POSITIONING ELEMENTS FROM BOTTOM =============================//
 function position_elements()
 {	$(".layer img").css("bottom",$("#ground").height());
 }
@@ -149,6 +149,12 @@ function addGradients(main_container)
 //============================DOCUMENT READY AND WINDOW RESIZE========================//
 
 window.onload = function(){
+	if (deviceName != "computer")
+	{
+		setupTouch();
+		console.log('touch service initialized !');
+	}
+
 	position_elements();
 	
 	totalScroll = (layerMinus3Length - window.innerWidth)/layerMinus3Speed;
