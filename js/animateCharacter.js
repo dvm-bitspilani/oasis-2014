@@ -7,9 +7,14 @@ var motion_time = 600;	//Time for character animation in ms
 
 
 //======================SCROLL EVENT CALLING ANIMATING FUNCTIONS=====================//
-$(window).scroll(function scrollevent() {
-	curr_scroll = $(window).scrollTop();
-	var scrolldiff = curr_scroll - prev_scroll;
+$(window).scroll(scrollevent);
+
+function scrollevent() {
+	if(deviceName != 'computer')
+		curr_scroll = touchPageX;
+	else
+		curr_scroll = $(window).scrollTop();
+	var scrolldiff = deviceName != 'computer' ? -(curr_scroll - prev_scroll) : -(prev_scroll - curr_scroll);
 	if(scrolldiff == 0)
 	{	clearInterval(move);
 		//$("#main_character").css("background-position-x","0px");
@@ -28,16 +33,9 @@ $(window).scroll(function scrollevent() {
 	{	animate_main_character();
 		move = setInterval(function(){animate_main_character()},motion_time);
 	}
-	
-	//Move Background
-//	if(scrolldiff != 0)
-	//$(".ground").css("left",-curr_scroll*backgroundSpeed + "px");
-	
-	//Updating Scroll Information
 	prev_scroll = curr_scroll;
 	scrollevent();
-
-});
+}
 
 //=============================POSITIONING CHARACTER================================//
 function position_character()
@@ -54,6 +52,5 @@ function animate_main_character()
 		setTimeout(function(){$("#main_character").css("background-position-x","-400px");},motion_time/1.6);
 		setTimeout(function(){$("#main_character").css("background-position-x","0px");},motion_time);
 		setTimeout(function(){motion = 0},motion_time);
-	}
-	
+	}	
 }
