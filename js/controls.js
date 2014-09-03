@@ -1,6 +1,6 @@
 var touchPageX;
 var scrollPageX;
-var scrollSpeed = 30;
+var scrollSpeed = 20;
 
 var browserName;
 var browserVersion;
@@ -22,13 +22,13 @@ document.addEventListener("keydown", function (e) {
         }
         if (e.keyCode == 221) {
             // Increases the scrolling speed
-            scrollSpeed += 30;
+            scrollSpeed += 10;
             console.log(scrollSpeed);
         }
         if (e.keyCode == 219) {
             // decreases the scrolling speed
-            if(scrollSpeed > 30) 
-                scrollSpeed -= 30;
+            if(scrollSpeed > 10) 
+                scrollSpeed -= 10;
             console.log(scrollSpeed);
         }
     }
