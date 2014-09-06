@@ -20,7 +20,7 @@ document.addEventListener("keydown", function (e) {
 			var toMoveLayer1 = (800)*layerMinus1Speed/layerMinus3Speed - 1020 + window.innerWidth/2 + 250;
 			var toMoveLayer3 = toMoveLayer1*layerMinus3Speed/layerMinus1Speed;
 			for(var i=0;i<(toMoveLayer3/scrollSpeed);i++)
-			{	setTimeout(function(){scrollPageX = window.scrollBy(0,scrollSpeed)},i*60);
+			{	setTimeout(function(){scrollPageX = window.scrollBy(0,scrollSpeed)},i*50);
 			}
 			isBoardingShip = false;
 			boarded = true;
@@ -33,12 +33,9 @@ document.addEventListener("keydown", function (e) {
     	  
 		  woodenDockOffset = (scene5Offset+2300)*layerMinus1Speed/layerMinus3Speed + 1020 - window.innerWidth/2;
 		  if(layerMinus1Speed*scrollPageX >= woodenDockOffset && layerMinus1Speed*scrollPageX <= (woodenDockOffset + 30))
-			{	console.log(layerMinus1Speed*scrollPageX);
+			{	
 				isBoardingShip = true;
 				return;
-			}
-			if(layerMinus1Speed*scrollPageX >= woodenDockOffset && layerMinus1Speed*scrollPageX <= (woodenDockOffset + (800)*layerMinus1Speed/layerMinus3Speed - 1020 + window.innerWidth/2 + 250))
-			{	return;
 			}
 		// forward scrolling by right arrow key
     	   window.scrollBy(0,scrollSpeed);
