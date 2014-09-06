@@ -3,7 +3,7 @@
 var multiplier32 = 1.15;
 var multiplier31 = 1.3;
 
-var layerMinus3Length = 15000;
+var layerMinus3Length = 13500;
 var layerMinus2Length = layerMinus3Length*multiplier32;
 var layerMinus1Length = layerMinus3Length*multiplier31;
 
@@ -18,7 +18,6 @@ var scene2Offset = 1600;
 var scene3Offset = 3200;
 var scene4Offset = 6900;
 var scene5Offset = 11100;
-var scene6Offset = 13000;
 
 var multiplier32; 
 var multiplier31;
@@ -129,8 +128,8 @@ function renderScene4() {
 	
 	//layer1
 	$("#bridgeRope").css("left",(scene4Offset)*layerMinus1Speed/layerMinus3Speed+"px");	
-	$("#bridgeTower1").css("left",(scene4Offset+221)*layerMinus1Speed/layerMinus3Speed+"px");	
-	$("#bridgeTower2").css("left",(scene4Offset+676)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#bridgeTower1").css("left",(scene4Offset+219)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#bridgeTower2").css("left",(scene4Offset+670)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#streetLamp1").css("left",(scene4Offset+1090)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#streetLamp2").css("left",(scene4Offset+1440)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#streetLamp3").css("left",(scene4Offset+1790)*layerMinus1Speed/layerMinus3Speed+"px");	
@@ -161,19 +160,9 @@ function renderScene5() {
 	
 	//layer1
 	$("#carnivalRailing").css("left",(scene5Offset+50)*layerMinus1Speed/layerMinus3Speed+"px");	
-	$("#cart").css("left",(scene5Offset+2000)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#woodenDock").css("left",(scene5Offset+2300)*layerMinus1Speed/layerMinus3Speed+"px");
-	
 }
 
-function customizeGround()
-{	$("#woodenDock").css("bottom","-45px");
-	$("#bridgeRope").css("bottom","-47px");
-	$("#bridgeTower1").css("bottom","0px");
-	$("#bridgeTower2").css("bottom","0px");
-	$("#cart").css("bottom","105px");
-	
-}
+
 //=========================ADD GRADIENTS==============================================//
 function addGradients(main_container)
 {	main_container.attr("data-0","background: linear-gradient(rgb(243,148,66),rgb(247,174,108));");
@@ -195,6 +184,8 @@ window.onload = function(){
 		setupTouch();
 	}
 
+	// position all the elements of the layer
+	position_elements();
 
 	// set the layer speeds and layer travel lengths
 	setVitals();
@@ -213,10 +204,7 @@ window.onload = function(){
 	renderScene3();
 	renderScene4();
 	renderScene5();
-	
-	// position all the elements of the layer
-	position_elements();
-	customizeGround();
+
 	var s = skrollr.init();
 };
 
