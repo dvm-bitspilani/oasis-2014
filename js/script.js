@@ -3,7 +3,7 @@
 var multiplier32 = 1.15;
 var multiplier31 = 1.3;
 
-var layerMinus3Length = 15000;
+var layerMinus3Length = 19000;
 var layerMinus2Length = layerMinus3Length*multiplier32;
 var layerMinus1Length = layerMinus3Length*multiplier31;
 
@@ -38,8 +38,8 @@ function setVitals() {
 	layerMinus2Speed = (layerMinus2Length - window.innerWidth)/totalScroll;
 	layerMinus1Speed = (layerMinus1Length - window.innerWidth)/totalScroll;
 
-	//$("#ground").attr("data-0","left:0px;");
-	//$("#ground").attr("data-12400","left:-200px;");
+	$("#ground").attr("data-0","left:0px;");
+	$("#ground").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus1Speed) +"px;");
 	$("#layer-3").attr("data-0","left:0px;");
 	$("#layer-3").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus3Speed) +"px;");
 	$("#layer-2").attr("data-0","left:0px;");
@@ -48,7 +48,6 @@ function setVitals() {
 	$("#layer-1").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus1Speed) +"px;");
 	$("#layer1").attr("data-0","left:0px;");
 	$("#layer1").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus1Speed) +"px;");
-
 }
 
 //==============================POSITIONING ELEMENTS FROM BOTTOM =============================//
@@ -163,6 +162,8 @@ function renderScene5() {
 	$("#carnivalRailing").css("left",(scene5Offset+50)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#cart").css("left",(scene5Offset+2000)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#woodenDock").css("left",(scene5Offset+2300)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#ship").css("left",(scene5Offset+3100)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#iceBerg").css("left",(scene5Offset+4200)*layerMinus1Speed/layerMinus3Speed+"px");
 	
 }
 
@@ -172,6 +173,8 @@ function customizeGround()
 	$("#bridgeTower1").css("bottom","0px");
 	$("#bridgeTower2").css("bottom","0px");
 	$("#cart").css("bottom","105px");
+	$("#ship").css("bottom","60px");
+	$("#iceBerg").css("bottom","0px");
 	
 }
 //=========================ADD GRADIENTS==============================================//
@@ -223,5 +226,6 @@ window.onload = function(){
 $(window).resize( function(){
 	position_elements();
 	position_character();
+	customizeGround()
 	totalScroll = (layerMinus3Length - window.innerWidth)/layerMinus1Speed;
 });

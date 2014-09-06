@@ -7,13 +7,45 @@ var browserVersion;
 
 var deviceName;
 
+var woodenDockOffset;
+
+var isBoardingShip = false;
+var boarded = false;
+
 document.addEventListener("keydown", function (e) {
     if([219,221,33,34,35,36,37,38,39,40].indexOf(e.keyCode) > -1) { 
         e.preventDefault();
-        if (e.keyCode == 39) {
-    	   // forward scrolling by right arrow key
+        if(isBoardingShip == true)
+		{	
+			var toMoveLayer1 = (800)*layerMinus1Speed/layerMinus3Speed - 1020 + window.innerWidth/2 + 250;
+			var toMoveLayer3 = toMoveLayer1*layerMinus3Speed/layerMinus1Speed;
+			for(var i=0;i<(toMoveLayer3/scrollSpeed);i++)
+			{	setTimeout(function(){scrollPageX = window.scrollBy(0,scrollSpeed)},i*60);
+			}
+			isBoardingShip = false;
+			boarded = true;
+			setTimeout(function(){$('#ship').css({position:'fixed',left:(window.innerWidth/2 - 300)})},(toMoveLayer3/scrollSpeed)*25);
+			
+			return;	
+		}
+		
+		if (e.keyCode == 39) {
+    	  
+		  woodenDockOffset = (scene5Offset+2300)*layerMinus1Speed/layerMinus3Speed + 1020 - window.innerWidth/2;
+		  if(layerMinus1Speed*scrollPageX >= woodenDockOffset && layerMinus1Speed*scrollPageX <= (woodenDockOffset + 30))
+			{	console.log(layerMinus1Speed*scrollPageX);
+				isBoardingShip = true;
+				return;
+			}
+			if(layerMinus1Speed*scrollPageX >= woodenDockOffset && layerMinus1Speed*scrollPageX <= (woodenDockOffset + (800)*layerMinus1Speed/layerMinus3Speed - 1020 + window.innerWidth/2 + 250))
+			{	return;
+			}
+		// forward scrolling by right arrow key
     	   window.scrollBy(0,scrollSpeed);
     	   scrollPageX = $(window).scrollTop();
+		   
+		   
+				
         }
         if (e.keyCode == 37) {
   		    //backward scrolling by left arrow key
