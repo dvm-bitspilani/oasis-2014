@@ -226,6 +226,6 @@ window.onload = function(){
 $(window).resize( function(){
 	position_elements();
 	position_character();
-	customizeGround()
+	customizeGround();
 	totalScroll = (layerMinus3Length - window.innerWidth)/layerMinus1Speed;
 });

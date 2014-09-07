@@ -20,7 +20,8 @@ document.addEventListener("keydown", function (e) {
 			var toMoveLayer1 = (800)*layerMinus1Speed/layerMinus3Speed - 1020 + window.innerWidth/2 + 250;
 			var toMoveLayer3 = toMoveLayer1*layerMinus3Speed/layerMinus1Speed;
 			for(var i=0;i<(toMoveLayer3/scrollSpeed);i++)
-			{	setTimeout(function(){scrollPageX = window.scrollBy(0,scrollSpeed)},i*50);
+			{	
+        setTimeout(function(){scrollPageX = window.scrollBy(0,scrollSpeed)},i*50);
 			}
 			isBoardingShip = false;
 			boarded = true;

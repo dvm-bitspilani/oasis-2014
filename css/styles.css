@@ -21,7 +21,7 @@ body
 	width: 100%;
 	position: fixed;
 	top: 0px;
-	background-color: rgba(0,0,0,0.1);
+	background-color: rgb(220,220,220);
 	z-index: 100;
 }
 
@@ -66,7 +66,6 @@ body
 
 .blackoutContentWrapper {
     background-color: #f1f1f1;
-    border-radius: 5px;
     overflow-y:hidden;
     overflow-x: hidden;
     margin-top:5%;
@@ -75,7 +74,6 @@ body
     margin-left: calc(50% - 250px);
     height:550px;
     margin-top:5%;
-    box-shadow: 0px 0px 0px 5px #cf4635;
 }
 
 
