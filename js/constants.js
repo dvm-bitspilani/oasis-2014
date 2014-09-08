@@ -15,7 +15,7 @@ var scene2Offset = 1600;
 var scene3Offset = 3200;
 var scene4Offset = 6900;
 var scene5Offset = 11100;
-var scene6Offset = 13000;
+var scene6Offset = 14500;
 
 var layerMinus3Speed = 0.40;
 
@@ -37,7 +37,6 @@ var deviceName;
 var woodenDockOffset = scene5Offset + 2300 + (1020 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
 var shipBoardingPoint = scene5Offset + 3100 + (270 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
 var hitIceBerg = scene5Offset + 4200 + (-270 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
-
             
 var isBoardingShip = false;
 var onShip = false;

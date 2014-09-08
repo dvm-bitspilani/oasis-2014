@@ -4,6 +4,7 @@ document.addEventListener("keydown", function (e) {
         e.preventDefault();
         
         if(deviceName != 'computer') {
+        
         }
         else {
             if(scrollComplete >= woodenDockOffset/layerMinus3LengthE && scrollComplete <= shipBoardingPoint/layerMinus3LengthE) {
@@ -12,6 +13,8 @@ document.addEventListener("keydown", function (e) {
                 jumpDown = false;
             }
             else if(scrollComplete >= shipBoardingPoint/layerMinus3LengthE && scrollComplete <= hitIceBerg/layerMinus3LengthE) {
+                if(jumpDown)
+                    comeUp();
                 onShip = true;
                 isBoardingShip = false;
                 jumpDown = false;
@@ -26,10 +29,6 @@ document.addEventListener("keydown", function (e) {
         }
 
 
-
-
-        console.log(onShip);
-		
 		if (e.keyCode == 39) {
     	  
 		// forward scrolling by right arrow key
@@ -127,5 +126,9 @@ function detectDevice() {
 }
 
 function goDown() {
-    $("#layer--3,#layer-2,#layer-1,#layer1,#ground").animate({bottom : window.innerHeight+"px"},500)
+    $("#layer-3,#layer-2,#layer-1,#layer1,#ground").animate({bottom : window.innerHeight+600+"px"},500)
+}
+
+function comeUp() {
+    $("#layer-3,#layer-2,#layer-1,#layer1,#ground").animate({bottom : "0px"},500)
 }

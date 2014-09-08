@@ -36,6 +36,9 @@ function setVitals() {
 //==============================POSITIONING ELEMENTS FROM BOTTOM =============================//
 function position_elements()
 {	$(".layer img").css("bottom",$("#ground").height());
+	$(".underwaterImg").css("bottom",-(window.innerHeight + 600));
+	$("#underwaterBG").css("bottom",-(window.innerHeight + 600));
+
 }
 
 //==============================RENDER SCENE 1======================================//
@@ -146,8 +149,37 @@ function renderScene5() {
 	$("#cart").css("left",(scene5Offset+2000)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#woodenDock").css("left",(scene5Offset+2300)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#ship").css("left",(scene5Offset+3100)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#iceBerg").css("left",(scene5Offset+4200)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#iceBerg").css("left",(scene5Offset+4200)*layerMinus1Speed/layerMinus3Speed+"px");	
+}
+
+function renderScene6() {
+	//layer-3
+	$("#grass1").css("left",(scene6Offset+1700)+"px");	
+	$("#grass2").css("left",(scene6Offset+1950)+"px");	
+	$("#grass3").css("left",(scene6Offset+2350)+"px");	
+	$("#underwaterLayer1").css("left",(scene6Offset+0)+"px");
+	$("#underwaterBG").css("left",(scene6Offset+0)+"px");
+
+	//layer-2
+	$("#plant1").css("left",(scene6Offset+140)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#plant2").css("left",(scene6Offset+410)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#plant3").css("left",(scene6Offset+1240)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#plant4").css("left",(scene6Offset+1580)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#plant5").css("left",(scene6Offset+2150)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#submarine").css("left",(scene6Offset+1860)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#rock2").css("left",(scene6Offset+2010)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#underwaterLayer2").css("left",(scene6Offset+0)*layerMinus2Speed/layerMinus3Speed+"px");
 	
+	//layer-1
+	$("#anchor").css("left",(scene6Offset+750)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#pole").css("left",(scene6Offset+700)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#krustyCrab").css("left",(scene6Offset+900)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#triRock1").css("left",(scene6Offset+1110)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#rock1").css("left",(scene6Offset+1200)*layerMinus1Speed/layerMinus3Speed+"px");	
+
+	//layer1
+	$("#triRock2").css("left",(scene6Offset+1600)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#underwaterGround").css("left",(scene6Offset)*layerMinus1Speed/layerMinus3Speed+"px");	
 }
 
 function customizeGround()
@@ -199,6 +231,7 @@ window.onload = function(){
 	renderScene3();
 	renderScene4();
 	renderScene5();
+	renderScene6();
 	
 	// position all the elements of the layer
 	position_elements();

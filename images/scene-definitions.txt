@@ -8,8 +8,8 @@
 
 #scene5 - carnival and dock
 
-#scene5 - underwater
+#scene6- underwater
 
-#scene6 - beach
+#scene7 - beach
 
-#scene7 - cave
+#scene8 - cave
