@@ -1,49 +1,40 @@
-var touchPageX;
-var scrollPageX;
-var scrollSpeed = 20;
-
-var browserName;
-var browserVersion;
-
-var deviceName;
-
-var woodenDockOffset;
-
-var isBoardingShip = false;
-var boarded = false;
 
 document.addEventListener("keydown", function (e) {
     if([219,221,33,34,35,36,37,38,39,40].indexOf(e.keyCode) > -1) { 
         e.preventDefault();
-        if(isBoardingShip == true)
-		{	
-			var toMoveLayer1 = (800)*layerMinus1Speed/layerMinus3Speed - 1020 + window.innerWidth/2 + 250;
-			var toMoveLayer3 = toMoveLayer1*layerMinus3Speed/layerMinus1Speed;
-			for(var i=0;i<(toMoveLayer3/scrollSpeed);i++)
-			{	
-        setTimeout(function(){scrollPageX = window.scrollBy(0,scrollSpeed)},i*50);
-			}
-			isBoardingShip = false;
-			boarded = true;
-			setTimeout(function(){$('#ship').css({position:'fixed',left:(window.innerWidth/2 - 300)})},(toMoveLayer3/scrollSpeed)*25);
-			
-			return;	
-		}
+        
+        if(deviceName != 'computer') {
+        }
+        else {
+            if(scrollComplete >= woodenDockOffset/layerMinus3LengthE && scrollComplete <= shipBoardingPoint/layerMinus3LengthE) {
+                isBoardingShip = true;
+                onShip = false;
+                jumpDown = false;
+            }
+            else if(scrollComplete >= shipBoardingPoint/layerMinus3LengthE && scrollComplete <= hitIceBerg/layerMinus3LengthE) {
+                onShip = true;
+                isBoardingShip = false;
+                jumpDown = false;
+            }
+            else if(scrollComplete >= hitIceBerg/layerMinus3LengthE ) {
+                if(!jumpDown)
+                    goDown();
+                onShip = false;
+                isBoardingShip = false;
+                jumpDown = true;
+            }
+        }
+
+
+
+
+        console.log(onShip);
 		
 		if (e.keyCode == 39) {
     	  
-		  woodenDockOffset = (scene5Offset+2300)*layerMinus1Speed/layerMinus3Speed + 1020 - window.innerWidth/2;
-		  if(layerMinus1Speed*scrollPageX >= woodenDockOffset && layerMinus1Speed*scrollPageX <= (woodenDockOffset + 30))
-			{	
-				isBoardingShip = true;
-				return;
-			}
 		// forward scrolling by right arrow key
     	   window.scrollBy(0,scrollSpeed);
     	   scrollPageX = $(window).scrollTop();
-		   
-		   
-				
         }
         if (e.keyCode == 37) {
   		    //backward scrolling by left arrow key
@@ -61,6 +52,7 @@ document.addEventListener("keydown", function (e) {
                 scrollSpeed -= 10;
             console.log(scrollSpeed);
         }
+        scrollComplete = scrollPageX/totalScroll;
     }
 }, false);
 
@@ -132,4 +124,8 @@ function detectDevice() {
     deviceName = "kindle";
   else
     deviceName = "computer";
+}
+
+function goDown() {
+    $("#layer--3,#layer-2,#layer-1,#layer1,#ground").animate({bottom : window.innerHeight+"px"},500)
 }

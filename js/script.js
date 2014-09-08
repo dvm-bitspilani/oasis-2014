@@ -1,27 +1,5 @@
 //=============================GLOBAL VARIABLES======================================//
 
-var multiplier32 = 1.15;
-var multiplier31 = 1.3;
-
-var layerMinus3Length = 19000;
-var layerMinus2Length = layerMinus3Length*multiplier32;
-var layerMinus1Length = layerMinus3Length*multiplier31;
-
-var layerMinus3Speed = 0.40;
-var totalScroll;
-
-var layerMinus1Speed = 0;
-var layerMinus2Speed = 0;
-
-var scene1Offset = 0;
-var scene2Offset = 1600;
-var scene3Offset = 3200;
-var scene4Offset = 6900;
-var scene5Offset = 11100;
-var scene6Offset = 13000;
-
-var multiplier32; 
-var multiplier31;
 
 function openLightbox() {
     $('#blackout').fadeIn();
@@ -34,20 +12,25 @@ function closeLightbox() {
 }
 
 function setVitals() {
-	totalScroll = (layerMinus3Length - window.innerWidth)/layerMinus3Speed;
-	layerMinus2Speed = (layerMinus2Length - window.innerWidth)/totalScroll;
-	layerMinus1Speed = (layerMinus1Length - window.innerWidth)/totalScroll;
-
+	
 	$("#ground").attr("data-0","left:0px;");
-	$("#ground").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus1Speed) +"px;");
+	$("#ground").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
 	$("#layer-3").attr("data-0","left:0px;");
-	$("#layer-3").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus3Speed) +"px;");
+	$("#layer-3").attr("data-"+totalScroll,"left:-"+ (layerMinus3LengthE) +"px;");
 	$("#layer-2").attr("data-0","left:0px;");
-	$("#layer-2").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus2Speed) +"px;");
+	$("#layer-2").attr("data-"+totalScroll,"left:-"+ (layerMinus2LengthE) +"px;");
 	$("#layer-1").attr("data-0","left:0px;");
-	$("#layer-1").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus1Speed) +"px;");
+	$("#layer-1").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
 	$("#layer1").attr("data-0","left:0px;");
-	$("#layer1").attr("data-"+totalScroll,"left:-"+ (totalScroll*layerMinus1Speed) +"px;");
+	$("#layer1").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
+
+	$("#ship").attr("data-0","position:absolute;left:"+(scene5Offset+3100)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed-1),"position:absolute;left:"+(scene5Offset+3100)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
+	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed-1),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
+	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed),"position:absolute;left:"+(scene5Offset+4200 - 400)*layerMinus1Speed/layerMinus3Speed+"px");
+	
+
 }
 
 //==============================POSITIONING ELEMENTS FROM BOTTOM =============================//
