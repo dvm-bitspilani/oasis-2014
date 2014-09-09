@@ -2,31 +2,41 @@
 document.addEventListener("keydown", function (e) {
     if([219,221,33,34,35,36,37,38,39,40].indexOf(e.keyCode) > -1) { 
         e.preventDefault();
+        journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
         
         if(deviceName != 'computer') {
         
         }
         else {
-            if(scrollComplete >= woodenDockOffset/layerMinus3LengthE && scrollComplete <= shipBoardingPoint/layerMinus3LengthE) {
+            if(journeyComplete >= woodenDockOffset/layerMinus3LengthE && journeyComplete <= shipBoardingPoint/layerMinus3LengthE) {
                 isBoardingShip = true;
                 onShip = false;
                 jumpDown = false;
             }
-            else if(scrollComplete >= shipBoardingPoint/layerMinus3LengthE && scrollComplete <= hitIceBerg/layerMinus3LengthE) {
+            else if(journeyComplete >= shipBoardingPoint/layerMinus3LengthE && journeyComplete <= hitIceBerg/layerMinus3LengthE) {
                 if(jumpDown)
                     comeUp();
                 onShip = true;
                 isBoardingShip = false;
                 jumpDown = false;
             }
-            else if(scrollComplete >= hitIceBerg/layerMinus3LengthE ) {
+            else if(journeyComplete >= hitIceBerg/layerMinus3LengthE && journeyComplete < underwater/layerMinus3LengthE) {
                 if(!jumpDown)
                     goDown();
                 onShip = false;
                 isBoardingShip = false;
                 jumpDown = true;
             }
+            else {
+                if(jumpDown)
+                    comeUp();
+                onShip = false;
+                isBoardingShip = false;
+                jumpDown = false;
+            }
         }
+
+        console.log(isBoardingShip+" : "+onShip+" : "+jumpDown);
 
 
 		if (e.keyCode == 39) {
@@ -42,6 +52,7 @@ document.addEventListener("keydown", function (e) {
         }
         if (e.keyCode == 221) {
             // Increases the scrolling speed
+            if(scrollSpeed <=50)
             scrollSpeed += 10;
             console.log(scrollSpeed);
         }
@@ -51,7 +62,7 @@ document.addEventListener("keydown", function (e) {
                 scrollSpeed -= 10;
             console.log(scrollSpeed);
         }
-        scrollComplete = scrollPageX/totalScroll;
+        journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
     }
 }, false);
 
@@ -126,9 +137,9 @@ function detectDevice() {
 }
 
 function goDown() {
-    $("#layer-3,#layer-2,#layer-1,#layer1,#ground").animate({bottom : window.innerHeight+600+"px"},500)
+    $("#layer-3,#layer-2,#layer-1,#layer1,#ground").animate({bottom : window.innerHeight+600+"px"},400);
 }
 
 function comeUp() {
-    $("#layer-3,#layer-2,#layer-1,#layer1,#ground").animate({bottom : "0px"},500)
+    $("#layer-3,#layer-2,#layer-1,#layer1,#ground").animate({bottom : "0px"},400);
 }

@@ -16,17 +16,20 @@ var scene3Offset = 3200;
 var scene4Offset = 6900;
 var scene5Offset = 11100;
 var scene6Offset = 14500;
+var scene7Offset = 16800;
 
 var layerMinus3Speed = 0.40;
 
-var totalScroll = (layerMinus3LengthE)/layerMinus3Speed;
+var extraScroll1 = 300;
+var totalScroll = (layerMinus3LengthE)/layerMinus3Speed + extraScroll1;
+var totalScrollE = (layerMinus3LengthE)/layerMinus3Speed;
 
 var layerMinus2Speed = (layerMinus2LengthE)/totalScroll;
 var layerMinus1Speed = (layerMinus1LengthE)/totalScroll;
 
 var touchPageX;
 var scrollPageX = $(window).scrollTop();
-var scrollComplete = scrollPageX/totalScroll;
+var journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
 var scrollSpeed = 20;
 
 var browserName;
@@ -34,12 +37,12 @@ var browserVersion;
 
 var deviceName;
 
-var woodenDockOffset = scene5Offset + 2300 + (1020 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
+var woodenDockOffset = scene5Offset + 2300 + (1000 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
 var shipBoardingPoint = scene5Offset + 3100 + (270 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
 var hitIceBerg = scene5Offset + 4200 + (-270 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
-            
+var underwater = scene6Offset + 2500 + ( - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
+
 var isBoardingShip = false;
 var onShip = false;
 var jumpDown = false;
-
 

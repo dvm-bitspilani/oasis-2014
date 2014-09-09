@@ -16,29 +16,42 @@ function setVitals() {
 	$("#ground").attr("data-0","left:0px;");
 	$("#ground").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
 	$("#layer-3").attr("data-0","left:0px;");
+	$("#layer-3").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg) +"px;");
+	$("#layer-3").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg) +"px;");
 	$("#layer-3").attr("data-"+totalScroll,"left:-"+ (layerMinus3LengthE) +"px;");
 	$("#layer-2").attr("data-0","left:0px;");
+	$("#layer-2").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg*layerMinus2Speed/layerMinus3Speed) +"px;");
+	$("#layer-2").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus2Speed/layerMinus3Speed) +"px;");
 	$("#layer-2").attr("data-"+totalScroll,"left:-"+ (layerMinus2LengthE) +"px;");
 	$("#layer-1").attr("data-0","left:0px;");
+	$("#layer-1").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
+	$("#layer-1").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
 	$("#layer-1").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
 	$("#layer1").attr("data-0","left:0px;");
+	$("#layer1").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
+	$("#layer1").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
 	$("#layer1").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
 
 	$("#ship").attr("data-0","position:absolute;left:"+(scene5Offset+3100)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed-1),"position:absolute;left:"+(scene5Offset+3100)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
 	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed-1),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
-	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed),"position:absolute;left:"+(scene5Offset+4200 - 400)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed),"position:absolute;left:"+(scene5Offset+4200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
 	
-
 }
 
 //==============================POSITIONING ELEMENTS FROM BOTTOM =============================//
 function position_elements()
 {	$(".layer img").css("bottom",$("#ground").height());
-	$(".underwaterImg").css("bottom",-(window.innerHeight + 600));
+	$(".underwaterImg").css("bottom",-(window.innerHeight + 520));
 	$("#underwaterBG").css("bottom",-(window.innerHeight + 600));
-
+	$(".underwaterGround").css("bottom",-(window.innerHeight + 600));
+	$(".underwaterGrass").css("bottom",-(window.innerHeight + 450));
+	$(".underwaterSubmarine").css("bottom",-(window.innerHeight + 300));
+	$(".underwaterAnchor").css("bottom",-(window.innerHeight + 530));
+	$("#swing2,#swing1").css("bottom",$("#ground").height()+25)
+	$("#swing1,#swing2").css("animation","rotate360 10s linear 0s infinite normal");
+	$("#windFan1,#windFan2,#windFan3,#windFan4").css("animation","rotate360 20s linear 0s infinite normal");
 }
 
 //==============================RENDER SCENE 1======================================//
@@ -70,8 +83,8 @@ function renderScene2() {
 	//layer-1
 	$("#wind1").css("left",(scene2Offset)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#windFan1").css("left",(scene2Offset*layerMinus1Speed/layerMinus3Speed - 70)+"px");
-	$("#wind2").css("left",(scene2Offset+240)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#windFan2").css("left",((scene2Offset+240)*layerMinus1Speed/layerMinus3Speed - 70)+"px");
+	$("#wind2").css("left",(scene2Offset+260)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#windFan2").css("left",((scene2Offset+260)*layerMinus1Speed/layerMinus3Speed - 70)+"px");
 	$("#farmHouse").css("left",(scene2Offset+350)*layerMinus1Speed/layerMinus3Speed+"px");	
 }
 
@@ -156,9 +169,17 @@ function renderScene6() {
 	//layer-3
 	$("#grass1").css("left",(scene6Offset+1700)+"px");	
 	$("#grass2").css("left",(scene6Offset+1950)+"px");	
-	$("#grass3").css("left",(scene6Offset+2350)+"px");	
+	$("#grass3").css("left",(scene6Offset+2350)+"px");
+	$("#grass4").css("left",(scene6Offset+1500)+"px");	
+	$("#grass5").css("left",(scene6Offset+1250)+"px");	
+	$("#grass6").css("left",(scene6Offset+1050)+"px");	
+	$("#grass7").css("left",(scene6Offset+800)+"px");	
+	$("#grass8").css("left",(scene6Offset+550)+"px");	
+	$("#grass9").css("left",(scene6Offset+350)+"px");
 	$("#underwaterLayer1").css("left",(scene6Offset+0)+"px");
-	$("#underwaterBG").css("left",(scene6Offset+0)+"px");
+	$("#underwaterBG").css("left",(scene6Offset-window.innerWidth/2)+"px");
+	
+	$("#underwaterBG").css("width",(((scene7Offset - scene6Offset)+window.innerWidth)+"px"));	
 
 	//layer-2
 	$("#plant1").css("left",(scene6Offset+140)*layerMinus2Speed/layerMinus3Speed+"px");
@@ -169,17 +190,48 @@ function renderScene6() {
 	$("#submarine").css("left",(scene6Offset+1860)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#rock2").css("left",(scene6Offset+2010)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#underwaterLayer2").css("left",(scene6Offset+0)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#stone").css("left",(scene6Offset+3000)*layerMinus2Speed/layerMinus3Speed+"px");
 	
 	//layer-1
-	$("#anchor").css("left",(scene6Offset+750)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#pole").css("left",(scene6Offset+700)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#krustyCrab").css("left",(scene6Offset+900)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#triRock1").css("left",(scene6Offset+1110)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#rock1").css("left",(scene6Offset+1200)*layerMinus1Speed/layerMinus3Speed+"px");	
 
 	//layer1
+	$("#anchor").css("left",(scene6Offset+600)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#triRock2").css("left",(scene6Offset+1600)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#underwaterGround").css("left",(scene6Offset)*layerMinus1Speed/layerMinus3Speed+"px");	
+}
+
+function renderScene7()
+{	//layer-3
+	$("#lightHouse").css("left",(scene7Offset+1370)+"px");
+	$("#tree4").css("left",(scene7Offset+3500)+"px");
+	$("#tree5").css("left",(scene7Offset+3900)+"px");
+	//layer-2
+	$("#shells2").css("left",(scene7Offset+1180)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#snail1").css("left",(scene7Offset+1350)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#sandHouse").css("left",(scene7Offset+1434)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#tree1").css("left",(scene7Offset+1740)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#beachGirl").css("left",(scene7Offset+2300)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#tree3").css("left",(scene7Offset+2800)*layerMinus1Speed/layerMinus3Speed+"px");
+
+	//layer-1
+	$("#starFish").css("left",(scene7Offset+705)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#shells1").css("left",(scene7Offset+827)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#crab").css("left",(scene7Offset+1008)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#juice").css("left",(scene7Offset+1430)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#beachChair").css("left",(scene7Offset+1645)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#beachElements").css("left",(scene7Offset+2200)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#crabDuo").css("left",(scene7Offset+2400)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#tree2").css("left",(scene7Offset+2800)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#hoarding").css("left",(scene7Offset+3200)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#stoneBoard").css("left",(scene7Offset+3700)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#cave").css("left",(scene7Offset+3800)*layerMinus1Speed/layerMinus3Speed+"px");
+	
+	//layer1
+	$("#carnivalRailing").css("left",(scene5Offset+50)*layerMinus1Speed/layerMinus3Speed+"px");	
 }
 
 function customizeGround()
@@ -232,7 +284,7 @@ window.onload = function(){
 	renderScene4();
 	renderScene5();
 	renderScene6();
-	
+	renderScene7();
 	// position all the elements of the layer
 	position_elements();
 	customizeGround();
