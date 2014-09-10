@@ -27,8 +27,20 @@
 		<div id='archives' class='headerContent'>archives</div>
 	</div>
 
-	<div id="main_container" >
-		<img class="ground" id="ground" src="./images/ground.png">
+	<div id="main_container">
+		<div id="groundWrapper">
+			<div id="ground" class="desertGround"></div>
+			<div id="ground" class="bridgeWaterWrapper">
+				<div id="ground" class="bridgeWater1"></div>
+				<div id="ground" class="bridgeWater2"></div>	
+			</div>
+			<div id="ground" class="cityGround"></div>
+			<div id="ground" class="shipWaterWrapper">
+				<div id="ground" class="shipWater1"></div>
+				<div id="ground" class="shipWater2"></div>	
+			</div>
+			<div id="ground" class="beachGround"></div>
+		</div>
 		<div id="layer-3" class="layer">
 			<img src="./images/scene1/backgroundPyramids.png" id="backgroundPyramids">
 			
@@ -192,7 +204,6 @@
 	</div>
 	<script type="text/javascript" src="./js/controls.js"></script>
 	<script type="text/javascript" src="./js/ioOperations.js"></script>
-	
 	<script type="text/javascript" src="./js/animateCharacter.js"></script>
 	
 </body>

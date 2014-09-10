@@ -39,7 +39,7 @@ function scrollevent() {
 
 //=============================POSITIONING CHARACTER================================//
 function position_character()
-{	var bottomOffset = $("#ground").height();
+{	var bottomOffset = 110;
 	$("#main_character").css("bottom",bottomOffset - 25);//Height of player is 175
 	$("#main_character").css("left",0.5*window.innerWidth -100);//Width of player is 100
 }

@@ -13,8 +13,10 @@ function closeLightbox() {
 
 function setVitals() {
 	
-	$("#ground").attr("data-0","left:0px;");
-	$("#ground").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
+	$("#groundWrapper").attr("data-0","left:0px;");
+	$("#groundWrapper").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
+	$("#groundWrapper").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
+	$("#groundWrapper").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
 	$("#layer-3").attr("data-0","left:0px;");
 	$("#layer-3").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg) +"px;");
 	$("#layer-3").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg) +"px;");
@@ -42,16 +44,33 @@ function setVitals() {
 
 //==============================POSITIONING ELEMENTS FROM BOTTOM =============================//
 function position_elements()
-{	$(".layer img").css("bottom",$("#ground").height());
+{	$(".layer img").css("bottom",110);
+	
+
+	// PLACING GROUNDS
+	$(".desertGround").css({ background :"url('./images/ground.png')", width : 200, margin : 0});
+	$(".bridgeWaterWrapper").css({ width : 1295, overflow : 'hidden', left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)});
+	$(".bridgeWater1").css({ background :"url('./images/bridgeWater.png')", width : 1295, animation : "waveMove1 33s linear 0s infinite normal"});
+	$(".bridgeWater2").css({ background :"url('./images/bridgeWater.png')", width : 1295, left : -1295 , animation : "waveMove1 33s linear 0s infinite normal"});
+	$(".cityGround").css({ background :"url('./images/cityground.png')", width : 7400, left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)+1295});
+	$(".shipWaterWrapper").css({ width : 7400, overflow : 'hidden', left : scene6Offset*(layerMinus1Speed/layerMinus3Speed)-1200});
+	$(".shipWater1").css({ background :"url('./images/bridgeWater.png')", width : 4700, animation : "waveMove2 120s linear 0s infinite normal"});
+	$(".shipWater2").css({ background :"url('./images/bridgeWater.png')", width : 4700, left : -4700 , animation : "waveMove2 120s linear 0s infinite normal"});
+	$(".beachGround").css({ background :"url('./images/beachGround.png')", width : 10000, left : scene7Offset*(layerMinus1Speed/layerMinus3Speed)});
+
+	// PLACING UDERWATER ELEMENTS
 	$(".underwaterImg").css("bottom",-(window.innerHeight + 520));
 	$("#underwaterBG").css("bottom",-(window.innerHeight + 600));
 	$(".underwaterGround").css("bottom",-(window.innerHeight + 600));
 	$(".underwaterGrass").css("bottom",-(window.innerHeight + 450));
 	$(".underwaterSubmarine").css("bottom",-(window.innerHeight + 300));
 	$(".underwaterAnchor").css("bottom",-(window.innerHeight + 530));
-	$("#swing2,#swing1").css("bottom",$("#ground").height()+25)
+	
+	//KEYFRAMES
+	$("#swing2,#swing1").css("bottom",110+25)
 	$("#swing1,#swing2").css("animation","rotate360 10s linear 0s infinite normal");
 	$("#windFan1,#windFan2,#windFan3,#windFan4").css("animation","rotate360 20s linear 0s infinite normal");
+	$("#submarine").css("animation","submarineMove 40s linear 0s infinite normal");
 }
 
 //==============================RENDER SCENE 1======================================//
@@ -179,7 +198,7 @@ function renderScene6() {
 	$("#underwaterLayer1").css("left",(scene6Offset+0)+"px");
 	$("#underwaterBG").css("left",(scene6Offset-window.innerWidth/2)+"px");
 	
-	$("#underwaterBG").css("width",(((scene7Offset - scene6Offset)+window.innerWidth)+"px"));	
+	$("#underwaterBG").css("width",(((scene7Offset - scene6Offset + 500)+window.innerWidth)+"px"));	
 
 	//layer-2
 	$("#plant1").css("left",(scene6Offset+140)*layerMinus2Speed/layerMinus3Speed+"px");
@@ -187,7 +206,7 @@ function renderScene6() {
 	$("#plant3").css("left",(scene6Offset+1240)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#plant4").css("left",(scene6Offset+1580)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#plant5").css("left",(scene6Offset+2150)*layerMinus2Speed/layerMinus3Speed+"px");
-	$("#submarine").css("left",(scene6Offset+1860)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#submarine").css("left",(scene6Offset+3060)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#rock2").css("left",(scene6Offset+2010)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#underwaterLayer2").css("left",(scene6Offset+0)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#stone").css("left",(scene6Offset+3000)*layerMinus2Speed/layerMinus3Speed+"px");

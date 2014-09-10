@@ -1,11 +1,10 @@
 
 document.addEventListener("keydown", function (e) {
-    if([219,221,33,34,35,36,37,38,39,40].indexOf(e.keyCode) > -1) { 
+    if([219,221,33,34,35,36,37,38,39,40,49,50,51,52,53,54,55,56].indexOf(e.keyCode) > -1) { 
         e.preventDefault();
         journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
         
         if(deviceName != 'computer') {
-        
         }
         else {
             if(journeyComplete >= woodenDockOffset/layerMinus3LengthE && journeyComplete <= shipBoardingPoint/layerMinus3LengthE) {
@@ -36,12 +35,8 @@ document.addEventListener("keydown", function (e) {
             }
         }
 
-        console.log(isBoardingShip+" : "+onShip+" : "+jumpDown);
-
-
-		if (e.keyCode == 39) {
-    	  
-		// forward scrolling by right arrow key
+		if (e.keyCode == 39) { 
+            // forward scrolling by right arrow key
     	   window.scrollBy(0,scrollSpeed);
     	   scrollPageX = $(window).scrollTop();
         }
@@ -53,7 +48,7 @@ document.addEventListener("keydown", function (e) {
         if (e.keyCode == 221) {
             // Increases the scrolling speed
             if(scrollSpeed <=50)
-            scrollSpeed += 10;
+                scrollSpeed += 10;
             console.log(scrollSpeed);
         }
         if (e.keyCode == 219) {
@@ -62,7 +57,43 @@ document.addEventListener("keydown", function (e) {
                 scrollSpeed -= 10;
             console.log(scrollSpeed);
         }
+        if (e.keyCode == 49) { 
+            // forward scrolling by right arrow key
+           window.scrollTo(0,scene1Offset/layerMinus3Speed - (window.innerWidth/2));
+           scrollPageX = $(window).scrollTop();
+        }
+        if (e.keyCode == 50) { 
+            // forward scrolling by right arrow key
+           window.scrollTo(0,scene2Offset/layerMinus3Speed - (window.innerWidth/2));
+           scrollPageX = $(window).scrollTop();
+        }
+        if (e.keyCode == 51) { 
+            // forward scrolling by right arrow key
+           window.scrollTo(0,scene3Offset/layerMinus3Speed - (window.innerWidth/2));
+           scrollPageX = $(window).scrollTop();
+        }
+        if (e.keyCode == 52) { 
+            // forward scrolling by right arrow key
+           window.scrollTo(0,scene4Offset/layerMinus3Speed - (window.innerWidth/2));
+           scrollPageX = $(window).scrollTop();
+        }
+        if (e.keyCode == 53) { 
+            // forward scrolling by right arrow key
+           window.scrollTo(0,scene5Offset/layerMinus3Speed - (window.innerWidth/2));
+           scrollPageX = $(window).scrollTop();
+        }
+        if (e.keyCode == 54) { 
+            // forward scrolling by right arrow key
+           window.scrollTo(0,scene6Offset/layerMinus3Speed - (window.innerWidth/2) + 1250);
+           scrollPageX = $(window).scrollTop();
+        }
+        if (e.keyCode == 55) { 
+            // forward scrolling by right arrow key
+           window.scrollTo(0,scene7Offset/layerMinus3Speed - (window.innerWidth/2) + 400);
+           scrollPageX = $(window).scrollTop();
+        }
         journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
+        
     }
 }, false);
 
