@@ -1,100 +1,37 @@
-
+setInterval(function() { setStatus(); }, 300);
 document.addEventListener("keydown", function (e) {
     if([219,221,33,34,35,36,37,38,39,40,49,50,51,52,53,54,55,56].indexOf(e.keyCode) > -1) { 
-        e.preventDefault();
         journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
-        
-        if(deviceName != 'computer') {
-        }
-        else {
-            if(journeyComplete >= woodenDockOffset/layerMinus3LengthE && journeyComplete <= shipBoardingPoint/layerMinus3LengthE) {
-                isBoardingShip = true;
-                onShip = false;
-                jumpDown = false;
-            }
-            else if(journeyComplete >= shipBoardingPoint/layerMinus3LengthE && journeyComplete <= hitIceBerg/layerMinus3LengthE) {
-                if(jumpDown)
-                    comeUp();
-                onShip = true;
-                isBoardingShip = false;
-                jumpDown = false;
-            }
-            else if(journeyComplete >= hitIceBerg/layerMinus3LengthE && journeyComplete < underwater/layerMinus3LengthE) {
-                if(!jumpDown)
-                    goDown();
-                onShip = false;
-                isBoardingShip = false;
-                jumpDown = true;
-            }
-            else {
-                if(jumpDown)
-                    comeUp();
-                onShip = false;
-                isBoardingShip = false;
-                jumpDown = false;
-            }
-        }
-
-		if (e.keyCode == 39) { 
-            // forward scrolling by right arrow key
+        e.preventDefault();
+        if (e.keyCode == 39) 
+        // forward scrolling by right arrow key
     	   window.scrollBy(0,scrollSpeed);
-    	   scrollPageX = $(window).scrollTop();
-        }
-        if (e.keyCode == 37) {
-  		    //backward scrolling by left arrow key
+        if (e.keyCode == 37) 
+  		//backward scrolling by left arrow key
     	   window.scrollBy(0,-scrollSpeed);
-    	   scrollPageX = $(window).scrollTop();
-        }
-        if (e.keyCode == 221) {
-            // Increases the scrolling speed
+        if (e.keyCode == 221)
+        // Increases the scrolling speed
             if(scrollSpeed <=50)
                 scrollSpeed += 10;
-            console.log(scrollSpeed);
-        }
-        if (e.keyCode == 219) {
-            // decreases the scrolling speed
+        if (e.keyCode == 219) 
+        // decreases the scrolling speed
             if(scrollSpeed > 10) 
                 scrollSpeed -= 10;
-            console.log(scrollSpeed);
-        }
-        if (e.keyCode == 49) { 
-            // forward scrolling by right arrow key
+        if (e.keyCode == 49) 
            window.scrollTo(0,scene1Offset/layerMinus3Speed - (window.innerWidth/2));
-           scrollPageX = $(window).scrollTop();
-        }
-        if (e.keyCode == 50) { 
-            // forward scrolling by right arrow key
+        if (e.keyCode == 50) 
            window.scrollTo(0,scene2Offset/layerMinus3Speed - (window.innerWidth/2));
-           scrollPageX = $(window).scrollTop();
-        }
-        if (e.keyCode == 51) { 
-            // forward scrolling by right arrow key
+        if (e.keyCode == 51) 
            window.scrollTo(0,scene3Offset/layerMinus3Speed - (window.innerWidth/2));
-           scrollPageX = $(window).scrollTop();
-        }
-        if (e.keyCode == 52) { 
-            // forward scrolling by right arrow key
+        if (e.keyCode == 52) 
            window.scrollTo(0,scene4Offset/layerMinus3Speed - (window.innerWidth/2));
-           scrollPageX = $(window).scrollTop();
-        }
-        if (e.keyCode == 53) { 
-            // forward scrolling by right arrow key
+        if (e.keyCode == 53) 
            window.scrollTo(0,scene5Offset/layerMinus3Speed - (window.innerWidth/2));
-           scrollPageX = $(window).scrollTop();
-        }
-        if (e.keyCode == 54) { 
-            // forward scrolling by right arrow key
-           window.scrollTo(0,scene6Offset/layerMinus3Speed - (window.innerWidth/2) + 1250);
-           scrollPageX = $(window).scrollTop();
-        }
-        if (e.keyCode == 55) { 
-            // forward scrolling by right arrow key
+        if (e.keyCode == 54) 
+           window.scrollTo(0,scene6Offset/layerMinus3Speed - (window.innerWidth/2) + 1395);
+        if (e.keyCode == 55) 
            window.scrollTo(0,scene7Offset/layerMinus3Speed - (window.innerWidth/2) + 400);
-           scrollPageX = $(window).scrollTop();
-        }
-        journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
-        
-    }
+            }
 }, false);
 
 function setupTouch() {
@@ -168,9 +105,42 @@ function detectDevice() {
 }
 
 function goDown() {
-    $("#layer-3,#layer-2,#layer-1,#layer1,#ground").animate({bottom : window.innerHeight+600+"px"},400);
+    $("#layer-3,#layer-2,#layer-1,#layer1,#groundWrapper").animate({bottom : window.innerHeight+600+"px"},400);
 }
 
 function comeUp() {
-    $("#layer-3,#layer-2,#layer-1,#layer1,#ground").animate({bottom : "0px"},400);
+    $("#layer-3,#layer-2,#layer-1,#layer1,#groundWrapper").animate({bottom : "0px"},400);
+}
+
+function setStatus() {
+    
+    journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
+    scrollPageX = $(window).scrollTop();
+
+    if(journeyComplete >= woodenDockOffset/layerMinus3LengthE && journeyComplete <= shipBoardingPoint/layerMinus3LengthE) {
+        isBoardingShip = true;
+        onShip = false;
+        jumpDown = false;
+    }
+    else if(journeyComplete >= shipBoardingPoint/layerMinus3LengthE && journeyComplete <= hitIceBerg/layerMinus3LengthE) {
+        if(jumpDown)
+            comeUp();
+        onShip = true;
+        isBoardingShip = false;
+        jumpDown = false;
+    }
+    else if(journeyComplete >= hitIceBerg/layerMinus3LengthE && journeyComplete < underwater/layerMinus3LengthE) {
+        if(!jumpDown)
+            goDown();
+        onShip = false;
+        isBoardingShip = false;
+        jumpDown = true;
+    }
+    else {
+        if(jumpDown)
+            comeUp();
+        onShip = false;
+        isBoardingShip = false;
+        jumpDown = false;
+    }
 }
