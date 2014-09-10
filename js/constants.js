@@ -46,3 +46,4 @@ var isBoardingShip = false;
 var onShip = false;
 var jumpDown = false;
 
+var groundOffset = 110;
