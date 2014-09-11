@@ -40,7 +40,6 @@ function setVitals() {
 	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
 	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed-1),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
 	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed),"transform: rotate(0deg) translate(0px, 0px);position:absolute;left:"+(scene5Offset+4200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"transform: rotate(-10deg) translate(-30px, 90px);position:absolute;left:"+(scene5Offset+4200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
 	
 }
 
@@ -48,6 +47,7 @@ function setVitals() {
 function position_elements()
 {	$(".layer img").css("bottom",110);
 	
+
 	// PLACING GROUNDS
 	$(".desertGround").css({ background :"url('./images/desertground.jpg')", width : 1000, margin : 0});
 	$(".transition").css({ background :"url('./images/desertforestTransition.png')", width : 1355, left : 1000});
