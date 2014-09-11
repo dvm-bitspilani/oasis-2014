@@ -38,7 +38,9 @@ function setVitals() {
 	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed-1),"position:absolute;left:"+(scene5Offset+3100)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
 	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed-1),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
-	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed),"position:absolute;left:"+(scene5Offset+4200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed),"transform: rotate(0deg) translate(0px, 0px);position:absolute;left:"+(scene5Offset+4200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed+(extraScroll1*0.10)),"transform: rotate(0deg) translate(0px, 0px);position:absolute;left:"+(scene5Offset+4200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1*0.80),"transform: rotate(-10deg) translate(40px, 80px);position:absolute;left:"+(scene5Offset+4200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
 	
 }
 
@@ -67,7 +69,7 @@ function position_elements()
 	$(".underwaterAnchor").css("bottom",-(window.innerHeight + 530));
 	
 	//KEYFRAMES
-	$("#swing2,#swing1").css("bottom",110+25)
+	$("#swing2,#swing1").css("bottom",110+40)
 	$("#swing1,#swing2").css("animation","rotate360 10s linear 0s infinite normal");
 	$("#windFan1,#windFan2,#windFan3,#windFan4").css("animation","rotate360 20s linear 0s infinite normal");
 	$("#submarine").css("animation","submarineMove 40s linear 0s infinite normal");
@@ -173,7 +175,7 @@ function renderScene5() {
 	$("#swing2").css("left",(scene5Offset+650)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#swingStand2").css("left",(scene5Offset+650+60)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#swing1").css("left",(scene5Offset+1050)*layerMinus1Speed/layerMinus3Speed+"px");	
-	$("#swingStand1").css("left",(scene5Offset+1050+90)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#swingStand1").css("left",(scene5Offset+1050+78)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#tent1").css("left",(scene5Offset+400)*layerMinus1Speed/layerMinus3Speed+"px");	
 	
 	//layer1

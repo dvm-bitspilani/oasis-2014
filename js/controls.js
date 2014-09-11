@@ -1,4 +1,6 @@
-setInterval(function() { setStatus(); }, 300);
+setInterval(function() { setStatus(); }, 50);
+
+
 document.addEventListener("keydown", function (e) {
     if([219,221,33,34,35,36,37,38,39,40,49,50,51,52,53,54,55,56].indexOf(e.keyCode) > -1) { 
         journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
@@ -113,6 +115,7 @@ function comeUp() {
 }
 
 function setStatus() {
+    console.log(isBoardingShip+" : "+onShip+" : "+jumpDown);
     
     journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
     scrollPageX = $(window).scrollTop();

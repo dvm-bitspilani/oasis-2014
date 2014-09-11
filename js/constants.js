@@ -20,7 +20,7 @@ var scene7Offset = 16800;
 
 var layerMinus3Speed = 0.40;
 
-var extraScroll1 = 300;
+var extraScroll1 = 500;
 var totalScroll = (layerMinus3LengthE)/layerMinus3Speed + extraScroll1;
 var totalScrollE = (layerMinus3LengthE)/layerMinus3Speed;
 
