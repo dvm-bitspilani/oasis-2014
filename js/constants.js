@@ -44,6 +44,8 @@ var underwater = scene6Offset + 2500 + ( - window.innerWidth/2)*layerMinus3Speed
 
 var isBoardingShip = false;
 var onShip = false;
+var shipHits = false;
 var jumpDown = false;
+var prevJumpDown = false;
 
 var groundOffset = 110;

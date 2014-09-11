@@ -107,15 +107,15 @@ function detectDevice() {
 }
 
 function goDown() {
-    $("#layer-3,#layer-2,#layer-1,#layer1,#groundWrapper").animate({bottom : window.innerHeight+600+"px"},400);
+    $("#layer-3,#layer-2,#layer-1,#layer1,#groundWrapper").animate({bottom : window.innerHeight+600+"px"},200);
 }
 
 function comeUp() {
-    $("#layer-3,#layer-2,#layer-1,#layer1,#groundWrapper").animate({bottom : "0px"},400);
+    $("#layer-3,#layer-2,#layer-1,#layer1,#groundWrapper").animate({bottom : "0px"},200);
 }
 
 function setStatus() {
-    console.log(isBoardingShip+" : "+onShip+" : "+jumpDown);
+    console.log(isBoardingShip+" : "+onShip+" : "+shipHits+" : "+jumpDown);
     
     journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
     scrollPageX = $(window).scrollTop();
@@ -124,26 +124,45 @@ function setStatus() {
         isBoardingShip = true;
         onShip = false;
         jumpDown = false;
+        shipHits =false;
     }
     else if(journeyComplete >= shipBoardingPoint/layerMinus3LengthE && journeyComplete <= hitIceBerg/layerMinus3LengthE) {
         if(jumpDown)
-            comeUp();
+            goDown();
         onShip = true;
         isBoardingShip = false;
         jumpDown = false;
+        shipHits =false;
+        if (scrollPageX >= (hitIceBerg/layerMinus3Speed) && scrollPageX <= (hitIceBerg/layerMinus3Speed)+(extraScroll1/2)) {
+            onShip = false;
+            shipHits = true;
+        }
     }
     else if(journeyComplete >= hitIceBerg/layerMinus3LengthE && journeyComplete < underwater/layerMinus3LengthE) {
         if(!jumpDown)
-            goDown();
-        onShip = false;
-        isBoardingShip = false;
-        jumpDown = true;
-    }
-    else {
-        if(jumpDown)
             comeUp();
         onShip = false;
         isBoardingShip = false;
-        jumpDown = false;
+        jumpDown = true;
+        shipHits =false;
+        if (scrollPageX >= (hitIceBerg/layerMinus3Speed) && scrollPageX <= (hitIceBerg/layerMinus3Speed)+(extraScroll1/2)) {
+            jumpDown = false;
+            shipHits = true;
+        }
     }
+    else {
+        onShip = false;
+        isBoardingShip = false;
+        jumpDown = false;
+        shipHits = false;
+    }
+
+    if (jumpDown != prevJumpDown) {
+        if(jumpDown)
+            goDown();
+        else
+            comeUp();
+    }
+    prevJumpDown = jumpDown;
+
 }

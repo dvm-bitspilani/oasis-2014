@@ -15,32 +15,31 @@ function setVitals() {
 	
 	$("#groundWrapper").attr("data-0","left:0px;");
 	$("#groundWrapper").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
-	$("#groundWrapper").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
+	$("#groundWrapper").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px");
 	$("#groundWrapper").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
 	$("#layer-3").attr("data-0","left:0px;");
 	$("#layer-3").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg) +"px;");
-	$("#layer-3").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg) +"px;");
+	$("#layer-3").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg) +"px");
 	$("#layer-3").attr("data-"+totalScroll,"left:-"+ (layerMinus3LengthE) +"px;");
 	$("#layer-2").attr("data-0","left:0px;");
 	$("#layer-2").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg*layerMinus2Speed/layerMinus3Speed) +"px;");
-	$("#layer-2").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus2Speed/layerMinus3Speed) +"px;");
+	$("#layer-2").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus2Speed/layerMinus3Speed) +"px");
 	$("#layer-2").attr("data-"+totalScroll,"left:-"+ (layerMinus2LengthE) +"px;");
 	$("#layer-1").attr("data-0","left:0px;");
 	$("#layer-1").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
-	$("#layer-1").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
+	$("#layer-1").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px");
 	$("#layer-1").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
 	$("#layer1").attr("data-0","left:0px;");
 	$("#layer1").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
-	$("#layer1").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
+	$("#layer1").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px");
 	$("#layer1").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
-
+	
+	
 	$("#ship").attr("data-0","position:absolute;left:"+(scene5Offset+3100)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed-1),"position:absolute;left:"+(scene5Offset+3100)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
 	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed-1),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
 	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed),"transform: rotate(0deg) translate(0px, 0px);position:absolute;left:"+(scene5Offset+4200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed+(extraScroll1*0.10)),"transform: rotate(0deg) translate(0px, 0px);position:absolute;left:"+(scene5Offset+4200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1*0.80),"transform: rotate(-10deg) translate(40px, 80px);position:absolute;left:"+(scene5Offset+4200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
 	
 }
 
@@ -50,7 +49,9 @@ function position_elements()
 	
 
 	// PLACING GROUNDS
-	$(".desertGround").css({ background :"url('./images/ground.png')", width : 200, margin : 0});
+	$(".desertGround").css({ background :"url('./images/desertground.jpg')", width : 1000, margin : 0});
+	$(".transition").css({ background :"url('./images/desertforestTransition.png')", width : 1355, left : 1000});
+	$(".forestGround").css({ background :"url('./images/forestGround.png')", width : 6674, left : 2355});
 	$(".bridgeWaterWrapper").css({ width : 1295, overflow : 'hidden', left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)});
 	$(".bridgeWater1").css({ background :"url('./images/bridgeWater.png')", width : 1295, animation : "waveMove1 33s linear 0s infinite normal"});
 	$(".bridgeWater2").css({ background :"url('./images/bridgeWater.png')", width : 1295, left : -1295 , animation : "waveMove1 33s linear 0s infinite normal"});

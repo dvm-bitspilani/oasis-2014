@@ -70,7 +70,7 @@ function animate_main_character()
 }
 
 function swimUp()
-{	console.log("swimupCalled");
+{	
 	$("#main_character").stop();
 	$("#main_character").animate({bottom:"300px"},swimUpTime);
 	swimFrameChange();

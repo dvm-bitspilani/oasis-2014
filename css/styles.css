@@ -297,3 +297,7 @@ body
     width:10000px;
     background-color:rgb(1,119,193); 
 }
+
+#swing1, #swing2 {
+    bottom: 120px;
+}
