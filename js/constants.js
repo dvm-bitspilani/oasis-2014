@@ -2,7 +2,7 @@
 var multiplier32 = 1.15;
 var multiplier31 = 1.3;
 
-var layerMinus3Length = 19000;
+var layerMinus3Length = 22000;
 var layerMinus2Length = layerMinus3Length*multiplier32;
 var layerMinus1Length = layerMinus3Length*multiplier31;
 
@@ -16,7 +16,7 @@ var scene3Offset = 3200;
 var scene4Offset = 6900;
 var scene5Offset = 11100;
 var scene6Offset = 14500;
-var scene7Offset = 16800;
+var scene7Offset = 17390;
 
 var layerMinus3Speed = 0.40;
 
@@ -40,7 +40,7 @@ var deviceName;
 var woodenDockOffset = scene5Offset + 2300 + (1000 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
 var shipBoardingPoint = scene5Offset + 3100 + (270 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
 var hitIceBerg = scene5Offset + 4200 + (-270 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
-var underwater = scene6Offset + 2500 + ( - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
+var underwater = scene6Offset + 2800 + ( - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
 
 var isBoardingShip = false;
 var onShip = false;
