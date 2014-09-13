@@ -5,22 +5,33 @@ document.addEventListener("keydown", function (e) {
     if([219,221,33,34,35,36,37,38,39,40,49,50,51,52,53,54,55,56,78].indexOf(e.keyCode) > -1) { 
         journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
         e.preventDefault();
-        if (e.keyCode == 39) 
+        if (e.keyCode == 39) {
         // forward scrolling by right arrow key
-    	   window.scrollBy(0,scrollSpeed);
-        else if (e.keyCode == 37) 
-  		//backward scrolling by left arrow key
-    	   window.scrollBy(0,-scrollSpeed);
+           if(caveTransit)
+                window.scrollBy(0,130);
+           else  
+                window.scrollBy(0,scrollSpeed);
+        }
+        else if (e.keyCode == 37) {
+        // forward scrolling by right arrow key
+           if(caveTransit)
+                window.scrollBy(0,-130);
+           else  
+                window.scrollBy(0,-scrollSpeed);
+        } 
         else if (e.keyCode == 221) {
         // Increases the scrolling speed
-            if(scrollSpeed <=50)
+            if(scrollSpeed <60)
                 scrollSpeed += 10;
         }
         else if (e.keyCode == 219) { 
         // decreases the scrolling speed
-            if(scrollSpeed > 10) 
+            if(scrollSpeed > 60)
+                scrollSpeed = 60;
+            else if(scrollSpeed > 10) 
                 scrollSpeed -= 10;
         }
+        //vsisoshell.exe 167mb
         else if (e.keyCode == 49) 
            window.scrollTo(0,scene1Offset/layerMinus3Speed - (window.innerWidth/2));
         else if (e.keyCode == 50) 
@@ -164,7 +175,7 @@ function setStatus() {
             shipHits = true;
         }
     }
-    else if(journeyComplete >= ((enterCave-120)/layerMinus3LengthE) && journeyComplete <= ((enterCave + 1450)/layerMinus3LengthE) ) {
+    else if(journeyComplete >= ((enterCave-20)/layerMinus3LengthE) && journeyComplete <= ((enterCave + 1350)/layerMinus3LengthE) ) {
         onShip = false;
         isBoardingShip = false;
         jumpDown = false;
