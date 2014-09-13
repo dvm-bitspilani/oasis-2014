@@ -31,12 +31,18 @@ function setVitals() {
 	$("#layer1").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px");
 	$("#layer1").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
 	
+	$("#darkCover").attr("data-0","opacity:0;");
+	$("#darkCover").attr("data-"+enterCave/layerMinus3Speed,"opacity:0;");
+	$("#darkCover").attr("data-"+(enterCave+80)/layerMinus3Speed,"opacity:1;");
+	$("#darkCover").attr("data-"+(enterCave+700)/layerMinus3Speed,"opacity:1;");
+	$("#darkCover").attr("data-"+(enterCave+780)/layerMinus3Speed,"opacity:0;");
 	
-	$("#ship").attr("data-0","position:absolute;left:"+(scene5Offset+3100)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed-1),"position:absolute;left:"+(scene5Offset+3100)*layerMinus1Speed/layerMinus3Speed+"px");
+	
+	$("#ship").attr("data-0","position:absolute;left:"+(scene5Offset+4100)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed-1),"position:absolute;left:"+(scene5Offset+4100)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
 	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed-1),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
-	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed),"transform: rotate(0deg) translate(0px, 0px);position:absolute;left:"+(scene5Offset+4200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed),"transform: rotate(0deg) translate(0px, 0px);position:absolute;left:"+(scene5Offset+5200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
 	
 }
 
@@ -52,12 +58,20 @@ function position_elements()
 	$(".bridgeWaterWrapper").css({ width : 1295, overflow : 'hidden', left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)});
 	$(".bridgeWater1").css({ background :"url('./images/bridgeWater.png')", width : 1500, animation : "waveMove1 33s linear 0s infinite normal"});
 	$(".bridgeWater2").css({ background :"url('./images/bridgeWater.png')", width : 1500, left : -1500 , animation : "waveMove1 33s linear 0s infinite normal"});
-	$(".cityGround").css({ background :"url('./images/cityground.png')", width : 7400, left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)+1295});
+	$(".cityGround").css({ background :"url('./images/cityground.png')", width : 8510, left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)+1295});
 	$(".shipWaterWrapper").css({ width : 7400, overflow : 'hidden', left : scene6Offset*(layerMinus1Speed/layerMinus3Speed)-1200});
 	$(".shipWater1").css({ background :"url('./images/bridgeWater.png')", width : 5000, animation : "waveMove2 120s linear 0s infinite normal"});
 	$(".shipWater2").css({ background :"url('./images/bridgeWater.png')", width : 5000, left : -5000 , animation : "waveMove2 120s linear 0s infinite normal"});
 	$(".beachGround").css({ background :"url('./images/beachGround.png')", width : 10000, left : scene7Offset*(layerMinus1Speed/layerMinus3Speed)});
 
+	//PLACING CONCERT ELEMENTS
+	$("#concertFocusLight1, #concertFocusLight5").css("bottom",345+"px");
+	$("#concertFocusLight2, #concertFocusLight4").css("bottom",355+"px");
+	$("#concertFocusLight3").css("bottom",360+"px");
+	$("#videoNet").css("bottom","200px");
+	$("#videoPlay").css("bottom","150px");
+
+	
 	// PLACING UDERWATER ELEMENTS
 	$(".underwaterImg").css("bottom",-(window.innerHeight + 500));
 	$("#underwaterBG").css("bottom",-(window.innerHeight + 600));
@@ -67,10 +81,19 @@ function position_elements()
 	$(".underwaterAnchor").css("bottom",-(window.innerHeight + 530));
 	
 	//KEYFRAMES
-	$("#swing2,#swing1").css("bottom",110+40)
-	$("#swing1,#swing2").css("animation","rotate360 10s linear 0s infinite normal");
+	$("#swing1").css("bottom",110+40);
+	$("#swing2").css("bottom",110+22);
+	$("#swing1").css("animation","rotate360 10s linear 0s infinite normal");
+	$("#swing2").css("animation","rotate360 10s linear 0s infinite reverse");
 	$("#windFan1,#windFan2,#windFan3,#windFan4").css("animation","rotate360 20s linear 0s infinite normal");
 	$("#submarine").css("animation","submarineMove 40s linear 0s infinite normal");
+	
+	$("#concertFocusLight1,#concertFocusLight2,#concertFocusLight3,#concertFocusLight4,#concertFocusLight5").css("transform-origin","50% 0%");
+	$("#concertFocusLight1").css("animation","concertFocusLight1Animation 8s linear 0s infinite normal");
+	$("#concertFocusLight2").css("animation","concertFocusLight2Animation 8s linear 0s infinite normal");
+	//$("#concertFocusLight3").css("animation","concertFocusLight3Animation 5s linear 0s infinite normal");
+	$("#concertFocusLight4").css("animation","concertFocusLight4Animation 8s linear 0s infinite normal");
+	$("#concertFocusLight5").css("animation","concertFocusLight5Animation 8s linear 0s infinite normal");
 }
 
 //==============================RENDER SCENES======================================//
@@ -160,6 +183,7 @@ function renderScene4() {
 
 function renderScene5() {
 	//layer-3
+	$("#rollerCoaster").css("left",(scene5Offset+100)+"px");	
 	$("#tent3").css("left",(scene5Offset+1550)+"px");	
 	$("#tent5").css("left",(scene5Offset+1850)+"px");	
 	
@@ -168,9 +192,18 @@ function renderScene5() {
 	$("#tent2").css("left",(scene5Offset+600)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#tent4").css("left",(scene5Offset+1580)*layerMinus2Speed/layerMinus3Speed+"px");	
 	
+	$("#videoNet").css("left",(scene5Offset+2270)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#videoPlay").css("left",(scene5Offset+2280)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#concert").css("left",(scene5Offset+2100)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#concertFocusLight1").css("left",(scene5Offset+2308)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#concertFocusLight2").css("left",(scene5Offset+2390)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#concertFocusLight3").css("left",(scene5Offset+2482)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#concertFocusLight4").css("left",(scene5Offset+2575)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#concertFocusLight5").css("left",(scene5Offset+2683)*layerMinus2Speed/layerMinus3Speed+"px");	
+	
 	//layer-1
 	$("#booth").css("left",(scene5Offset+200)*layerMinus1Speed/layerMinus3Speed+"px");	
-	$("#swing2").css("left",(scene5Offset+650)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#swing2").css("left",(scene5Offset+656)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#swingStand2").css("left",(scene5Offset+650+60)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#swing1").css("left",(scene5Offset+1050)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#swingStand1").css("left",(scene5Offset+1050+78)*layerMinus1Speed/layerMinus3Speed+"px");	
@@ -178,10 +211,10 @@ function renderScene5() {
 	
 	//layer1
 	$("#carnivalRailing").css("left",(scene5Offset+50)*layerMinus1Speed/layerMinus3Speed+"px");	
-	$("#cart").css("left",(scene5Offset+2000)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#woodenDock").css("left",(scene5Offset+2300)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#ship").css("left",(scene5Offset+3100)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#iceBerg").css("left",(scene5Offset+4200)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#cart").css("left",(scene5Offset+3000)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#woodenDock").css("left",(scene5Offset+3300)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#ship").css("left",(scene5Offset+4100)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#iceBerg").css("left",(scene5Offset+5200)*layerMinus1Speed/layerMinus3Speed+"px");	
 }
 
 function renderScene6() {
@@ -261,6 +294,7 @@ function customizeGround()
 	$("#cart").css("bottom","105px");
 	$("#ship").css("bottom","60px");
 	$("#iceBerg").css("bottom","0px");
+	$("#cave").css("bottom","70px");
 }
 //=========================ADD GRADIENTS==============================================//
 function addGradients(main_container)

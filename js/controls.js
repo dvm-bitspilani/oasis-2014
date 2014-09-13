@@ -115,7 +115,7 @@ function comeUp() {
 }
 
 function setStatus() {
-    console.log(isBoardingShip+" : "+onShip+" : "+shipHits+" : "+jumpDown);
+    //console.log(isBoardingShip+" : "+onShip+" : "+shipHits+" : "+jumpDown);
     
     journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
     scrollPageX = $(window).scrollTop();
