@@ -9,7 +9,6 @@ function closeLightbox() {
 }
 
 function setVitals() {
-	
 	$("#groundWrapper").attr("data-0","left:0px;");
 	$("#groundWrapper").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
 	$("#groundWrapper").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px");
@@ -34,9 +33,8 @@ function setVitals() {
 	$("#darkCover").attr("data-0","opacity:0;");
 	$("#darkCover").attr("data-"+enterCave/layerMinus3Speed,"opacity:0;");
 	$("#darkCover").attr("data-"+(enterCave+80)/layerMinus3Speed,"opacity:1;");
-	$("#darkCover").attr("data-"+(enterCave+700)/layerMinus3Speed,"opacity:1;");
-	$("#darkCover").attr("data-"+(enterCave+780)/layerMinus3Speed,"opacity:0;");
-	
+	$("#darkCover").attr("data-"+(enterCave+1680)/layerMinus3Speed,"opacity:1;");
+	$("#darkCover").attr("data-"+(enterCave+1760)/layerMinus3Speed,"opacity:0;");
 	
 	$("#ship").attr("data-0","position:absolute;left:"+(scene5Offset+4100)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed-1),"position:absolute;left:"+(scene5Offset+4100)*layerMinus1Speed/layerMinus3Speed+"px");
@@ -50,20 +48,6 @@ function setVitals() {
 function position_elements()
 {	$(".layer img").css("bottom",groundOffset);
 	
-
-	// PLACING GROUNDS
-	$(".desertGround").css({ background :"url('./images/desertground.jpg')", width : 1000, margin : 0});
-	$(".transition").css({ background :"url('./images/desertforestTransition.png')", width : 1355, left : 1000});
-	$(".forestGround").css({ background :"url('./images/forestGround.png')", width : 6665, left : 2355});
-	$(".bridgeWaterWrapper").css({ width : 1295, overflow : 'hidden', left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)});
-	$(".bridgeWater1").css({ background :"url('./images/bridgeWater.png')", width : 1500, animation : "waveMove1 33s linear 0s infinite normal"});
-	$(".bridgeWater2").css({ background :"url('./images/bridgeWater.png')", width : 1500, left : -1500 , animation : "waveMove1 33s linear 0s infinite normal"});
-	$(".cityGround").css({ background :"url('./images/cityground.png')", width : 8510, left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)+1295});
-	$(".shipWaterWrapper").css({ width : 7400, overflow : 'hidden', left : scene6Offset*(layerMinus1Speed/layerMinus3Speed)-1200});
-	$(".shipWater1").css({ background :"url('./images/bridgeWater.png')", width : 5000, animation : "waveMove2 120s linear 0s infinite normal"});
-	$(".shipWater2").css({ background :"url('./images/bridgeWater.png')", width : 5000, left : -5000 , animation : "waveMove2 120s linear 0s infinite normal"});
-	$(".beachGround").css({ background :"url('./images/beachGround.png')", width : 10000, left : scene7Offset*(layerMinus1Speed/layerMinus3Speed)});
-
 	//PLACING CONCERT ELEMENTS
 	$("#concertFocusLight1, #concertFocusLight5").css("bottom",345+"px");
 	$("#concertFocusLight2, #concertFocusLight4").css("bottom",355+"px");
@@ -88,12 +72,16 @@ function position_elements()
 	$("#windFan1,#windFan2,#windFan3,#windFan4").css("animation","rotate360 20s linear 0s infinite normal");
 	$("#submarine").css("animation","submarineMove 40s linear 0s infinite normal");
 	
+	//CONCERT
 	$("#concertFocusLight1,#concertFocusLight2,#concertFocusLight3,#concertFocusLight4,#concertFocusLight5").css("transform-origin","50% 0%");
 	$("#concertFocusLight1").css("animation","concertFocusLight1Animation 8s linear 0s infinite normal");
 	$("#concertFocusLight2").css("animation","concertFocusLight2Animation 8s linear 0s infinite normal");
 	//$("#concertFocusLight3").css("animation","concertFocusLight3Animation 5s linear 0s infinite normal");
 	$("#concertFocusLight4").css("animation","concertFocusLight4Animation 8s linear 0s infinite normal");
 	$("#concertFocusLight5").css("animation","concertFocusLight5Animation 8s linear 0s infinite normal");
+
+	//CAVE
+	$("#torch1,#torch2,#torch3,#torch4").css("bottom",350+"px");
 }
 
 //==============================RENDER SCENES======================================//
@@ -286,6 +274,21 @@ function renderScene7()
 	$("#beachGroundUpper").css("left",(scene7Offset)*layerMinus1Speed/layerMinus3Speed+"px");	
 }
 
+function renderScene8() {
+	//layer-3
+	$("#caveBackground1").css("left",(scene8Offset - 800)+"px");
+	$("#caveBackground2").css("left",(scene8Offset + 566)+"px");
+	$("#torch1").css("left",(scene8Offset -300)+"px");
+	$("#torch2").css("left",(scene8Offset + 100)+"px");
+	$("#torch3").css("left",(scene8Offset + 1000)+"px");
+	$("#torch4").css("left",(scene8Offset + 1600)+"px");
+	//layer-2
+	
+	//layer-1
+	$("#flinstoneCar").css("left",(scene8Offset+400)*layerMinus1Speed/layerMinus3Speed+"px");
+	
+	}
+
 function customizeGround()
 {	$("#woodenDock").css("bottom","-45px");
 	$("#bridgeRope").css("bottom","-47px");
@@ -295,17 +298,40 @@ function customizeGround()
 	$("#ship").css("bottom","60px");
 	$("#iceBerg").css("bottom","0px");
 	$("#cave").css("bottom","70px");
+
+	// PLACING GROUNDS
+	$(".desertGround").css({ background :"url('./images/desertground.jpg')", width : 1000, margin : 0});
+	$(".transition").css({ background :"url('./images/desertforestTransition.png')", width : 1355, left : 1000});
+	$(".forestGround").css({ background :"url('./images/forestGround.png')", width : 6665, left : 2355});
+	$(".bridgeWaterWrapper").css({ width : 1295, overflow : 'hidden', left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)});
+	$(".bridgeWater1").css({ background :"url('./images/bridgeWater.png')", width : 1500, animation : "waveMove1 33s linear 0s infinite normal"});
+	$(".bridgeWater2").css({ background :"url('./images/bridgeWater.png')", width : 1500, left : -1500 , animation : "waveMove1 33s linear 0s infinite normal"});
+	$(".cityGround").css({ background :"url('./images/cityground.png')", width : 8510, left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)+1295});
+	$(".shipWaterWrapper").css({ width : 7400, overflow : 'hidden', left : scene6Offset*(layerMinus1Speed/layerMinus3Speed)-1200});
+	$(".shipWater1").css({ background :"url('./images/bridgeWater.png')", width : 5000, animation : "waveMove2 120s linear 0s infinite normal"});
+	$(".shipWater2").css({ background :"url('./images/bridgeWater.png')", width : 5000, left : -5000 , animation : "waveMove2 120s linear 0s infinite normal"});
+	$(".beachGround").css({ background :"url('./images/beachGround.png')", width : 5000, left : scene7Offset*(layerMinus1Speed/layerMinus3Speed)});
+	$(".caveGround").css({ background :"url('./images/caveGround.png')", width : 3600, left : scene8Offset*(layerMinus1Speed/layerMinus3Speed) - 1000});
+
 }
 //=========================ADD GRADIENTS==============================================//
 function addGradients(main_container)
-{	main_container.attr("data-0","background: linear-gradient(rgb(243,148,66),rgb(247,174,108));");
+{	
+	//ORANGE
+	main_container.attr("data-0","background: linear-gradient(rgb(243,148,66),rgb(247,174,108));");
 	main_container.attr("data-"+((scene2Offset-200) - window.innerWidth)/layerMinus3Speed,"background:linear-gradient(rgb(243,148,66),rgb(238,159,90));");
+	// SKY BLUE
 	main_container.attr("data-"+((scene2Offset+600) - window.innerWidth)/layerMinus3Speed,"background:linear-gradient(rgb(129,200,246),rgb(129,200,246));");
 	main_container.attr("data-"+((scene5Offset-400) - window.innerWidth)/layerMinus3Speed,"background:linear-gradient(rgb(129,200,246),rgb(129,200,246));");
+	//DARK BLUE
 	main_container.attr("data-"+((scene5Offset+800) - window.innerWidth)/layerMinus3Speed,"background:linear-gradient(rgb(16,22,38),rgb(16,22,38));");
 	main_container.attr("data-"+((scene7Offset-800) - window.innerWidth)/layerMinus3Speed,"background:linear-gradient(rgb(16,22,38),rgb(16,22,38));");
+	//SKY BLUE
 	main_container.attr("data-"+((scene7Offset+100) - window.innerWidth)/layerMinus3Speed,"background:linear-gradient(rgb(129,200,246),rgb(129,200,246));");
-	main_container.attr("data-"+totalScroll,"background:linear-gradient(rgb(129,200,246),rgb(129,200,246));");
+	main_container.attr("data-"+((scene8Offset-200) - window.innerWidth)/layerMinus3Speed,"background:linear-gradient(rgb(129,200,246),rgb(129,200,246));");
+	//BLACK
+	main_container.attr("data-"+((scene8Offset-190) - window.innerWidth)/layerMinus3Speed,"background:linear-gradient(rgb(0,0,0),rgb(0,0,0));");
+	main_container.attr("data-"+totalScroll,"background:linear-gradient(rgb(0,0,0),rgb(0,0,0));");
 }
 //============================DOCUMENT READY AND WINDOW RESIZE========================//
 
@@ -336,6 +362,8 @@ window.onload = function(){
 	renderScene5();
 	renderScene6();
 	renderScene7();
+	renderScene8();
+
 	// position all the elements of the layer
 	position_elements();
 	customizeGround();
