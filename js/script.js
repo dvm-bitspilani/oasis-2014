@@ -268,7 +268,8 @@ function renderScene7()
 	$("#tree2").css("left",(scene7Offset+1600)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#hoarding").css("left",(scene7Offset+1800)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#stoneBoard").css("left",(scene7Offset+2400)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#cave").css("left",(scene7Offset+2600)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#caveLeft").css("left",(scene7Offset+2600)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#caveRight").css("left",(scene7Offset+2885)*layerMinus1Speed/layerMinus3Speed+"px");
 	
 	//layer1	
 	$("#beachGroundUpper").css("left",(scene7Offset)*layerMinus1Speed/layerMinus3Speed+"px");	

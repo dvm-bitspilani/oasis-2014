@@ -42,7 +42,7 @@ var woodenDockOffset = scene5Offset + 3300 + (1000 - window.innerWidth/2)*layerM
 var shipBoardingPoint = scene5Offset + 4100 + (270 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
 var hitIceBerg = scene5Offset + 5200 + (-270 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
 var underwater = scene6Offset + 2800 + ( - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
-var enterCave = scene7Offset+2890 + ( - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
+var enterCave = scene7Offset+2900 + ( - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
 
 var isBoardingShip = false;
 var onShip = false;
