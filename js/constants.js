@@ -31,7 +31,7 @@ var layerMinus1Speed = (layerMinus1LengthE)/totalScroll;
 var touchPageX;
 var scrollPageX = $(window).scrollTop();
 var journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
-var scrollSpeed = 20;
+var scrollSpeed = 60;
 
 var browserName;
 var browserVersion;

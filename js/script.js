@@ -41,7 +41,7 @@ function setVitals() {
 	$("#ship").attr("data-"+(shipBoardingPoint/layerMinus3Speed),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
 	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed-1),"position:fixed;left:"+(window.innerWidth/2 - 270)+"px");
 	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed),"transform: rotate(0deg) translate(0px, 0px);position:absolute;left:"+(scene5Offset+5200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
-	
+	$("#ship").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"transform: rotate(-8deg) translate(0px, 60px);position:absolute;left:"+(scene5Offset+5200 - 408)*layerMinus1Speed/layerMinus3Speed+"px");
 }
 
 //==============================POSITIONING ELEMENTS FROM BOTTOM =============================//
@@ -55,6 +55,11 @@ function position_elements()
 	$("#videoNet").css("bottom","200px");
 	$("#videoPlay").css("bottom","150px");
 
+	//DESERT ELEMENTS
+	$("#petrolPumpPoster").css("bottom","206px");
+	//CITY ELEMENTS
+	$("#parachute").css("bottom","300px");
+	$("#friendsPoster").css("bottom","199px");
 	
 	// PLACING UDERWATER ELEMENTS
 	$(".underwaterImg").css("bottom",-(window.innerHeight + 500));
@@ -69,9 +74,10 @@ function position_elements()
 	$("#swing2").css("bottom",110+22);
 	$("#swing1").css("animation","rotate360 10s linear 0s infinite normal");
 	$("#swing2").css("animation","rotate360 10s linear 0s infinite reverse");
-	$("#windFan1,#windFan2,#windFan3,#windFan4").css("animation","rotate360 20s linear 0s infinite normal");
+	$("#windFan2,#windFan4").css("animation","rotate360 20s linear 0s infinite normal");
 	$("#submarine").css("animation","submarineMove 40s linear 0s infinite normal");
-	
+	$("#parachute").css("animation","socialMedia 10s linear 0s infinite normal");
+
 	//CONCERT
 	$("#concertFocusLight1,#concertFocusLight2,#concertFocusLight3,#concertFocusLight4,#concertFocusLight5").css("transform-origin","50% 0%");
 	$("#concertFocusLight1").css("animation","concertFocusLight1Animation 8s linear 0s infinite normal");
@@ -92,15 +98,17 @@ function renderScene1()
 	
 	//layer-2
 	$("#frontPyramids").css("left",scene1Offset+"px");
+	$("#petrolPump").css("left",(scene1Offset+1200)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#petrolPumpPoster").css("left",(scene1Offset+1604)*layerMinus2Speed/layerMinus3Speed+"px");
 	
 	//layer-1
 	$("#singlePyramid").css("left",scene1Offset+600*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#thisWay").css("left",scene1Offset+700*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#thisWay").css("left",scene1Offset+350*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#cactusBig1").css("left",scene1Offset+150*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#cactusBig2").css("left",scene1Offset+1300*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#cactusSmall3").css("left",scene1Offset+900*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#cactusSmall4").css("left",scene1Offset+300*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#desertBoard").css("left",scene1Offset+1000*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#mysteryMachine").css("left",(scene1Offset+750)*layerMinus1Speed/layerMinus3Speed+"px");
 }
 
 function renderScene2() {
@@ -111,11 +119,9 @@ function renderScene2() {
 	$("#bigWind").css("left",(scene2Offset+1060)*layerMinus2Speed/layerMinus3Speed+"px");
 	
 	//layer-1
-	$("#wind1").css("left",(scene2Offset)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#windFan1").css("left",(scene2Offset*layerMinus1Speed/layerMinus3Speed - 70)+"px");
-	$("#wind2").css("left",(scene2Offset+260)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#windFan2").css("left",((scene2Offset+260)*layerMinus1Speed/layerMinus3Speed - 70)+"px");
-	$("#farmHouse").css("left",(scene2Offset+350)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#wind2").css("left",(scene2Offset+430)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#windFan2").css("left",((scene2Offset+430)*layerMinus1Speed/layerMinus3Speed - 70)+"px");
+	$("#farmHouse").css("left",(scene2Offset+450)*layerMinus1Speed/layerMinus3Speed+"px");	
 }
 
 function renderScene3() {
@@ -125,19 +131,22 @@ function renderScene3() {
 	$("#hillTree1").css("left",(scene3Offset+0)+"px");	
 	$("#treeLayer-31").css("left",(scene3Offset+800)+"px");	
 	$("#treeLayer-32").css("left",(scene3Offset+1200)+"px");
-	$("#forestBillboard").css("left",(scene3Offset+2900)+"px");	
+	$("#billboardTrees").css("left",(scene3Offset+3000)+"px");
+	
 	//layer-2
 	$("#forestHut").css("left",(scene3Offset+2300)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#forestBillboard").css("left",(scene3Offset+3000)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#notificationSpeakers").css("left",(scene3Offset+2900)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#hillTree2").css("left",(scene3Offset+2100)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#plateau").css("left",(scene3Offset+800)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#treeLayer-21").css("left",(scene3Offset+900)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#treeLayer-22").css("left",(scene3Offset+1500)*layerMinus2Speed/layerMinus3Speed+"px");
+	
 	//layer-1
 	$("#treeLayer-11").css("left",(scene3Offset+500)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#treeLayer-12").css("left",(scene3Offset+1300)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#noTrespassing").css("left",(scene3Offset+700)*layerMinus1Speed/layerMinus3Speed+"px");	
-	$("#wind3").css("left",(scene3Offset-250)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#windFan3").css("left",((scene3Offset-250)*layerMinus1Speed/layerMinus3Speed - 70)+"px");
+	$("#cart").css("left",(scene3Offset-250)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#wind4").css("left",(scene3Offset+200)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#windFan4").css("left",((scene3Offset+200)*layerMinus1Speed/layerMinus3Speed - 70)+"px");	
 }
@@ -149,11 +158,14 @@ function renderScene4() {
 	//layer-2
 	$("#build1").css("left",(scene4Offset+1150)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#build2").css("left",(scene4Offset+3200)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#parachute").css("left",(scene4Offset+500)*layerMinus2Speed/layerMinus3Speed+"px");
 
 	//layer-1
 	$("#phoneBooth1").css("left",(scene4Offset+1020)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#phoneBooth2").css("left",(scene4Offset+3700)*layerMinus1Speed/layerMinus3Speed+"px");	
-	//$("#swingStand1").css("left",(scene5Offset+500+90)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#posterBoard").css("left",(scene4Offset+3030)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#friendsPoster").css("left",(scene4Offset+3034)*layerMinus1Speed/layerMinus3Speed+"px");	
+	
 	
 	//layer1
 	$("#bridgeRope").css("left",(scene4Offset)*layerMinus1Speed/layerMinus3Speed+"px");	
@@ -179,6 +191,7 @@ function renderScene5() {
 	$("#horseSwing").css("left",(scene5Offset+950)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#tent2").css("left",(scene5Offset+600)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#tent4").css("left",(scene5Offset+1580)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#dramaBoard").css("left",(scene5Offset+1480)*layerMinus2Speed/layerMinus3Speed+"px");	
 	
 	$("#videoNet").css("left",(scene5Offset+2270)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#videoPlay").css("left",(scene5Offset+2280)*layerMinus2Speed/layerMinus3Speed+"px");	
@@ -199,7 +212,6 @@ function renderScene5() {
 	
 	//layer1
 	$("#carnivalRailing").css("left",(scene5Offset+50)*layerMinus1Speed/layerMinus3Speed+"px");	
-	$("#cart").css("left",(scene5Offset+3000)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#woodenDock").css("left",(scene5Offset+3300)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#ship").css("left",(scene5Offset+4100)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#iceBerg").css("left",(scene5Offset+5200)*layerMinus1Speed/layerMinus3Speed+"px");	
@@ -270,7 +282,7 @@ function renderScene7()
 	$("#stoneBoard").css("left",(scene7Offset+2400)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#caveLeft").css("left",(scene7Offset+2600)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#caveRight").css("left",(scene7Offset+2885)*layerMinus1Speed/layerMinus3Speed+"px");
-	
+
 	//layer1	
 	$("#beachGroundUpper").css("left",(scene7Offset)*layerMinus1Speed/layerMinus3Speed+"px");	
 }
@@ -303,7 +315,7 @@ function customizeGround()
 	// PLACING GROUNDS
 	$(".desertGround").css({ background :"url('./images/desertground.jpg')", width : 1000, margin : 0});
 	$(".transition").css({ background :"url('./images/desertforestTransition.png')", width : 1355, left : 1000});
-	$(".forestGround").css({ background :"url('./images/forestGround.png')", width : 6665, left : 2355});
+	$(".forestGround").css({ background :"url('./images/forestGround.png')", width : 6660, left : 2355});
 	$(".bridgeWaterWrapper").css({ width : 1295, overflow : 'hidden', left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)});
 	$(".bridgeWater1").css({ background :"url('./images/bridgeWater.png')", width : 1500, animation : "waveMove1 33s linear 0s infinite normal"});
 	$(".bridgeWater2").css({ background :"url('./images/bridgeWater.png')", width : 1500, left : -1500 , animation : "waveMove1 33s linear 0s infinite normal"});
