@@ -1,5 +1,6 @@
 /*
 header z-index : 100;
+progressBar : 100;
 lightbox z-index : 200;
 beachGroundUpper : -100;
 #videoNet : -50;
@@ -24,6 +25,19 @@ body
 	position:absolute;
 	background-image:url('./../images/main_character.png');
 }
+
+/* PROGRESS BAR -------------------------------------------------------------------------------------------------------*/
+
+.progress {
+  //width: 100%;
+  height: 2px;
+  background-color: #fff;
+  position: fixed;
+  top: 40px;
+  z-index: 100;
+  box-shadow: 0px -2px 8px 1px black;
+}
+
 /* --------------------------------------------GROUND -----------------------------------------------------------------*/
 
 #groundWrapper {
@@ -225,7 +239,7 @@ body
 	width: 100%;
 	position: fixed;
 	top: 0px;
-	background-color: rgba(0,0,0,0.1);
+	background-color: rgba(0,0,0,1);
 	z-index: 100;
 }
 
@@ -233,9 +247,9 @@ body
 	position: relative;
 	float: left;
 	width: calc(100% / 7);
-	padding: 10px 0px;
 	text-align: center;
 	color: white;
+  height: 40px;
 	cursor: pointer;
 }
 

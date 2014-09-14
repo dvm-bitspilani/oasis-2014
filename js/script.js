@@ -29,7 +29,11 @@ function setVitals() {
 	$("#layer1").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
 	$("#layer1").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px");
 	$("#layer1").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
-	
+	$("#progress").attr("data-0","width : 0%");
+	$("#progress").attr("data"+totalScroll,"width : 100%");
+	$("#progressHeader").attr("data-0","left : 0%");
+	$("#progressHeader").attr("data"+totalScroll,"left : 100%");
+
 	$("#darkCover").attr("data-0","opacity:0;");
 	$("#darkCover").attr("data-"+enterCave/layerMinus3Speed,"opacity:0;");
 	$("#darkCover").attr("data-"+(enterCave+80)/layerMinus3Speed,"opacity:1;");
@@ -278,7 +282,8 @@ function renderScene7()
 	$("#beachElements").css("left",(scene7Offset+1100)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#crabDuo").css("left",(scene7Offset+1300)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#tree2").css("left",(scene7Offset+1600)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#hoarding").css("left",(scene7Offset+1800)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#hoarding").css("left",(scene7Offset+1950)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#amulAd").css("left",(scene7Offset+1980)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#stoneBoard").css("left",(scene7Offset+2400)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#caveLeft").css("left",(scene7Offset+2600)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#caveRight").css("left",(scene7Offset+2885)*layerMinus1Speed/layerMinus3Speed+"px");
@@ -311,6 +316,7 @@ function customizeGround()
 	$("#ship").css("bottom","60px");
 	$("#iceBerg").css("bottom","0px");
 	$("#cave").css("bottom","70px");
+	$("#amulAd").css("bottom","207px");
 
 	// PLACING GROUNDS
 	$(".desertGround").css({ background :"url('./images/desertground.jpg')", width : 1000, margin : 0});
