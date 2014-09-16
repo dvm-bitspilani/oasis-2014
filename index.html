@@ -25,32 +25,86 @@
 	<meta property="og:image" content="http://www.bits-oasis.org/images/theweb.jpg">
 	<meta property="og:type" content="website">
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="./js/skrollr.js"></script>
 	<script type="text/javascript" src="./js/script.js"></script>
-	<script type="text/javascript" src="./js/constants.js"></script>	
+	<script type="text/javascript" src="./js/constants.js"></script>
+	<script type="text/javascript" src="./js/jquery.kinetic.min.js"></script>	
 </head>
 	
 <body>
-	<div id="blackout" class="blackout">
-    	<div id="closeBox" class="closeBox" onclick="closeLightbox()">CLOSE</div>
-    	<div id="blackoutContent" class="blackoutContent">
-    		<div id="blackoutContentWrapper" class="blackoutContentWrapper"></div>
-    	</div>
+
+	<div class="litebox">
+
+		<div class="black-back"></div>
+		
+		<div class="litebox-mainContent-wrapper">
+			<!--Top(music)-Right(art)-Bottom(misc)-Left(oratory)-Right2(dance)-Right3(quizzing)-Left2(drama)-Left3(online)-->
+			<div class="litebox-mainContent">EVENTS</div>
+			<div class="litebox-contentBox-top liteboxTransition liteboxTopOrigin" id="music">MUSIC</div>
+			<div class="litebox-contentBox-right1 liteboxTransition liteboxRightOrigin" id="art">ART</div>
+			<div class="litebox-contentBox-right2 liteboxTransition liteboxRightOrigin" id="dance">DANCE</div>
+			<div class="litebox-contentBox-right3 liteboxTransition liteboxRightOrigin" id="quizzing">QUIZZING</div>
+			<div class="litebox-contentBox-left1 liteboxTransition liteboxLeftOrigin" id="oratory">ORATORY</div>
+			<div class="litebox-contentBox-left2 liteboxTransition liteboxLeftOrigin" id="drama">DRAMA</div>
+			<div class="litebox-contentBox-left3 liteboxTransition liteboxLeftOrigin" id="online">ONLINE</div>
+			<div class="litebox-contentBox-bottom liteboxTransition liteboxBottomOrigin" id="misc">MISC</div>
+		</div>
+
+		<div class="event-list">
+
+		</div>
+
+
+		<div class="event-litebox kinetic-active">
+			<div id="oasisimg"><img src="images/logo-oasis14.png"/></div>
+			<h1>METAMORPHOSIS</h1>
+			<div id="break"></div>
+			<h2>Event Details</h2>
+			<span>Metamorphosis is a short film-making competition, the ultimate platform that each artist deserves. Amaze your viewers with your perspective, aesthetic sense, emotion or simple ingenuity of idea. So ignite the director, the cinematographer, the sound specialist, the editor and the art connoisseur inside you, waiting to leap out.</span>
+			<div id="img1"></div>
+			<h2>Rules & Regulations</h2>
+			<span>
+				<ul>
+					<li>The maximum duration for an entry is 5 minutes.</li>
+					<li>The maximum number of members in a team is 5. (Excluding the cast)</li>
+					<li>Each entry should bear a) an appropriate title b) the team name.</li>
+					<li>A disclaimer bearing the following text : "This is an entry for Metamorphosis Oasis 2013.", the team name and title of the film must run for five seconds before the start of the video.</li>
+					<li>The video should contain the name of all the team members in the final credits along with contact number and email id of the team leader. The credits section and the disclaimer will not be counted in the 5 minutes allotted for the film.</li>
+					<li>Entries must reflect your direction and editing skills, and should comprise of cinematography and editing only.</li>
+				</ul>
+			<h2>Contact Us</h2>
+			<span>
+				Mail your entries to metamorphosis@bits-oasis.org
+			</span>
+			<span>
+			For more details, contact:
+			<br>RISHABH SHARMA
+			<br>rishabh.bits038@gmail.com
+			<br>+91-7737887326
+			</span>
+			</div>
+	</div>
+		
+
+	<div class='header'>
+		<div id='events' class='headerContent'>EVENTS</div>
+		<div id='profshows' class='headerContent'>PROFSHOWS</div>
+		<div id='about' class='headerContent'>ABOUT</div>
+		<div id='oasislogo' class='headerContent'><img src='./images/logo-oasis14.png'></div>
+		<div id='sponsors' class='headerContent'>SPONSORS</div>
+		<div id='archives' class='headerContent'>ARCHIVES</div>
+		<div id='contacts' class='headerContent'>CONTACTS</div>
+		<div id="progressBarWrapper" class="progressBarWrapper">
+			<div id="progress" class="progress"></div>
+		</div>
 	</div>
 
-	<div id='header'>
-		<div id='socialMedia' class='headerContent'>Social Media</div>
-		<div id='profshows' class='headerContent'>Profshows</div>
-		<div id='contacts' class='headerContent'>Contacts</div>
-		<div id='about' class='headerContent'>about</div>
-		<div id='events' class='headerContent'>events</div>
-		<div id='sponsors' class='headerContent'>sponsors</div>
-		<div id='archives' class='headerContent'>archives</div>
-	</div>
-	<div id="progressBarWrapper" class="progressBarWrapper">
-		<div id="progress" class="progress"></div>
-	</div>
+
+
 
 	<div id="main_container">
 		<div id="darkCover"></div>
@@ -101,9 +155,9 @@
 			<img class="underwaterImg underwaterGrass" src="./images/scene6/grass2.png" id="grass8">
 			<img class="underwaterImg underwaterGrass" src="./images/scene6/grass3.png" id="grass9">
 		
-			<img src="./images/scene7/lightHouse.png" id="lightHouse">
-			<img src="./images/scene7/tree4.png" id="tree4">
-			<img src="./images/scene7/tree5.png" id="tree5">
+			<img src="./images/scene7/lightHouse.png" id="lightHouse" style="z-index:2">
+			<img src="./images/scene7/tree4.png" id="tree4" style="z-index:2">
+			<img src="./images/scene7/tree5.png" id="tree5" style="z-index:2">
 
 			<img src="./images/scene8/caveBackground.png" id="caveBackground1">
 			<img src="./images/scene8/caveBackground.png" id="caveBackground2">
@@ -160,12 +214,12 @@
 			<img class="underwaterImg" src="./images/scene6/plant5.png" id="plant5">
 			<img class="underwaterImg" src="./images/scene6/stone.png" id="stone">
 			
-			<img src="./images/scene7/snail1.png" id="snail1">
-			<img src="./images/scene7/shells2.png" id="shells2">
-			<img src="./images/scene7/sandHouse.png" id="sandHouse">
-			<img src="./images/scene7/tree1.png" id="tree1">
-			<img src="./images/scene7/beachGirl.png" id="beachGirl">
-			<img src="./images/scene7/tree3.png" id="tree3">
+			<img src="./images/scene7/snail1.png" id="snail1" style="z-index:2">
+			<img src="./images/scene7/shells2.png" id="shells2" style="z-index:2">
+			<img src="./images/scene7/sandHouse.png" id="sandHouse" style="z-index:2">
+			<img src="./images/scene7/tree1.png" id="tree1" style="z-index:2">
+			<img src="./images/scene7/beachGirl.png" id="beachGirl" style="z-index:2">
+			<img src="./images/scene7/tree3.png" id="tree3" style="z-index:2">
 		</div>
 		<div id="layer-1" class="layer">
 			<img src="./images/scene1/singlePyramid.png" id="singlePyramid">
@@ -203,7 +257,7 @@
 			<img class="underwaterImg" src="./images/scene6/krustycrab.png" id="krustyCrab">
 			<img class="underwaterImg" src="./images/scene6/trirock1.png" id="triRock1">
 			
-			<img src="./images/scene7/beachGroundUpper.png" id="beachGroundUpper" style="z-index:-100;">
+			<img src="./images/scene7/beachGroundUpper.png" id="beachGroundUpper">
 			<img src="./images/scene7/starFish.png" id="starFish">
 			<img src="./images/scene7/shells1.png" id="shells1">
 			<img src="./images/scene7/crab.png" id="crab">

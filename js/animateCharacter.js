@@ -22,30 +22,30 @@ function scrollevent() {
 	else
 		curr_scroll = $(window).scrollTop();
 	var scrolldiff = deviceName != 'computer' ? -(curr_scroll - prev_scroll) : -(prev_scroll - curr_scroll);
-	if(scrolldiff == 0)
+	if(scrolldiff === 0)
 	{	
-		if(jumpDown == false)	clearInterval(runCaller);
-		else if(jumpDown == true) swimDownCaller = setTimeout(function(){swimDown();},scrollStopCheckDuration);
+		if(jumpDown === false)	clearInterval(runCaller);
+		else if(jumpDown === true) swimDownCaller = setTimeout(function(){swimDown();},scrollStopCheckDuration);
 		return;
 	}
 
 	//Animate Character
 	if(scrolldiff > 0)
-	{	$("#main_character").css("background-position-y","0px");
+	{	setBackgroundPositionY("0px","#main_character");
 	}
 	if(scrolldiff < 0)
-	{	$("#main_character").css("background-position-y","-200px");
+	{	setBackgroundPositionY("-200px","#main_character");
 	}
 
-	if(isRunning == false && jumpDown == false)
+	if(isRunning === false && jumpDown === false && onShip === false)
 	{	animate_main_character();
-		runCaller = setInterval(function(){animate_main_character()},runningTime);
+		runCaller = setInterval(function(){animate_main_character();},runningTime);
 	}
 	
-	if(jumpDown == true)
+	if(jumpDown === true)
 	{	//console.log("Interval cleared");
 		clearInterval(swimDownCaller);
-		if(swimming == false)
+		if(swimming === false)
 			swimUp();
 	}
 	prev_scroll = curr_scroll;
@@ -54,18 +54,18 @@ function scrollevent() {
 
 //=============================POSITIONING CHARACTER================================//
 function position_character()
-{	$("#main_character").css("bottom",groundOffset - 25);//Height of player is 175
+{	$("#main_character").css("bottom",groundOffset - 8);//Height of player is 175
 	$("#main_character").css("left",0.5*window.innerWidth -100);//Width of player is 100
 }
 
 //=============================ANIMATING CHARACTER==================================//
 function animate_main_character()
-{	if(jumpDown == false)//Run main character
+{	if(jumpDown === false)//Run main character
 	{	isRunning = true;
-		setTimeout(function(){$("#main_character").css("background-position-x","-200px");},0);
-		setTimeout(function(){$("#main_character").css("background-position-x","-400px");},runningTime/1.6);
-		setTimeout(function(){$("#main_character").css("background-position-x","0px");},runningTime);
-		setTimeout(function(){isRunning = false},runningTime);
+		setTimeout(function(){setBackgroundPositionX("-200px","#main_character");},0);
+		setTimeout(function(){setBackgroundPositionX("-400px","#main_character");},runningTime/1.6);
+		setTimeout(function(){setBackgroundPositionX("0px","#main_character");},runningTime);
+		setTimeout(function(){isRunning = false;},runningTime);
 	}	
 }
 
@@ -74,24 +74,38 @@ function swimUp()
 	$("#main_character").stop();
 	$("#main_character").animate({bottom:"300px"},swimUpTime);
 	swimFrameChange();
-	swimMotionIntervalSet = setInterval(function(){swimFrameChange()},swimFramChangeTime);
+	swimMotionIntervalSet = setInterval(function(){swimFrameChange();},swimFramChangeTime);
 	swimming = true;
 }
 
 function swimFrameChange()
-{	setTimeout(function(){$("#main_character").css("background-position-x","-600px");},swimFramChangeTime/4);
-	setTimeout(function(){$("#main_character").css("background-position-x","-800px");},2*swimFramChangeTime/4);
-	setTimeout(function(){$("#main_character").css("background-position-x","-1000px");},3*swimFramChangeTime/4);
+{	setTimeout(function(){setBackgroundPositionX("-600px","#main_character");},swimFramChangeTime/4);
+	setTimeout(function(){setBackgroundPositionX("-800px","#main_character");},2*swimFramChangeTime/4);
+	setTimeout(function(){setBackgroundPositionX("-1000px","#main_character");},3*swimFramChangeTime/4);
 	
 }
 
 function swimDown()
 {	$("#main_character").stop();
-	$("#main_character").animate({bottom:groundOffset - 25},swimDownTime,function(){resetCharacter();});
+	$("#main_character").animate({bottom:groundOffset - 8},swimDownTime,function(){resetCharacter();});
 	clearInterval(swimMotionIntervalSet);
 	swimming = false;
 }
 
 function resetCharacter()
-{	$("#main_character").css("background-position-x","0px");
+{	setBackgroundPositionX("0px","#main_character");
+}
+
+function setBackgroundPositionX(pos,selector)
+{
+	var backPos = $(selector).css('backgroundPosition').split(" ");
+	var backPosY = backPos[1];
+	$(selector).css("background-position",pos+" "+backPosY);
+}
+
+function setBackgroundPositionY(pos,selector)
+{
+	var backPos = $(selector).css('backgroundPosition').split(" ");
+	var backPosX = backPos[0];
+	$(selector).css("background-position",backPosX+" "+pos);
 }
