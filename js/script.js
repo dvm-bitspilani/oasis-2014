@@ -182,7 +182,9 @@ function renderScene4() {
 	$("#streetLamp5").css("left",(scene4Offset+2490)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#streetLamp6").css("left",(scene4Offset+2840)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#streetLamp7").css("left",(scene4Offset+3190)*layerMinus1Speed/layerMinus3Speed+"px");	
-	$("#streetLamp8").css("left",(scene4Offset+3540)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#streetLamp8").css("left",(scene4Offset+3540)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#jukebox").css("left",(scene4Offset+2800)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#musicNotes").css("left",(scene4Offset+2850)*layerMinus1Speed/layerMinus3Speed+"px");	
 }
 
 function renderScene5() {
@@ -317,15 +319,15 @@ function customizeGround()
 	$("#iceBerg").css("bottom","0px");
 	$("#cave").css("bottom","70px");
 	$("#amulAd").css("bottom","207px");
-
+	$("#musicNotes").css("bottom","330px");
 	// PLACING GROUNDS
 	$(".desertGround").css({ background :"url('./images/desertground.jpg')", width : 1000, margin : 0});
 	$(".transition").css({ background :"url('./images/desertforestTransition.png')", width : 1355, left : 1000});
-	$(".forestGround").css({ background :"url('./images/forestGround.png')", width : 6660, left : 2355});
+	$(".forestGround").css({ background :"url('./images/forestGround.png')", width : 6675, left : 2353});
 	$(".bridgeWaterWrapper").css({ width : 1295, overflow : 'hidden', left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)});
 	$(".bridgeWater1").css({ background :"url('./images/bridgeWater.png')", width : 1500, animation : "waveMove1 33s linear 0s infinite normal"});
 	$(".bridgeWater2").css({ background :"url('./images/bridgeWater.png')", width : 1500, left : -1500 , animation : "waveMove1 33s linear 0s infinite normal"});
-	$(".cityGround").css({ background :"url('./images/cityground.png')", width : 8510, left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)+1295});
+	$(".cityGround").css({ background :"url('./images/cityground.png')", width : 8518, left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)+1295});
 	$(".shipWaterWrapper").css({ width : 7400, overflow : 'hidden', left : scene6Offset*(layerMinus1Speed/layerMinus3Speed)-1200});
 	$(".shipWater1").css({ background :"url('./images/bridgeWater.png')", width : 5000, animation : "waveMove2 120s linear 0s infinite normal"});
 	$(".shipWater2").css({ background :"url('./images/bridgeWater.png')", width : 5000, left : -5000 , animation : "waveMove2 120s linear 0s infinite normal"});
