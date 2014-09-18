@@ -13,9 +13,6 @@ var swimming = false;
 var swimFramChangeTime = 1000;
 var swimMotionIntervalSet;
 
-var isJumping = false;
-var halfJumpTime = 300;
-var jumpHeightFromBottom = 200;
 //======================SCROLL EVENT CALLING ANIMATING FUNCTIONS=====================//
 $(window).scroll(scrollevent);
 
@@ -111,18 +108,4 @@ function setBackgroundPositionY(pos,selector)
 	var backPos = $(selector).css('backgroundPosition').split(" ");
 	var backPosX = backPos[0];
 	$(selector).css("background-position",backPosX+" "+pos);
-}
-
-/*==========================================JUMP============================================*/
-function jump()
-{	if(onShip === false && jumpDown === false && shipHits === false && isJumping === false)
-	{	isJumping = true;
-		setBackgroundPositionX("-1200px",$("#main_character"));
-		$("#main_character").animate({bottom:jumpHeightFromBottom+"px"},halfJumpTime);
-		setTimeout(function(){setBackgroundPositionX("-1400px",$("#main_character"));},halfJumpTime);
-		$("#main_character").animate({bottom:(groundOffset - 8)+"px"},halfJumpTime);
-		setTimeout(function(){resetCharacter();},halfJumpTime*2);
-		setTimeout(function(){isJumping = false;},halfJumpTime*2.5);
-	}
-	return;
 }

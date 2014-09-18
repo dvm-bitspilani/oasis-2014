@@ -30,6 +30,8 @@ SC.stream("/tracks/293", function(sound){
   sound.play();
 });
 
+setInterval(function(){console.log(currentOpenLitebox)}, 100);
+
 
 /*Basic Initialization of click events*/
 
