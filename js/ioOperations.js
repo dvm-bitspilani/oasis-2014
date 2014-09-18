@@ -14,6 +14,7 @@ windowX=$(document).width();
 windowY=$(document).height();
 var currentOpenLitebox='';
 var eventlistJSONstore;
+var eventpageJSONstore;
 /*Change these colors to set all global color categories*/
 var colors={musicColor:'#1C0459',artColor:'#BB0000',miscColor:'#252525',oratoryColor:'#248716',danceColor:'#0E71DE',quizzingColor:'#D99A17',dramaColor:'#32B0DA',onlineColor:'#661366'};
 var dullColors={musicColor:'#0E022D',artColor:'#510000',miscColor:'#151515',oratoryColor:'#103F0A',danceColor:'#06366A',quizzingColor:'#986B10',dramaColor:'#145C74',onlineColor:'#3C0B3C'};
@@ -22,6 +23,12 @@ var dullColors={musicColor:'#0E022D',artColor:'#510000',miscColor:'#151515',orat
 
 /*----------------------------------Main Variables End-------------------------------*/
 
+/*Initialize updates*/
+initializeUpdate();
+
+SC.stream("/tracks/293", function(sound){
+  sound.play();
+});
 
 
 /*Basic Initialization of click events*/
@@ -37,20 +44,19 @@ $('.black-back').click(function(event) {
     {
         case 'eventbox':hideEventbox();
         break;
-        case 'aboutbox':hideAboutbox();
-        break;
         case 'eventlist':hideListbox();
         break;
         case 'eventpage':hideeventpage();
         break;
-        case 'aboutbox' :hideAboutbox();
-        break;
-        case 'sponsorbox':hideSponsorbox();
-        break;
-        case 'contactbox':hideContactbox();
-        break;
     }
 });
+
+$('.black-back').hover(function() {
+    $('.black-back img').fadeOut(200);
+}, function() {
+    $('.black-back img').fadeIn(200);
+});
+
 
 
 $('#events').click(function(event) {
@@ -73,10 +79,8 @@ $('#about').click(function(event) {
     {
         top: -50
     },400);
-    $('.black-back').fadeIn(400,function()
-    {
-
-    });
+    $('.black-back').fadeIn(400);
+    showeventpage(20);
 });
 
 $('#sponsors').click(function(event) {
@@ -84,10 +88,8 @@ $('#sponsors').click(function(event) {
     {
         top: -50
     },400);
-    $('.black-back').fadeIn(400,function()
-    {
-        
-    });
+    $('.black-back').fadeIn(400);
+    showeventpage(20);
 });
 
 $('#archives').click(function(event) {
@@ -100,10 +102,8 @@ $('#contacts').click(function(event) {
     {
         top: -50
     },400);
-    $('.black-back').fadeIn(400,function()
-    {
-        
-    });
+    $('.black-back').fadeIn(400);
+    showeventpage(20);
 });
 
 /*End*/
@@ -244,8 +244,6 @@ function initializeEventbox(eventboxResize)
             showListbox('category',$(this).attr('id'));
         });
     }
-
-    /*Put event click event here*/
     
 }
 
@@ -342,7 +340,7 @@ function loadeventlistJSON(eventlistResize,type,string)
             data: {category:string},
         })
         .success(function(e) {
-            eventlistJSONstore=e;
+            eventlistJSONstore=e.Events;
             initializeEventlist(eventlistResize);
         });
     
@@ -350,13 +348,15 @@ function loadeventlistJSON(eventlistResize,type,string)
     else if(type=='search')
     {
        $.ajax({
-            url: 'http://www.bits-oasis.org/2014test/gce/',
+            url: 'http://www.bits-oasis.org/2014test/se/',
             type: 'GET',
             dataType: 'json',
-            data: {category:string},
+            data: {search:string},
         })
         .success(function(e) {
-            eventlistJSONstore=e;
+            $.merge(e.Events, e.CategoryEvents);
+            eventlistJSONstore=e.Events;
+            initializeEventlist(eventlistResize);
         });
 
     }
@@ -367,27 +367,8 @@ function loadeventlistJSON(eventlistResize,type,string)
 
 }
 
-
-function initializeEventlist(eventlistResize)
+function preintializeEventlist(eventlistResize)
 {
-    currentpage=0;
-    eventNumX=windowX/(evX+70);
-    eventNumY=(eventlistHeight-56-50)/(evY+70);
-    eventNumX=Math.floor(eventNumX);
-    eventNumY=Math.floor(eventNumY);
-
-    eventNumber=eventlistJSONstore.Events.length;
-
-    if((eventNumX===0)||eventNumY===0)
-    {
-
-    }
-    else
-    {
-        eventPages=eventNumber/(eventNumX*eventNumY);
-        eventPages=Math.ceil(eventPages);
-
-
         $('.event-list')
         .html("<div class='searchbox'>"+
                     "<div class='circle-left'>"+
@@ -407,6 +388,63 @@ function initializeEventlist(eventlistResize)
                 "<div class='page-box'>"+
                 "</div>"+
                 "<div class='event-list-big-wrapper'></div>");
+        $('.event-list-big-wrapper').html("");
+        $('.page-box').html("");
+        $('#searchbox-input').on('keyup', function(e) {
+            if (e.which !== 32) {
+                var value = $(this).val();
+                var noWhitespaceValue = value.replace(/\s+/g, '');
+                var noWhitespaceCount = noWhitespaceValue.length;
+                if (noWhitespaceCount>=3) {
+                    loadeventlistJSON(0,'search',noWhitespaceValue);
+                }
+            }
+        });
+
+}
+
+function reallyinitializeEventlist()
+{
+    currentpage=0;
+    $('.event-list-big-wrapper').html("");
+    $('.event-list-big-wrapper').css('left','0px');
+    $('.page-box').html("");
+    $('.circle-right').off();
+    $('circle-left').off();
+    $('.event-text').off();
+    $('.circle-event').off();
+}
+
+
+function initializeEventlist(eventlistResize)
+{
+    reallyinitializeEventlist();
+    eventNumX=windowX/(evX+70);
+    eventNumY=(eventlistHeight-56-50)/(evY+70);
+    eventNumX=Math.floor(eventNumX);
+    eventNumY=Math.floor(eventNumY);
+
+    eventNumber=eventlistJSONstore.length;
+    if((eventNumX===0)||eventNumY===0)
+    {
+
+    }
+    else if(eventNumber===0)
+    {
+        $('.event-list-big-wrapper').append("<div class='no-result-text'>Oops, Sorry your search string didn't match any Event or Category</div>");
+        $('.no-result-text').css({
+            'position':'absolute',
+            'width':windowX,
+            'font-size':'20px',
+            'text-align':'center',
+            'top':'100px'
+        });
+        
+    }
+    else if(eventNumber>0) 
+    {
+        eventPages=eventNumber/(eventNumX*eventNumY);
+        eventPages=Math.ceil(eventPages);
 
         $('.event-list-big-wrapper').css({
             'position':'absolute',
@@ -431,18 +469,20 @@ function initializeEventlist(eventlistResize)
 
             for(var i=0; i<eventNumY*eventNumX; i++)
             {
-                if(n<eventlistJSONstore.Events.length)
+                if(n<eventlistJSONstore.length)
                 {
                     $('.event-list-wrapper'+j)
                     .append("<div class='event-box-wrapper' style='display:none'>"+
                                 "<div class='event-box-cube'>"+
-                                    "<div class='event-icon cube-side' style='background-color:"+returnColor(eventlistJSONstore.Events[n].eventcategory)+"'>"+
-                                        "<div>"+eventlistJSONstore.Events[n].eventname+"</div>"+
-                                        "<img src='"+eventlistJSONstore.Events[n].eventicon+"'/>"+
+                                    "<div class='event-icon cube-side' style='background-color:"+returnColor(eventlistJSONstore[n].eventcategory)+"'>"+
+                                        "<div class='list-event-name'>"+eventlistJSONstore[n].eventname+"</div>"+
+                                        "<img src='"+eventlistJSONstore[n].eventicon+"'/>"+
+                                        "<div class='list-category-name'>"+eventlistJSONstore[n].eventcategory+"</div>"+
                                     "</div>"+
 
-                                    "<div class='event-text cube-side' id='"+eventlistJSONstore.Events[n].eventid+"' style='background-color:"+returnDullColor(eventlistJSONstore.Events[n].eventcategory)+"'>"+
-                                        "<div>"+eventlistJSONstore.Events[n].eventdescription+"</div>"+
+                                    "<div class='event-text cube-side' id='"+eventlistJSONstore[n].eventid+"' style='background-color:"+returnDullColor(eventlistJSONstore[n].eventcategory)+"'>"+
+                                        "<div class='list-event-description'>"+eventlistJSONstore[n].eventdescription+"</div>"+
+                                        "<div class='list-category-name'></div>"+
                                     "</div>"+
                                 "</div>"+
                             "</div>");
@@ -452,52 +492,67 @@ function initializeEventlist(eventlistResize)
         }
     }
 
-    $('.event-box-wrapper').css({
-        'height':eventlistY,
-        'width':eventlistX
-    });
-
-    $('.event-box-cube').css({
-        'height':eventlistY,
-        'width':eventlistX            
-    });
-
-    $('.cube-side').css({
-        'height':eventlistY,
-        'width':eventlistX   
-    });
-
-    $('.event-icon').css({
-        'transform':'translateZ('+evY/2+'px)'
-    });
-
-    $('.event-text').css({
-        'transform':' rotateY(-270deg) translateX('+evY/2+'px)'
-    });
-
-    $('.event-icon img').css({
-        'width':eventlistImgSize
-    });
-
-    $('.event-text').css({
-        'font-size':eventlistTextFontsize+'px'
-    });
-
-    $('.page-box').css('left',(windowX-27*eventPages)/2+'px');
-
-    if(eventlistResize===0)
+    if(eventNumber>0)
     {
-        $('.event-box-wrapper').fadeIn(400);
-    }
-    else
-    {
-        $('.event-box-wrapper').fadeIn(0);
+        $('.event-box-wrapper').css({
+            'height':eventlistY,
+            'width':eventlistX
+        });
+
+        $('.event-box-cube').css({
+            'height':eventlistY,
+            'width':eventlistX            
+        });
+
+        $('.cube-side').css({
+            'height':eventlistY,
+            'width':eventlistX   
+        });
+
+        $('.event-icon').css({
+            'transform':'translateZ('+evY/2+'px)'
+        });
+
+        $('.event-text').css({
+            'transform':' rotateY(-270deg) translateX('+evY/2+'px)'
+        });
+
+        $('.event-icon img').css({
+            'width':eventlistImgSize
+        });
+
+        $('.event-text').css({
+            'font-size':eventlistTextFontsize+'px'
+        });
+
+        $('.page-box').css('left',(windowX-27*eventPages)/2+'px');
+
+        if(eventlistResize===0)
+        {
+            $('.event-box-wrapper').fadeIn(0); //Give this fade if code fixed
+        }
+        else
+        {
+            $('.event-box-wrapper').fadeIn(0);
+        }
+
+        $('.circle-right').click(function(event) {
+            eventlistSlider(currentpage+1);    
+        });
+
+        $('circle-left').click(function(event) {
+            eventlistSlider(currentpage-1);
+        });
+
+        $('.event-text').click(function(event) {
+            hideListbox();
+            showeventpage($(this).attr('id'));
+        });
     }
 
     $('#searchbox-input').focusin(function(){
         $(this).val('').css('text-align','left');
     });
-
 
     $('#searchbox-input').focusout(function() {
         $(this).val('Search for Events').css('text-align','center');
@@ -508,31 +563,22 @@ function initializeEventlist(eventlistResize)
     }, function() {
         $('.back-event-text').fadeOut(200);
     });
-
-    $('.circle-right').click(function(event) {
-        eventlistSlider(currentpage+1);    
-    });
-
-    $('circle-left').click(function(event) {
-        eventlistSlider(currentpage-1);
-    });
-
-    $('.event-text').click(function(event) {
-        hideListbox();
-        showeventpage($(this).attr('id'));
-    });
     $('.circle-event').click(function(event) {
         hideListbox();
         showEventbox();
     });
-
-    initializeSliderControls();
+    
+    if(eventNumber>0)
+    initializeSliderControls(0);
+    else if(eventNumber<=0)
+    initializeSliderControls(1);
 }
 
 function showListbox(type,string)
 {
     currentOpenLitebox='eventlist';
     $('.event-list').delay(700).fadeIn(400);
+    preintializeEventlist(0);
     loadeventlistJSON(0,type,string);
 }
 
@@ -540,6 +586,7 @@ function hideListbox()
 {
     currentOpenLitebox='';
     $('.event-list').fadeOut(400);
+    $('.event-list').html("");
 }
 
 function eventlistSlider(page)
@@ -558,12 +605,12 @@ function eventlistSlider(page)
 
     currentpage=page;
 
-    initializeSliderControls();
+    initializeSliderControls(0);
 }
 
-function initializeSliderControls()
+function initializeSliderControls(stopEventlistSlider)
 {
-    if(currentpage===0)
+    if(currentpage===0 || stopEventlistSlider==1)
     {
         $('.circle-left').off();
         $('.circle-left').hover(function() {
@@ -577,7 +624,7 @@ function initializeSliderControls()
         });
         sliderleftoff=1;
     }
-    if(currentpage==eventPages-1)
+    if(currentpage==eventPages-1 || stopEventlistSlider==1)
     {
         $('.circle-right').off();        
         $('.circle-right').hover(function() {
@@ -657,35 +704,39 @@ function restorerightControls()
 
 function loadEventpageJSON(eventpageid)
 {
-/*       $.ajax({
-            url: 'http://www.bits-oasis.org/2014test/gce/',
+       $.ajax({
+            url: 'http://www.bits-oasis.org/2014test/ged/',
             type: 'GET',
             dataType: 'json',
-            data: {eventid:},
+            data: {id:eventpageid},
         })
-        .success(function(ep) {
-            return ep;
+        .success(function(e) {
+            eventpageJSONstore=e;
+            initializeEventpage();
         });
-*/
-        return 1;
+
 }
 
+function initializeEventpage()
+{
+    $('.event-litebox').fadeIn(400);
+    $('.event-litebox').kinetic();
+    $('.event-litebox').html(eventpageJSONstore.content);
+}
 
-$('.event-litebox').kinetic();
 
 
 function showeventpage(eventpageid)
 {
-    var ep;
     currentOpenLitebox='eventpage';
-    ep=loadEventpageJSON(eventpageid);
-    $('.event-litebox').fadeIn(400);
+    loadEventpageJSON(eventpageid);
 }
 
 function hideeventpage()
 {
     currentOpenLitebox='';
     $('.event-litebox').fadeOut(400);
+    $('.event-litebox').html("");
 }
 
 
@@ -695,84 +746,9 @@ function hideeventpage()
 /*--------------------------------------------------------------------------Eventpage end-------------------------------------------------------*/
 
 
-/*-------------------------------------------------------------------------About Start-----------------------------------------------------------*/
-
-function showAboutbox()
-{
-
-}
-
-
-function hideAboutbox()
-{
-
-}
-
-
-
-
-
-
-
-
-
-
-/*-------------------------------------------------------------------------About end-----------------------------------------------------------*/
-
-
-/*-------------------------------------------------------------------------Sponsors Start-----------------------------------------------------------*/
-
-function showSponsorbox()
-{
-
-}
-
-function hideSponsorbox()
-{
-    
-}
-
-
-
-
-
-
-
-
-
-
-/*-------------------------------------------------------------------------Sponsors end-----------------------------------------------------------*/
-
-
-/*-------------------------------------------------------------------------Contacts start---------------------------------------------------------*/
-
-
-function showContactbox()
-{
-
-}
-
-function hideContactbox()
-{
-
-}
-
-
-
-
-
-
-
-
-
-/*-------------------------------------------------------------------------Contacts end---------------------------------------------------------*/
-
-
-
 
 
 /*------------------------------------------------------------------------Other functions------------------------------------------------------*/
-
 
 
 function linkAnimation(beforeClass, afterClass, addedClass)
@@ -851,10 +827,55 @@ function returnDullColor(eventcategory)
 
 /*----------------------------------------------------------------------Update Script Starts-------------------------------------------------------*/
 
-
-
-
-
+function initializeUpdate()
+{
+    $.getJSON('./js/update.json',  function(json) {
+            var i=0;
+            $('.updates').html((json.updates[0].updatetext));
+            $('.updates').on('webkitAnimationIteration oanimationiteration oAnimationIteration msAnimationIteration animationiteration',   
+            function(e) 
+            {
+                i++;
+                if(i==json.updates.length)
+                i=0; 
+                if(json.updates[i].updatetype=='external')
+                {
+                    $('.updates').off('click');
+                    $('.updates').css({
+                        'cursor':'pointer'
+                    });
+                    $('.updates').click(function(event) {
+                        window.open(json.updates[i].eventurl,json.updates[i].linkopentype);
+                    });
+                    $('.updates').html((json.updates[i].updatetext));
+                }
+                else if(json.updates[i].updatetype=='event')
+                {
+                    $('.updates').off('click');
+                    $('.updates').css({
+                        'cursor':'pointer'
+                    });
+                    $('.updates').click(function(event) {
+                        $('.header').animate(
+                        {
+                            top: -50
+                        },400);
+                    $('.black-back').fadeIn(400);
+                    showeventpage(json.updates[i].eventid);
+                    });
+                    $('.updates').html((json.updates[i].updatetext));
+                }
+                else if(json.updates[i].updatetype=='plain')
+                {
+                    $('.updates').off('click');
+                    $('.updates').css({
+                        'cursor':'default'
+                    });
+                    $('.updates').html((json.updates[i].updatetext));
+                }
+            });
+    });
+}
 
 
 
@@ -935,6 +956,7 @@ $(window).resize(function() {
     eventlistY=evY+'px';
     currentpage=0;
     initializeEventlist(1,'resize','');
+
 });
 
 

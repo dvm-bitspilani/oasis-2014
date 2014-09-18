@@ -26,20 +26,27 @@
 	<meta property="og:type" content="website">
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+<!-- 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'> -->
 	<script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="./js/skrollr.js"></script>
 	<script type="text/javascript" src="./js/script.js"></script>
 	<script type="text/javascript" src="./js/constants.js"></script>
-	<script type="text/javascript" src="./js/jquery.kinetic.min.js"></script>	
-</head>
+	<script type="text/javascript" src="./js/jquery.kinetic.min.js"></script>
+	<script src="//connect.soundcloud.com/sdk.js"></script>
+	<script>
+	  	SC.initialize({
+	    client_id: "YOUR_CLIENT_ID",
+	    redirect_uri: "http://example.com/callback.html",
+	  	});
+	</script>	
+	</head>
 	
 <body>
 
 	<div class="litebox">
 
-		<div class="black-back"></div>
+		<div class="black-back"><img src='./images/cursor.png'/></div>
 		
 		<div class="litebox-mainContent-wrapper">
 			<!--Top(music)-Right(art)-Bottom(misc)-Left(oratory)-Right2(dance)-Right3(quizzing)-Left2(drama)-Left3(online)-->
@@ -60,34 +67,8 @@
 
 
 		<div class="event-litebox kinetic-active">
-			<div id="oasisimg"><img src="images/logo-oasis14.png"/></div>
-			<h1>METAMORPHOSIS</h1>
-			<div id="break"></div>
-			<h2>Event Details</h2>
-			<span>Metamorphosis is a short film-making competition, the ultimate platform that each artist deserves. Amaze your viewers with your perspective, aesthetic sense, emotion or simple ingenuity of idea. So ignite the director, the cinematographer, the sound specialist, the editor and the art connoisseur inside you, waiting to leap out.</span>
-			<div id="img1"></div>
-			<h2>Rules & Regulations</h2>
-			<span>
-				<ul>
-					<li>The maximum duration for an entry is 5 minutes.</li>
-					<li>The maximum number of members in a team is 5. (Excluding the cast)</li>
-					<li>Each entry should bear a) an appropriate title b) the team name.</li>
-					<li>A disclaimer bearing the following text : "This is an entry for Metamorphosis Oasis 2013.", the team name and title of the film must run for five seconds before the start of the video.</li>
-					<li>The video should contain the name of all the team members in the final credits along with contact number and email id of the team leader. The credits section and the disclaimer will not be counted in the 5 minutes allotted for the film.</li>
-					<li>Entries must reflect your direction and editing skills, and should comprise of cinematography and editing only.</li>
-				</ul>
-			<h2>Contact Us</h2>
-			<span>
-				Mail your entries to metamorphosis@bits-oasis.org
-			</span>
-			<span>
-			For more details, contact:
-			<br>RISHABH SHARMA
-			<br>rishabh.bits038@gmail.com
-			<br>+91-7737887326
-			</span>
-			</div>
-	</div>
+
+		</div>
 		
 
 	<div class='header'>
@@ -102,6 +83,9 @@
 			<div id="progress" class="progress"></div>
 		</div>
 	</div>
+	
+	<div class='updates'></div>
+
 
 
 

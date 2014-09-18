@@ -62,7 +62,7 @@ body
   position: absolute;
   top: 70px;
   z-index: 100;
-  box-shadow: 0px -2px 8px 1px black;
+  box-shadow: 0px -2px 30px 1px black;
 }
 
 /* --------------------------------------------GROUND -----------------------------------------------------------------*/
@@ -90,7 +90,7 @@ body
 {	position:absolute;
 }
 
-#underwaterBG {
+#underwaterBG { 
     position:absolute;
     height:calc(100% + 600px);
     width:10000px;
@@ -266,7 +266,7 @@ body
   width: 100%;
   position: fixed;
   top: 0px;
-  background-color: #282828;
+  background-color: rgba(40,40,40,0.3);
   z-index: 100;
 }
 
@@ -311,6 +311,15 @@ body
     cursor: url('../images/cursor.png'),auto;
 }
 
+.black-back img
+{
+  position: fixed;
+  top: 10px;
+  right: 25px;
+  height: 50px;
+  width:50px;
+}
+
 
 .litebox-mainContent-wrapper
 {
@@ -323,7 +332,7 @@ body
 .litebox-mainContent
 {
     z-index: 1010;
-    box-shadow: 0px 0px 20px 0.5px #000;
+    box-shadow: 0 0 20px 0.5px #000;
     position: absolute;
     text-align: center;
     font-family: 'Fredoka One', cursive;
@@ -548,6 +557,10 @@ body
 {
     display: block;
     font-size: 20px;
+}
+
+.event-litebox p
+{
     padding: 0px 20px 50px 20px;
 }
 
@@ -637,7 +650,7 @@ body
 {
     text-align: center;
 }
-.event-icon div
+.list-event-name
 {
     position: absolute;
     top: 10px;
@@ -655,19 +668,33 @@ body
     width: 75px;
 }
 
+.list-category-name
+{
+  position: absolute;
+  text-align: center;
+  background-color: #e6e6e6;
+  color: #333333;
+  bottom: 0;
+  height: 30px;
+  line-height: 30px;
+  width:100%;
+}
+
 .event-text
 {
     transform-origin: top right;
     cursor: pointer;
 }
 
-.event-text div
+.list-event-description
 {
     padding: 10px;
     text-align: center;
     position: relative;
     top: 50%;
     -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
 }
@@ -831,112 +858,62 @@ body
 
 /*Update Style*/
 
-/*
-To fix
 
-The placement at exact center
-
-
-*/
 
 .updates
 {
-    color: #fff;
-    position:fixed;
+    position: fixed;
     bottom:10px;
-    height: 50px;
-    line-height: 50px;
-    font-family: 'Fredoka One', cursive;
+    overflow: auto;
+    color: #fff;
+    z-index: 300;
+    font-family: 'Open Sans', cursive;
     font-size: 20px;
-    opacity: 0.8;
+    opacity: 0.6;
+    left:50%;
+    text-align: center;
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
+
+
 /*Update Animation effects*/
+
+
 
 @-webkit-keyframes updateanim {
   0%   
     { 
         opacity: 0;
-        left: 20%;
+        bottom: -100px;
     }
   15%
     { 
         opacity: 1;
-        left: 40%; 
-    }
+        bottom: 10px;    }
    85%
     {
         opacity: 1;
-        left: 40%;
+        bottom: 10px;
     }
   100%
     {
         opacity: 0;
-        left: 60%;   
-    }
-}
-
-@-webkit-keyframes updateanim2 {
-  0%   
-    { 
-        opacity: 0;
-        left: 20%;
-        bottom: 2%;
-    }
-  15%
-    { 
-        opacity: 1;
-        left: 40%;
-        bottom: 2%; 
-    }
-   90%
-    {
-        opacity: 1;
-        left: 40%;
-        bottom: 2%;
-    }
-  100%
-    {
-        opacity: 0;
-        left:40%;
-        bottom: -10%;   
-    }
+        bottom: -100px;    }
 }
 
 
-@-webkit-keyframes updateanim3 {
-  0%   
-    { 
-        opacity: 0;
-        bottom: -10%;
-        left: 40%;
-    }
-  15%
-    { 
-        opacity: 1;
-        bottom: 2%;
-        left: 40%; 
-    }
-   90%
-    {
-        opacity: 1;
-        bottom: 2%;
-        left:40%;
-    }
-  100%
-    {
-        opacity: 0;
-        bottom: -10%;
-        left:40%;   
-    }
-}
 
 
 .updates {
   -webkit-animation: updateanim 6s infinite ease-in-out; /* Safari 4+ */
-  -moz-animation:    updateanim3 6s infinite ease-in-out; /* Fx 5+ */
-  -o-animation:      updateanim3 6s infinite ease-in-out; /* Opera 12+ */
-  animation:         updateanim3 6s infinite ease-in-out; /* IE 10+, Fx 29+ */
+  -moz-animation:    updateanim 6s infinite ease-in-out; /* Fx 5+ */
+  -o-animation:      updateanim 6s infinite ease-in-out; /* Opera 12+ */
+  animation:         updateanim 6s infinite ease-in-out; /* IE 10+, Fx 29+ */
 }
 
 /*Update Style End*/

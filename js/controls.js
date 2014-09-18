@@ -1,21 +1,23 @@
 setInterval(function() { setStatus(); }, 50);
 
-
 document.addEventListener("keydown", function (e) {
-    if([219,221,33,34,35,36,37,38,39,40,49,50,51,52,53,54,55,56,78].indexOf(e.keyCode) > -1) { 
+    if([219,221,33,34,35,36,37,38,39,40,49,50,51,52,53,54,55,56].indexOf(e.keyCode) > -1) { 
         journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
         e.preventDefault();
         if (e.keyCode == 39) {
         // forward scrolling by right arrow key
            if(caveTransit)
-                window.scrollBy(0,130);
+                window.scrollBy(0,400);
            else  
                 window.scrollBy(0,scrollSpeed);
         }
+		else if(e.keyCode == 38)
+		{	jump();
+		}
         else if (e.keyCode == 37) {
         // forward scrolling by right arrow key
            if(caveTransit)
-                window.scrollBy(0,-130);
+                window.scrollBy(0,-400);
            else  
                 window.scrollBy(0,-scrollSpeed);
         } 
@@ -48,10 +50,6 @@ document.addEventListener("keydown", function (e) {
            window.scrollTo(0,scene7Offset/layerMinus3Speed - (window.innerWidth/2) + 400);
         else if (e.keyCode == 56) 
            window.scrollTo(0,scene8Offset/layerMinus3Speed - (window.innerWidth/2) + 400);
-        else if (e.keyCode == 78) {
-        console.log("Nitro-Booster");
-           scrollSpeed = 200;
-        }
     }
 }, false);
 
@@ -141,6 +139,7 @@ function setStatus() {
 
     if(journeyComplete >= woodenDockOffset/layerMinus3LengthE && journeyComplete <= shipBoardingPoint/layerMinus3LengthE) {
         isBoardingShip = true;
+		jump();
         onShip = false;
         jumpDown = false;
         shipHits =false;
