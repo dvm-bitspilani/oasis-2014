@@ -26,20 +26,29 @@
 	<meta property="og:type" content="website">
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+	<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
-	<script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
+	 -->
+	 <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="./js/skrollr.js"></script>
 	<script type="text/javascript" src="./js/script.js"></script>
 	<script type="text/javascript" src="./js/constants.js"></script>
 	<script type="text/javascript" src="./js/jquery.kinetic.min.js"></script>
-	<script src="//connect.soundcloud.com/sdk.js"></script>
-	<script>
-	  	SC.initialize({
-	    client_id: "YOUR_CLIENT_ID",
-	    redirect_uri: "http://example.com/callback.html",
-	  	});
-	</script>	
+	
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<script type="text/javascript" src="./js/jquery.jplayer.js"></script>
+	<script type="text/javascript" src="./js/ttw-music-player-min.js"></script>
+	<script type="text/javascript" src="./js/myplaylist.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+			$('.musicplayer').ttwMusicPlayer(myPlaylist, {
+                autoPlay:false, 
+                jPlayer:{
+                    swfPath:'./js' //You need to override the default swf path any time the directory structure changes
+                }
+            });
+        });
+    </script>
 	</head>
 	
 <body>
@@ -79,8 +88,8 @@
 		<div id='sponsors' class='headerContent'><img class="headerIcons" src="./images/sponsorsIco.png">SPONSORS</div>
 		<div id='archives' class='headerContent'><img class="headerIcons" src="./images/archivesIco.png">ARCHIVES</div>
 		<div id='contacts' class='headerContent'><img class="headerIcons" src="./images/contactsIco.png">CONTACTS</div>
-		<div id="progressBarWrapper" class="progressBarWrapper">
-			<div id="progress" class="progress"></div>
+		<div id="timelineWrapper" class="timelineWrapper">
+			<div id="timeline" class="timeline"></div>
 		</div>
 	</div>
 	
@@ -312,6 +321,9 @@
 			
 			<img src="./images/scene7/caveRight.png" id="caveRight">
 		</div>
+		<div class="musicplayer">
+			<div id="playSignWrapper"></div>
+		</div>  
 		
 	</div>
 	<script type="text/javascript" src="./js/controls.js"></script>

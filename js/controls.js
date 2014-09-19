@@ -11,6 +11,9 @@ document.addEventListener("keydown", function (e) {
            else  
                 window.scrollBy(0,scrollSpeed);
         }
+		else if(e.keyCode == 38)
+		{	jump();
+		}
         else if (e.keyCode == 37) {
         // forward scrolling by right arrow key
            if(caveTransit)
@@ -129,13 +132,14 @@ function comeUp() {
 }
 
 function setStatus() {
-    console.log(isBoardingShip+" : "+onShip+" : "+shipHits+" : "+jumpDown+" : "+caveTransit+" : "+inCave);
+    //console.log(isBoardingShip+" : "+onShip+" : "+shipHits+" : "+jumpDown+" : "+caveTransit+" : "+inCave);
     
     journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
     scrollPageX = $(window).scrollTop();
 
     if(journeyComplete >= woodenDockOffset/layerMinus3LengthE && journeyComplete <= shipBoardingPoint/layerMinus3LengthE) {
         isBoardingShip = true;
+		jump();
         onShip = false;
         jumpDown = false;
         shipHits =false;

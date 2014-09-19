@@ -29,10 +29,8 @@ function setVitals() {
 	$("#layer1").attr("data-"+(hitIceBerg/layerMinus3Speed),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px;");
 	$("#layer1").attr("data-"+(hitIceBerg/layerMinus3Speed+extraScroll1),"left:-"+ (hitIceBerg*layerMinus1Speed/layerMinus3Speed) +"px");
 	$("#layer1").attr("data-"+totalScroll,"left:-"+ (layerMinus1LengthE) +"px;");
-	$("#progress").attr("data-0","width : 0%");
-	$("#progress").attr("data"+totalScroll,"width : 100%");
-	$("#progressHeader").attr("data-0","left : 0%");
-	$("#progressHeader").attr("data"+totalScroll,"left : 100%");
+	$("#timeline").attr("data-0","width : 0%");
+	$("#timeline").attr("data"+totalScroll,"width : 100%");
 
 	$("#darkCover").attr("data-0","opacity:0;");
 	$("#darkCover").attr("data-"+enterCave/layerMinus3Speed,"opacity:0;");
