@@ -72,13 +72,13 @@
 		
 
 	<div class='header'>
-		<div id='events' class='headerContent'>EVENTS</div>
-		<div id='profshows' class='headerContent'>PROFSHOWS</div>
-		<div id='about' class='headerContent'>ABOUT</div>
-		<div id='oasislogo' class='headerContent'><img src='./images/logo-oasis14.png'></div>
-		<div id='sponsors' class='headerContent'>SPONSORS</div>
-		<div id='archives' class='headerContent'>ARCHIVES</div>
-		<div id='contacts' class='headerContent'>CONTACTS</div>
+		<div id='events' class='headerContent'><img class="headerIcons" src="./images/eventsIco.png">EVENTS</div>
+		<div id='profshows' class='headerContent'><img class="headerIcons" src="./images/profshowIco.png">PROFSHOWS</div>
+		<div id='about' class='headerContent'><img class="headerIcons" src="./images/aboutIco.png">ABOUT</div>
+		<div id='oasislogo' class='headerContent'><img class="headerLogo" src='./images/logo-oasis14.png'></div>
+		<div id='sponsors' class='headerContent'><img class="headerIcons" src="./images/sponsorsIco.png">SPONSORS</div>
+		<div id='archives' class='headerContent'><img class="headerIcons" src="./images/archivesIco.png">ARCHIVES</div>
+		<div id='contacts' class='headerContent'><img class="headerIcons" src="./images/contactsIco.png">CONTACTS</div>
 		<div id="progressBarWrapper" class="progressBarWrapper">
 			<div id="progress" class="progress"></div>
 		</div>
@@ -86,7 +86,10 @@
 	
 	<div class='updates'></div>
 
-
+	<div id="social_updates">
+		<div id="like_button" class="social_update"><div class="fb-like" data-href="https://www.facebook.com/oasis.bitspilani" data-layout="button_count" data-action="like" data-width="100" data-show-faces="false" data-share="true"></div></div>
+		<div id="follow" class="social_update"><a href="https://twitter.com/bitsoasis" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @bitsoasis</a></div>
+	</div>
 
 
 
@@ -314,5 +317,34 @@
 	<script type="text/javascript" src="./js/controls.js"></script>
 	<script type="text/javascript" src="./js/ioOperations.js"></script>
 	<script type="text/javascript" src="./js/animateCharacter.js"></script>
+	<script>
+	//FB LIKE SCRIPT
+		(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))
+                return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+	
+	<script>
+	//TWITTER 
+		!function(d,s,id){
+			var js,fjs=d.getElementsByTagName(s)[0];
+			if(!d.getElementById(id)){
+				js=d.createElement(s);
+				js.id=id;js.src="http://platform.twitter.com/widgets.js";
+				fjs.parentNode.insertBefore(js,fjs);
+			}
+		}(document,"script","twitter-wjs");
+	</script>
+
+	
+<div id="fb-root"></div>
+
+
 </body>
 </html>
