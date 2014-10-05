@@ -1,0 +1,8 @@
+{
+  "updates":[
+  	{"updatetype":"plain","updatetext":"Bits Oasis 2014"},
+    {"updatetype":"external","updatetext":"external_link","eventurl":"http://www.google.com","linkopentype":"_blank"},
+    {"updatetype":"event","updatetext":"internal/external event" ,"eventid":"15"},
+    {"updatetype":"plain","updatetext":"Hello Hello lol Hello Hello lol Hello Hello lol Hello Hello lol Hello Hello lol Hello Hello lol Hello Hello lol Hello Hello lol Hello Hello lol "}
+    ]
+}

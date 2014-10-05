@@ -50,7 +50,7 @@
 	var DEFAULT_DURATION = 1000;//ms
 	var DEFAULT_MOBILE_DECELERATION = 0.004;//pixel/ms²
 
-	var DEFAULT_SMOOTH_SCROLLING_DURATION = 200;//ms
+	var DEFAULT_SMOOTH_SCROLLING_DURATION = 300;//ms
 
 	var ANCHOR_START = 'start';
 	var ANCHOR_END = 'end';
@@ -694,6 +694,8 @@
 		Private methods.
 	*/
 
+
+
 	var _initMobile = function() {
 		var initialElement;
 		var initialTouchY;
@@ -709,6 +711,8 @@
 		var lastTouchTime;
 		var deltaTime;
 
+
+
 		_addEvent(documentElement, [EVENT_TOUCHSTART, EVENT_TOUCHMOVE, EVENT_TOUCHCANCEL, EVENT_TOUCHEND].join(' '), function(e) {
 			var touch = e.changedTouches[0];
 
@@ -719,8 +723,8 @@
 				currentElement = currentElement.parentNode;
 			}
 
-			currentTouchY = touch.clientY;
-			currentTouchX = touch.clientX;
+			currentTouchY = touch.clientX;
+			currentTouchX = touch.clientY;
 			currentTouchTime = e.timeStamp;
 
 			if(!rxTouchIgnoreTags.test(currentElement.tagName)) {
@@ -771,7 +775,7 @@
 
 							//It was a tap, click the element.
 							var clickEvent = document.createEvent('MouseEvents');
-							clickEvent.initMouseEvent('click', true, true, e.view, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, e.ctrlKey, e.altKey, e.shiftKey, e.metaKey, 0, null);
+							clickEvent.initMouseEvent('click', true, true, e.view, 1, touch.screenX, touch.screenY, touch.clientY, touch.clientX, e.ctrlKey, e.altKey, e.shiftKey, e.metaKey, 0, null);
 							initialElement.dispatchEvent(clickEvent);
 						}
 
@@ -809,6 +813,8 @@
 					break;
 			}
 		});
+
+
 
 		//Just in case there has already been some native scrolling, reset it.
 		window.scrollTo(0, 0);
