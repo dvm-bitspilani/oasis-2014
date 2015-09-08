@@ -1,10 +1,29 @@
-setInterval(function() { setStatus(); }, 50);
+
+setInterval(function() { setStatus(); questionFlush(); }, 50);
 
 document.addEventListener("keydown", function (e) {
-    if([219,221,33,34,35,36,37,38,39,40,49,50,51,52,53,54,55,56].indexOf(e.keyCode) > -1) { 
+    if([219,221,33,34,35,36,37,38,39,40,27,13].indexOf(e.keyCode) > -1) { 
         journeyComplete = -parseInt($('#layer-3').css('left'))/layerMinus3LengthE;
         e.preventDefault();
-        if (e.keyCode == 39) {
+        if (e.keyCode == 27) {
+            // forward scrolling by right arrow key
+            $('.header').animate({
+                top:0
+            },400);
+            $('.black-back').fadeOut(400,function(){
+                $('.header').finish();
+            });    
+            switch (currentOpenLitebox)
+            {
+                case 'eventbox':hideEventbox();
+                break;
+                case 'eventlist':hideListbox();
+                break;
+                case 'eventpage':hideeventpage();
+                break;
+            }
+        }
+        else if (e.keyCode == 39) {
         // forward scrolling by right arrow key
            if(caveTransit)
                 window.scrollBy(0,400);
@@ -34,6 +53,7 @@ document.addEventListener("keydown", function (e) {
                 scrollSpeed -= 10;
         }
         //vsisoshell.exe 167mb
+    	/*
         else if (e.keyCode == 49) 
            window.scrollTo(0,scene1Offset/layerMinus3Speed - (window.innerWidth/2));
         else if (e.keyCode == 50) 
@@ -50,6 +70,7 @@ document.addEventListener("keydown", function (e) {
            window.scrollTo(0,scene7Offset/layerMinus3Speed - (window.innerWidth/2) + 400);
         else if (e.keyCode == 56) 
            window.scrollTo(0,scene8Offset/layerMinus3Speed - (window.innerWidth/2) + 400);
+       */
     }
 }, false);
 
@@ -139,8 +160,8 @@ function setStatus() {
 
     if(journeyComplete >= woodenDockOffset/layerMinus3LengthE && journeyComplete <= shipBoardingPoint/layerMinus3LengthE) {
         isBoardingShip = true;
-		jump();
-        onShip = false;
+        jump();
+		onShip = false;
         jumpDown = false;
         shipHits =false;
         caveTransit = false;
@@ -206,4 +227,58 @@ function setStatus() {
     }
     prevJumpDown = jumpDown;
 
+}
+
+function questionFlush() {
+    if(journeyComplete >= q1/layerMinus3LengthE && journeyComplete <= (q1+100)/layerMinus3LengthE) {
+		blinkQues(0);
+    }
+    else if(journeyComplete >= q2/layerMinus3LengthE && journeyComplete <= (q2+100)/layerMinus3LengthE) {
+        blinkQues(1);
+    }
+    else if(journeyComplete >= q3/layerMinus3LengthE && journeyComplete <= (q3+100)/layerMinus3LengthE) {
+        blinkQues(2);
+    }
+    else if(journeyComplete >= q4/layerMinus3LengthE && journeyComplete <= (q4+100)/layerMinus3LengthE) {
+        blinkQues(3);
+    }
+    else if(journeyComplete >= q5/layerMinus3LengthE && journeyComplete <= (q5+100)/layerMinus3LengthE) {
+        blinkQues(4);
+    }
+    else if(journeyComplete >= q6/layerMinus3LengthE && journeyComplete <= (q6+100)/layerMinus3LengthE) {
+        blinkQues(5);
+    }
+    else if(journeyComplete >= q7/layerMinus3LengthE && journeyComplete <= (q7+100)/layerMinus3LengthE) {
+        blinkQues(6);
+    }
+}
+
+function min90c() {
+    //Get 1 day in milliseconds
+    var ninetyMin=1000*60*15;
+    var oneMin = 1000*60;
+    
+    // Convert both dates to milliseconds
+    var currentDate = new Date().getTime(); 
+    var fixedDate = 1413822600000;
+
+    // Calculate the difference in milliseconds
+    var giveTicket = (currentDate - fixedDate) % ninetyMin;
+    //console.log(currentDate);
+    //console.log(fixedDate);
+    //console.log(5*oneMin);
+    //console.log(giveTicket);
+    if (giveTicket < 5*oneMin) {
+        //console.log("Yeah ! Thats the right time ...");
+        youGotLucky(); 
+    }
+    else {
+        //console.log("No coupon");
+    }
+}
+
+function youGotLucky() {
+    //$('.header').animate({top: -50},400);
+    //$("#congrats , .black-back").fadeIn();
+    console.log("No more Ebay coupons !!");
 }

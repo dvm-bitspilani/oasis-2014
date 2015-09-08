@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration | OASIS 2014 | That 90s Show</title>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/initialRegistrationAssets/js/registerScript2.js"></script>
+    <link rel="stylesheet" type="text/css" href="/initialRegistrationAssets/css/registrationStyle.css"> 
+</head>
+<body>
+	<div id="fb-root"></div>
+	<img class="logo" src="/initialRegistrationAssets/img/logo-oasis14.png">
+	<div id="likeWrapper">
+		<div class="fb-like" data-href="https://www.facebook.com/oasis.bitspilani" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+	</div>
+	<div id="reg" class="reg">Register</div>
+
+	<div class="wrapper">
+		<div class="innerWrapper">
+		    <div class="step1">
+		    	<div id="head" class="head">Sign in with Facebook TO REGISTER</div>
+                <a title="Facebook" onclick="facebookLogin(); return false;"><img src="./images/active.png" alt="Click Here" class="FBbutton" /> </a>
+                <br><div style="color: #aaa; font-size: 15px; margin: 10px; text-align: center; font-weight: normal;">-----------or----------</div>
+		        <form id="regDetail">
+		        	<input hidden name="link" id="fbLink">
+		        	Name : <br><input type="text" class="field" name="userName" id="userName" required><br>
+		        	Gender : <br><div style="margin : 5px"><input type="radio" id="userGender" name="userGender" value="male">&nbsp;&nbsp;&nbsp;&nbsp;Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="userGender" name="userGender" value="female">&nbsp;&nbsp;&nbsp;&nbsp;Female</div>
+		        	Email : <br><input type="email" class="field" name="userEmail" id="userEmail" required><br>
+		        	Current City : <br><input type="text" class="field" name="userLocation" id="userLocation" required><br>
+		        	College : <br><input type="text" class="field" name="userSchool" id="userSchool" required><br>
+		            Phone no : <br>+91 <input type="text" style="width: 300px" class="field" name="userPhone" id="phoneno" required><br>+91 <input type="text" style="width: 300px" class="field" name="userPhoneAlt" id="phonenoAlt"><br>
+		            <button id="submitForm" class="submit" >Register !</button>
+		        </form>
+		  	  </div>
+		    <div class="step13"><img src="/initialRegistrationAssets/img/loading.gif" style="height: 50px"></div>
+			<div class="step3">
+		       	<div id="status"></div>
+		       	<div id="busForm">
+	       		<br>DO YOU WANT TO AVAIL THE BUS SERVICE FROM ANY OF THE FOLLOWING CITY?
+	       			<form id="busServiceForm">
+                    	<input type="radio" name="busService" value="No"> No <br><input type="radio" name="busService" value="Jaipur"> Jaipur<br>
+                    	<input type="radio" name="busService" value="Delhi"> Delhi <br><input type="radio" name="busService" value="Loharu"> Loharu<br>
+                    	<br><button  id="submitBus">Submit !</button>
+                	</form>
+                </div>
+			</div>
+		</div>
+	</div>
+  	
+  	<div style="position:fixed;bottom:20px;left:30px;background:rgba(0,0,0,0.8);color:#fff;padding:10px;font-size:12px">
+	For any Registration related queries, contact:<br>
+	<b>Vinit</b> : +91-8239581631<br>
+	<b>Vandita</b> : +91-9928086307<br>
+	<b>Shashvat Tripathi</b> : +91-7728807727<br>
+	Department of Publications and Participation : pcr@bits-oasis.org<br>
+	</div>
+</body>
+</html>

@@ -59,9 +59,10 @@ function position_elements()
 
 	//DESERT ELEMENTS
 	$("#petrolPumpPoster").css("bottom","206px");
+	$("#petrolPumpPosterAbstract").css("bottom","206px");
 	//CITY ELEMENTS
 	$("#parachute").css("bottom","300px");
-	$("#friendsPoster").css("bottom","199px");
+	$("#parachuteAbstract").css("bottom","300px");
 	
 	// PLACING UDERWATER ELEMENTS
 	$(".underwaterImg").css("bottom",-(window.innerHeight + 500));
@@ -79,6 +80,7 @@ function position_elements()
 	$("#windFan2,#windFan4").css("animation","rotate360 20s linear 0s infinite normal");
 	$("#submarine").css("animation","submarineMove 40s linear 0s infinite normal");
 	$("#parachute").css("animation","socialMedia 10s linear 0s infinite normal");
+	$("#parachuteAbstract").css("animation","socialMedia 10s linear 0s infinite normal");
 
 	//CONCERT
 	$("#concertFocusLight1,#concertFocusLight2,#concertFocusLight3,#concertFocusLight4,#concertFocusLight5").css("transform-origin","50% 0%");
@@ -99,18 +101,22 @@ function renderScene1()
 	$("#backgroundPyramids").css("left",scene1Offset+"px");
 	
 	//layer-2
+	$("#sponsorBoardLava").css("left",(scene1Offset+400)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#sponsorBoardLavaAbstract").css("left",(scene1Offset+400)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#frontPyramids").css("left",scene1Offset+"px");
 	$("#petrolPump").css("left",(scene1Offset+1200)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#petrolPumpPoster").css("left",(scene1Offset+1604)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#petrolPumpPosterAbstract").css("left",(scene1Offset+1604)*layerMinus2Speed/layerMinus3Speed+"px");
 	
 	//layer-1
 	$("#singlePyramid").css("left",scene1Offset+600*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#thisWay").css("left",scene1Offset+350*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#thisWay").css("left",scene1Offset+200*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#cactusBig1").css("left",scene1Offset+150*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#cactusBig2").css("left",scene1Offset+1300*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#cactusSmall3").css("left",scene1Offset+900*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#cactusSmall4").css("left",scene1Offset+300*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#mysteryMachine").css("left",(scene1Offset+750)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#mysteryMachineAbstract").css("left",(scene1Offset+750)*layerMinus1Speed/layerMinus3Speed+"px");
 }
 
 function renderScene2() {
@@ -119,6 +125,10 @@ function renderScene2() {
 	
 	//layer-2
 	$("#bigWind").css("left",(scene2Offset+1060)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#sponsorBoard").css("left",(scene2Offset+1260)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#sponsorBoardAbstract").css("left",(scene2Offset+1260)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#sponsorBoardVh1Abstract").css("left",(scene2Offset+2000)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#sponsorBoardVh1").css("left",(scene2Offset+2000)*layerMinus2Speed/layerMinus3Speed+"px");
 	
 	//layer-1
 	$("#wind2").css("left",(scene2Offset+430)*layerMinus1Speed/layerMinus3Speed+"px");
@@ -138,7 +148,9 @@ function renderScene3() {
 	//layer-2
 	$("#forestHut").css("left",(scene3Offset+2300)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#forestBillboard").css("left",(scene3Offset+3000)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#forestBillboardAbstract").css("left",(scene3Offset+3000)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#notificationSpeakers").css("left",(scene3Offset+2900)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#notificationSpeakersAbstract").css("left",(scene3Offset+2900)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#hillTree2").css("left",(scene3Offset+2100)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#plateau").css("left",(scene3Offset+800)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#treeLayer-21").css("left",(scene3Offset+900)*layerMinus2Speed/layerMinus3Speed+"px");
@@ -150,7 +162,13 @@ function renderScene3() {
 	$("#noTrespassing").css("left",(scene3Offset+700)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#cart").css("left",(scene3Offset-250)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#wind4").css("left",(scene3Offset+200)*layerMinus1Speed/layerMinus3Speed+"px");
-	$("#windFan4").css("left",((scene3Offset+200)*layerMinus1Speed/layerMinus3Speed - 70)+"px");	
+	$("#windFan4").css("left",((scene3Offset+200)*layerMinus1Speed/layerMinus3Speed - 70)+"px");
+	$("#mamoBoard").css("left",((scene3Offset+2000)*layerMinus1Speed/layerMinus3Speed)+"px");
+	$("#mamoBoardAbstract").css("left",((scene3Offset+2000)*layerMinus1Speed/layerMinus3Speed)+"px");
+	$("#pokemon1").css("left",((scene3Offset+1160)*layerMinus1Speed/layerMinus3Speed)+"px");
+	$("#pokemon1Abstract").css("left",((scene3Offset+1160)*layerMinus1Speed/layerMinus3Speed)+"px");
+	$("#pokemon2").css("left",((scene3Offset+2010)*layerMinus1Speed/layerMinus3Speed)+"px");
+	$("#pokemon2Abstract").css("left",((scene3Offset+2010)*layerMinus1Speed/layerMinus3Speed)+"px");
 }
 
 function renderScene4() {
@@ -159,14 +177,19 @@ function renderScene4() {
 	
 	//layer-2
 	$("#build1").css("left",(scene4Offset+1150)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#theatrePoster").css("left",(scene4Offset+1150)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#build2").css("left",(scene4Offset+3200)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#centralPerk").css("left",(scene4Offset+3200)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#centralPerkAbstract").css("left",(scene4Offset+3200)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#oasisQuiz").css("left",(scene4Offset+3900)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#oasisQuizAbstract").css("left",(scene4Offset+3900)*layerMinus2Speed/layerMinus3Speed+"px");
 	$("#parachute").css("left",(scene4Offset+500)*layerMinus2Speed/layerMinus3Speed+"px");
+	$("#parachuteAbstract").css("left",(scene4Offset+500)*layerMinus2Speed/layerMinus3Speed+"px");
 
 	//layer-1
 	$("#phoneBooth1").css("left",(scene4Offset+1020)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#phoneBooth2").css("left",(scene4Offset+3700)*layerMinus1Speed/layerMinus3Speed+"px");	
-	$("#posterBoard").css("left",(scene4Offset+3030)*layerMinus1Speed/layerMinus3Speed+"px");	
-	$("#friendsPoster").css("left",(scene4Offset+3034)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#phoneBooth2Abstract").css("left",(scene4Offset+3700)*layerMinus1Speed/layerMinus3Speed+"px");
 	
 	
 	//layer1
@@ -189,17 +212,23 @@ function renderScene5() {
 	//layer-3
 	$("#rollerCoaster").css("left",(scene5Offset+100)+"px");	
 	$("#tent3").css("left",(scene5Offset+1550)+"px");	
+	$("#tent3Abstract").css("left",(scene5Offset+1550)+"px");	
 	$("#tent5").css("left",(scene5Offset+1850)+"px");	
+	$("#tent5Abstract").css("left",(scene5Offset+1850)+"px");	
 	
 	//layer-2
 	$("#horseSwing").css("left",(scene5Offset+950)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#tent2").css("left",(scene5Offset+600)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#tent4").css("left",(scene5Offset+1580)*layerMinus2Speed/layerMinus3Speed+"px");	
-	$("#dramaBoard").css("left",(scene5Offset+1480)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#tent4Abstract").css("left",(scene5Offset+1580)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#dramaBoard").css("left",(scene5Offset+1440)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#dramaBoardAbstract").css("left",(scene5Offset+1440)*layerMinus2Speed/layerMinus3Speed+"px");	
 	
+	$("#profshow").css("left",(scene5Offset+2270)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#videoNet").css("left",(scene5Offset+2270)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#videoPlay").css("left",(scene5Offset+2280)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#concert").css("left",(scene5Offset+2100)*layerMinus2Speed/layerMinus3Speed+"px");	
+	$("#concertAbstract").css("left",(scene5Offset+2100)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#concertFocusLight1").css("left",(scene5Offset+2308)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#concertFocusLight2").css("left",(scene5Offset+2390)*layerMinus2Speed/layerMinus3Speed+"px");	
 	$("#concertFocusLight3").css("left",(scene5Offset+2482)*layerMinus2Speed/layerMinus3Speed+"px");	
@@ -212,7 +241,9 @@ function renderScene5() {
 	$("#swingStand2").css("left",(scene5Offset+650+60)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#swing1").css("left",(scene5Offset+1050)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#swingStand1").css("left",(scene5Offset+1050+78)*layerMinus1Speed/layerMinus3Speed+"px");	
-	$("#tent1").css("left",(scene5Offset+400)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#tent1").css("left",(scene5Offset+400)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#rockbanner").css("left",(scene5Offset+3000)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#rockbannerAbstract").css("left",(scene5Offset+3000)*layerMinus1Speed/layerMinus3Speed+"px");	
 	
 	//layer1
 	$("#carnivalRailing").css("left",(scene5Offset+50)*layerMinus1Speed/layerMinus3Speed+"px");	
@@ -232,6 +263,7 @@ function renderScene6() {
 	$("#grass7").css("left",(scene6Offset+800)+"px");	
 	$("#grass8").css("left",(scene6Offset+550)+"px");	
 	$("#grass9").css("left",(scene6Offset+350)+"px");
+	$("#underwaterbackLayer").css("left",(scene6Offset+0)+"px");
 	$("#underwaterLayer1").css("left",(scene6Offset+0)+"px");
 	$("#underwaterBG").css("left",(scene6Offset-window.innerWidth/2)+"px");
 	
@@ -250,9 +282,13 @@ function renderScene6() {
 	
 	//layer-1
 	$("#pole").css("left",(scene6Offset+800)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#poleAbstract").css("left",(scene6Offset+800)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#krustyCrab").css("left",(scene6Offset+1000)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#krustyCrabAbstract").css("left",(scene6Offset+1000)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#triRock1").css("left",(scene6Offset+1210)*layerMinus1Speed/layerMinus3Speed+"px");	
 	$("#rock1").css("left",(scene6Offset+1300)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#archiveslog").css("left",(scene6Offset+2500)*layerMinus1Speed/layerMinus3Speed+"px");	
+	$("#archiveslogAbstract").css("left",(scene6Offset+2500)*layerMinus1Speed/layerMinus3Speed+"px");	
 
 	//layer1
 	$("#anchor").css("left",(scene6Offset+700)*layerMinus1Speed/layerMinus3Speed+"px");	
@@ -284,9 +320,12 @@ function renderScene7()
 	$("#tree2").css("left",(scene7Offset+1600)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#hoarding").css("left",(scene7Offset+1950)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#amulAd").css("left",(scene7Offset+1980)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#amulAdAbstract").css("left",(scene7Offset+1980)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#stoneBoard").css("left",(scene7Offset+2400)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#caveLeft").css("left",(scene7Offset+2600)*layerMinus1Speed/layerMinus3Speed+"px");
 	$("#caveRight").css("left",(scene7Offset+2885)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#fashpBoard").css("left",(scene7Offset+1550)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#fashpBoardAbstract").css("left",(scene7Offset+1550)*layerMinus1Speed/layerMinus3Speed+"px");
 
 	//layer1	
 	$("#beachGroundUpper").css("left",(scene7Offset)*layerMinus1Speed/layerMinus3Speed+"px");	
@@ -304,6 +343,9 @@ function renderScene8() {
 	
 	//layer-1
 	$("#flinstoneCar").css("left",(scene8Offset+400)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#flinstoneCarAbstract").css("left",(scene8Offset+400)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#treasure").css("left",(scene8Offset+1400)*layerMinus1Speed/layerMinus3Speed+"px");
+	$("#treasureAbstract").css("left",(scene8Offset+1400)*layerMinus1Speed/layerMinus3Speed+"px");
 	
 	}
 
@@ -317,15 +359,20 @@ function customizeGround()
 	$("#iceBerg").css("bottom","0px");
 	$("#cave").css("bottom","70px");
 	$("#amulAd").css("bottom","207px");
+	$("#amulAdAbstract").css("bottom","207px");
 	$("#musicNotes").css("bottom","330px");
+	$("#profshow").css("bottom","200px");
+	$("#pokemon1,#pokemon2").css("bottom","105px");
+	$("#treasure").css("bottom","100px");
+
 	// PLACING GROUNDS
 	$(".desertGround").css({ background :"url('./images/desertground.jpg')", width : 1000, margin : 0});
 	$(".transition").css({ background :"url('./images/desertforestTransition.png')", width : 1355, left : 1000});
-	$(".forestGround").css({ background :"url('./images/forestGround.png')", width : 6675, left : 2353});
+	$(".forestGround").css({ background :"url('./images/forestGround.png')", width : 6660, left : 2355});
 	$(".bridgeWaterWrapper").css({ width : 1295, overflow : 'hidden', left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)});
 	$(".bridgeWater1").css({ background :"url('./images/bridgeWater.png')", width : 1500, animation : "waveMove1 33s linear 0s infinite normal"});
 	$(".bridgeWater2").css({ background :"url('./images/bridgeWater.png')", width : 1500, left : -1500 , animation : "waveMove1 33s linear 0s infinite normal"});
-	$(".cityGround").css({ background :"url('./images/cityground.png')", width : 8518, left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)+1295});
+	$(".cityGround").css({ background :"url('./images/cityground.png')", width : 8510, left : scene4Offset*(layerMinus1Speed/layerMinus3Speed)+1295});
 	$(".shipWaterWrapper").css({ width : 7400, overflow : 'hidden', left : scene6Offset*(layerMinus1Speed/layerMinus3Speed)-1200});
 	$(".shipWater1").css({ background :"url('./images/bridgeWater.png')", width : 5000, animation : "waveMove2 120s linear 0s infinite normal"});
 	$(".shipWater2").css({ background :"url('./images/bridgeWater.png')", width : 5000, left : -5000 , animation : "waveMove2 120s linear 0s infinite normal"});
@@ -355,9 +402,79 @@ function addGradients(main_container)
 //============================DOCUMENT READY AND WINDOW RESIZE========================//
 
 window.onload = function(){
+
+	$.ajax({
+		url: '/2014test/start/',
+		type: 'POST',
+		data: $.param({this_is_me: 'yeah_right'}),
+	});
+	
+
+	$(".ebayQues").click(function() {
+		console.log("clickIntercept");
+		var qno = ($(this).attr('class')).substring(4,5);
+		displayQues(qno);
+	});
+
+	$("#ebaySubmit").click(function() {
+		var scq = $("#scq").val();
+		if(quesTrack[scq].completed == 0) {
+			$.ajax({
+	        url : '/2014test/cq/',
+	        type : 'POST', 
+	        data : $("#ebayForm").serialize(),
+	        dataType : 'json',
+	        success : function(data) {
+	        	if(data.status == 1) {
+	        		var scq = $("#scq").val();
+	        		quesTrack[scq].completed = 1;
+	            	$("#questionBox, .black-back").fadeOut(400);
+	            	totalScore += 5;
+	            	gain_point();
+					setTimeout(function(){ document.getElementById("score").innerHTML = "Score: " + totalScore;},1000);
+					if(totalScore == 90)
+						youGotLucky();
+					$(".ques"+scq).css("display","none");
+					$("#ebayAnswer").val("");
+	            }
+	            else {
+	            	alert ("Try Again");
+	            }
+	        }
+	    	});
+		}
+	});
+
+	$("#ebayEmailSubmit").click(function() {
+		var emaVal = $('#ebayEmail').val();
+        var emaReg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+        var emaTest = emaReg.test(emaVal);
+        if(emaTest) {
+			$.ajax({
+	        url : '/2014test/ebay/',
+	        type : 'POST', 
+	        dataType : 'json',
+	        data : $("#ebayEmailForm").serialize(),
+	        success : function(data) {
+	        	if(data.status == 0) {
+	        		$("#congratsHeader").html(data.message);
+	        	}
+	        	else if (data.status == 1){
+	        		$("#congratsHeader").html('<span style="font-size: 24px">Your Coupon Code is : <br>'+data.message+'<br><br>NOTE : Please note down your coupon code since no mail shall be sent later at any point of time.</span>');
+	        	}
+	        	$("#ebayEmailForm").fadeOut();
+	        	$("#ebayEmailSubmit").fadeOut();
+	        }
+	    	});
+		}
+		else
+			alert("Please Enter a valid email ID !");
+	
+	});
+
+	setQues();
 	detectBrowser();
 	detectDevice();
-
 	if (deviceName != "computer") {
 		setupTouch();
 	}
@@ -390,8 +507,23 @@ window.onload = function(){
 };
 
 $(window).resize( function(){
-	position_elements();
+	setConstants();
+	setVitals();
 	position_character();
+	addGradients($("#main_container"));
+	renderScene1();
+	renderScene2();
+	renderScene3();
+	renderScene4();
+	renderScene5();
+	renderScene6();
+	renderScene7();
+	renderScene8();
+	position_elements();
 	customizeGround();
+	var s = skrollr.init();
+	if(jumpDown == true)
+	{	goDown();
+	}
 	totalScroll = (layerMinus3Length - window.innerWidth)/layerMinus1Speed;
 });

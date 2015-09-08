@@ -19,18 +19,10 @@ var eventpageJSONstore;
 var colors={musicColor:'#1C0459',artColor:'#BB0000',miscColor:'#252525',oratoryColor:'#248716',danceColor:'#0E71DE',quizzingColor:'#D99A17',dramaColor:'#32B0DA',onlineColor:'#661366'};
 var dullColors={musicColor:'#0E022D',artColor:'#510000',miscColor:'#151515',oratoryColor:'#103F0A',danceColor:'#06366A',quizzingColor:'#986B10',dramaColor:'#145C74',onlineColor:'#3C0B3C'};
 
-
-
 /*----------------------------------Main Variables End-------------------------------*/
 
 /*Initialize updates*/
 initializeUpdate();
-
-SC.stream("/tracks/293", function(sound){
-  sound.play();
-});
-
-setInterval(function(){console.log(currentOpenLitebox)}, 100);
 
 
 /*Basic Initialization of click events*/
@@ -39,6 +31,8 @@ $('.black-back').click(function(event) {
     $('.header').animate({
         top:0
     },400);
+	$("#questionBox").fadeOut(400);
+    $("#congrats").fadeOut(400);
     $('.black-back').fadeOut(400,function(){
         $('.header').finish();
     });    
@@ -60,7 +54,6 @@ $('.black-back').hover(function() {
 });
 
 
-
 $('#events').click(function(event) {
     $('.header').animate(
     {
@@ -70,32 +63,43 @@ $('#events').click(function(event) {
     showEventbox();
 });
 
-
-$('#profshows').click(function(event) {
-    
-});
-
-
 $('#about').click(function(event) {
     $('.header').animate(
     {
         top: -50
     },400);
+    showeventpage(41);
     $('.black-back').fadeIn(400);
-    showeventpage(20);
 });
 
+$('#clickWin').click(function(event) {
+    $('.header').animate(
+    {
+        top: -50
+    },400);
+    showeventpage(149);
+    $('.black-back').fadeIn(400);
+});
+
+/*
 $('#sponsors').click(function(event) {
     $('.header').animate(
     {
         top: -50
     },400);
+    showeventpage(75);
     $('.black-back').fadeIn(400);
-    showeventpage(20);
 });
 
-$('#archives').click(function(event) {
+*/
 
+$('#archives').click(function(event) {
+    $('.header').animate(
+    {
+        top: -50
+    },400);
+    showeventpage(76);
+    $('.black-back').fadeIn(400);
 });
 
 
@@ -104,9 +108,10 @@ $('#contacts').click(function(event) {
     {
         top: -50
     },400);
+    showeventpage(78);
     $('.black-back').fadeIn(400);
-    showeventpage(20);
 });
+
 
 /*End*/
 
@@ -259,9 +264,9 @@ function showEventbox()
     $('.litebox-contentBox-bottom').addClass('perspectiveAnimation');
     $('.litebox-contentBox-left1').addClass('perspectiveAnimation');
     linkAnimation('.litebox-contentBox-left1','.litebox-contentBox-left2','perspectiveAnimation');
-    linkAnimation('.litebox-contentBox-left2','.litebox-contentBox-left3','perspectiveAnimation');
-    linkAnimation('.litebox-contentBox-left3','.litebox-contentBox-right2','perspectiveAnimation');
+    linkAnimation('.litebox-contentBox-left1','.litebox-contentBox-right2','perspectiveAnimation');
     linkAnimation('.litebox-contentBox-right2','.litebox-contentBox-right3','perspectiveAnimation');
+    linkAnimation('.litebox-contentBox-right2','.litebox-contentBox-left3','perspectiveAnimation');
 }
 
 
@@ -334,9 +339,8 @@ function loadeventlistJSON(eventlistResize,type,string)
 
     if(type=='category')
     {
-
         $.ajax({
-            url: 'http://www.bits-oasis.org/2014test/gce/',
+            url: '/2014/gce/',
             type: 'GET',
             dataType: 'json',
             data: {category:string},
@@ -350,7 +354,7 @@ function loadeventlistJSON(eventlistResize,type,string)
     else if(type=='search')
     {
        $.ajax({
-            url: 'http://www.bits-oasis.org/2014test/se/',
+            url: '/2014/se/',
             type: 'GET',
             dataType: 'json',
             data: {search:string},
@@ -390,6 +394,13 @@ function preintializeEventlist(eventlistResize)
                 "<div class='page-box'>"+
                 "</div>"+
                 "<div class='event-list-big-wrapper'></div>");
+        $('.event-list').append('<div class="spinner">'+
+            '<div class="rect1"></div>'+
+            '<div class="rect2"></div>'+
+            '<div class="rect3"></div>'+
+            '<div class="rect4"></div>'+
+            '<div class="rect5"></div>'+
+        '</div>');
         $('.event-list-big-wrapper').html("");
         $('.page-box').html("");
         $('#searchbox-input').on('keyup', function(e) {
@@ -409,6 +420,7 @@ function reallyinitializeEventlist()
 {
     currentpage=0;
     $('.event-list-big-wrapper').html("");
+    $('.spinner').html("");
     $('.event-list-big-wrapper').css('left','0px');
     $('.page-box').html("");
     $('.circle-right').off();
@@ -426,7 +438,8 @@ function initializeEventlist(eventlistResize)
     eventNumX=Math.floor(eventNumX);
     eventNumY=Math.floor(eventNumY);
 
-    eventNumber=eventlistJSONstore.length;
+    if(eventlistJSONstore !== undefined)
+	{eventNumber=eventlistJSONstore.length;
     if((eventNumX===0)||eventNumY===0)
     {
 
@@ -473,6 +486,12 @@ function initializeEventlist(eventlistResize)
             {
                 if(n<eventlistJSONstore.length)
                 {
+                    var a=eventlistJSONstore[n].eventdescription;
+                    if(a.length>100)
+                        a=a.substring(0,100) + " ...";
+                    else if(a.length===0)
+                        a='';
+
                     $('.event-list-wrapper'+j)
                     .append("<div class='event-box-wrapper' style='display:none'>"+
                                 "<div class='event-box-cube'>"+
@@ -483,8 +502,7 @@ function initializeEventlist(eventlistResize)
                                     "</div>"+
 
                                     "<div class='event-text cube-side' id='"+eventlistJSONstore[n].eventid+"' style='background-color:"+returnDullColor(eventlistJSONstore[n].eventcategory)+"'>"+
-                                        "<div class='list-event-description'>"+eventlistJSONstore[n].eventdescription+"</div>"+
-                                        "<div class='list-category-name'></div>"+
+                                        "<div class='list-event-description'>"+a+"</div>"+
                                     "</div>"+
                                 "</div>"+
                             "</div>");
@@ -574,6 +592,7 @@ function initializeEventlist(eventlistResize)
     initializeSliderControls(0);
     else if(eventNumber<=0)
     initializeSliderControls(1);
+	}//if ends
 }
 
 function showListbox(type,string)
@@ -703,41 +722,84 @@ function restorerightControls()
 
 /*--------------------------------------------------------------------------Eventpage start-------------------------------------------------------*/
 
-
-function loadEventpageJSON(eventpageid)
-{
+$('.event-litebox').perfectScrollbar();
+function loadEventpageJSON(eventpageid,question)
+{       
+        $('.event-litebox').append('<div class="spinner">'+
+            '<div class="rect1"></div>'+
+            '<div class="rect2"></div>'+
+            '<div class="rect3"></div>'+
+            '<div class="rect4"></div>'+
+            '<div class="rect5"></div>'+
+        '</div>');
+        $('.spinner').css({
+            'margin-top':windowY/2
+        });
+        if(currentOpenLitebox!=='')
+        {        
+            $('.event-litebox').fadeIn(400);
+        }
+        $('.event-litebox').kinetic();
        $.ajax({
-            url: 'http://www.bits-oasis.org/2014test/ged/',
+            url: '/2014/ged/',
             type: 'GET',
             dataType: 'json',
             data: {id:eventpageid},
         })
         .success(function(e) {
             eventpageJSONstore=e;
+			console.log(eventpageJSONstore);
             initializeEventpage();
+			if(question==1)
+			{
+				$('#qButton').click(function(){
+					if($('#qText').val()==eventpageJSONstore.name)
+					alert('Right Answer');
+					else
+					alert('Wrong Answer');
+				});
+			}
+            if(eventlistJSONstore!==undefined)
+            {
+                if(eventpageJSONstore.category!=='other')
+                {
+                    $('.event-litebox')
+                    .prepend("<div class='circle-eventpage'>"+
+                            "<img src='./images/back.png'>"+
+                            "</div>"+
+                            "<div class='back-eventpage-text'>Back to event List</div>");
+                    $('.circle-eventpage').hover(function() {
+                        $('.back-eventpage-text').fadeIn(200);
+                        }, function() {
+                        $('.back-eventpage-text').fadeOut(200);
+                    });
+                    $('.circle-eventpage').click(function(event) {
+                        hideeventpage();
+                        showListbox('resize','');
+                    });
+                }
+            }
         });
 
 }
 
 function initializeEventpage()
 {
-    $('.event-litebox').fadeIn(400);
-    $('.event-litebox').kinetic();
     $('.event-litebox').html(eventpageJSONstore.content);
 }
 
 
-
-function showeventpage(eventpageid)
+function showeventpage(eventpageid,question)
 {
     currentOpenLitebox='eventpage';
-    loadEventpageJSON(eventpageid);
+    loadEventpageJSON(eventpageid,question);
 }
 
 function hideeventpage()
 {
-    currentOpenLitebox='';
+    $('.event-litebox').finish();
     $('.event-litebox').fadeOut(400);
+    currentOpenLitebox='';
     $('.event-litebox').html("");
 }
 
@@ -890,7 +952,6 @@ function initializeUpdate()
 $(window).resize(function() {
     windowX=$(this).width();
     windowY=$(this).height();
-
     /*Eventbox recalculation*/
     if((windowX-(7*200+20))>0)
     {
@@ -963,3 +1024,104 @@ $(window).resize(function() {
 
 
 /*------------------------------------------------------------------------Resize Script ends------------------------------------------------*/
+
+
+/*--------------------------------- ELEMENT FUNCTIONS ----------------------------------*/
+
+$('#petrolPumpPosterAbstract').click(function(event) {
+    //movies
+    catchClick("pulpFiction", 5, 81,1);
+    //$('.header').animate({top: -50},400);showeventpage(81);$('.black-back').fadeIn(400);
+});
+
+
+$('#poleAbstract').click(function(event) {
+    //cartoon
+	catchClick("pole", 5, 80, 1);
+});
+
+$('#mysteryMachineAbstract, #pokemon1Abstract, #pokemon2Abstract, #krustyCrabAbstract, #flinstoneCarAbstract').click(function(event) {
+    //cartoon
+    var idnm = $(this).attr('id');
+    var idnm = idnm.substring(0,idnm.indexOf("Abstract"));
+    catchClick(idnm, 10, 80, 1);   
+  // setTimeout(function(){ $('.header').animate({top: -50},400);showeventpage(80);$('.black-back').fadeIn(400);},1000);
+   
+});
+
+$('#forestBillboardAbstract, #notificationSpeakersAbstract').click(function(event) {
+    //updates
+    var idnm = $(this).attr('id');
+    var idnm = idnm.substring(0,idnm.indexOf("Abstract"));
+	catchClick(idnm, 10, 84, 1);   
+});
+
+$('#updatesSlider').click(function(event) {
+    //updates
+	catchClick("updatesSlider", 10, 84, 1);   
+});
+$('#mamoBoardAbstract').click(function(event) {
+   catchClick("mamo", 10, 128, 1);   
+});
+
+$('#parachuteAbstract').click(function(event) {
+    catchClick("parachute", 10, 77, 1);   
+});
+
+
+$('#phoneBooth2Abstract').click(function(event) {
+    catchClick("phoneBooth", 10, 78, 1);      
+});
+
+
+$('#oasisQuizAbstract').click(function(event) {
+     catchClick("oasisQuiz", 10, 90, 1);
+});
+
+$('#tent3Abstract, #tent4Abstract, #tent5Abstract, #dramaBoardAbstract').click(function(event) {
+	var idnm = $(this).attr('id');
+	var idnm = idnm.substring(0,idnm.indexOf("Abstract"));
+	catchClick(idnm, 10, 42, 1); 
+});
+
+$('#archiveslogAbstract').click(function(event) {
+    catchClick("archiveslog", 10, 76, 1);
+});
+
+$('#fashpBoardAbstract').click(function(event) {
+   catchClick("fashpBoard", 10, 27, 1);
+});
+
+$('#amulAdAbstract').click(function(event) {
+    catchClick('amulAd', 10, 79, 1);
+	//$('.header').animate({ top: -50 },400);showeventpage(79);$('.black-back').fadeIn(400);
+});
+
+$('#treasureAbstract,#sponsorBoardAbstract,#sponsorBoardLavaAbstract').click(function(event) {
+	var idnm = $(this).attr('id');
+	var idnm = idnm.substring(0,idnm.indexOf("Abstract"));
+	catchClick(idnm, 10, 75, 1);
+});
+
+$('#centralPerkAbstract').click(function(event) {
+    catchClick("centralPerk", 10, 82, 1);
+});
+
+$('#oasislogo').click(function(event) {
+	catchClick("oasislogo", 10, 83, 1);
+});
+
+function reveal(x)
+{	$('.header').animate(
+    {
+        top: -50
+    },400);
+   showeventpage(147,1);
+   $('.black-back').fadeIn(400);
+}
+
+function pseudoClick() {
+    catchClick('concert',5,0,0);
+    if(totalScore == 90)
+        setTimeout(function(){ youGotLucky(); },1000);
+}

@@ -1,8 +1,33 @@
 {
   "updates":[
-  	{"updatetype":"plain","updatetext":"Bits Oasis 2014"},
-    {"updatetype":"external","updatetext":"external_link","eventurl":"http://www.google.com","linkopentype":"_blank"},
-    {"updatetype":"event","updatetext":"internal/external event" ,"eventid":"15"},
-    {"updatetype":"plain","updatetext":"Hello Hello lol Hello Hello lol Hello Hello lol Hello Hello lol Hello Hello lol Hello Hello lol Hello Hello lol Hello Hello lol Hello Hello lol "}
-    ]
+
+{"updatetype":"external","updatetext":"Registrations for Whirl Word is now live. Click Here to Register", "eventurl":"http://goo.gl/forms/ikcnCIOKFR","linkopentype":"_blank"},  	
+{"updatetype":"external","updatetext":"Registrations for poetry event Loose Tongue is now live. Click Here to Register", "eventurl":"http://goo.gl/forms/8YPEOQafHR","linkopentype":"_blank"},  	
+{"updatetype":"external","updatetext":"Deadline for online photography events, Exposure and Born in '90s, extended to 31st October. Click Here", "eventurl":"http://bits-oasis.org/photog","linkopentype":"_blank"},  	
+{"updatetype":"external","updatetext":"Wordwars site is up and running, register to participate", "eventurl":"http://www.bits-oasis.org/wordwars/game/wordwars/register.php","linkopentype":"_blank"},  	
+
+{"updatetype":"external","updatetext":"Wordwars site is up and running, Watch the video!", "eventurl":"https://www.youtube.com/watch?v=aZovgTOI0CY&list=PLnx9KurOVkQPOLWXIh5ldzPjM6J9aET1j&index=3","linkopentype":"_blank"},
+{"updatetype":"plain","updatetext":"Log on to bits-oasis.org/nostalgia to play the online quiz! "},
+{"updatetype":"plain","updatetext":"Welcome to BITS Oasis 2014 ! "},
+    
+{"updatetype":"plain","updatetext":"For Group Leader related queries call 07728807727! "},
+    
+{"updatetype":"plain","updatetext":"Deadline for script submission for stage play and street play extended to 12th October!"},
+{"updatetype":"external","updatetext":"Rewind - The Oasis English Press blog now live. Click here to visit!", "eventurl":"http://bits-oasis.org/blogs/english/","linkopentype":"_blank"},
+{"updatetype":"external","updatetext":"Get a Glimpse of Oasis. Watch our promo. Click Here!", "eventurl":"https://www.youtube.com/watch?v=aZovgTOI0CY&list=PLnx9KurOVkQPOLWXIh5ldzPjM6J9aET1j&index=3","linkopentype":"_blank"},  
+{"updatetype":"external","updatetext":"Click here to visit our facebook page !","eventurl":"https://www.facebook.com/oasis.bitspilani","linkopentype":"_blank"},
+  {"updatetype":"external","updatetext":"Registrations are now open! Click here to register !","eventurl":"http://bits-oasis.org/register.html","linkopentype":"_blank"}, {"updatetype":"external","updatetext":"Click here to view the Rules booklet for Oasis 2014!","eventurl":"http://bits-oasis.org/Oasis2014Rules.pdf","linkopentype":"_blank"},
+{"updatetype":"external","updatetext":"Metamorphosis site now live!","eventurl":"http://bits-oasis.org/metamorphosis/","linkopentype":"_blank"},{"updatetype":"external","updatetext":"Exposure. An online photography event. Click here to know more!", "eventurl":"https://www.facebook.com/events/958245820868756/","linkopentype":"_blank"}, 
+{"updatetype":"external","updatetext":"Nirmaan Presents OrganDonation Drive. Click Here to know more! ","eventurl":"http://bits-oasis.org/nirmaan/","linkopentype":"_blank"},
+     
+
+{"updatetype":"external","updatetext":"Watch the Oasis 2013 Aftermovie!","eventurl":"https://www.youtube.com/watch?v=smbIjwtZmYE","linkopentype":"_blank"},
+{"updatetype":"plain","updatetext":"Click on Elements in the scenery and explore ! "},
+    
+{"updatetype":"external","updatetext":"Visit the profshow site and see a glimpse of oasis 2014!","eventurl":"http://bits-oasis.org/profshow/","linkopentype":"_blank"},
+{"updatetype":"plain","updatetext":"Event details upload in progress. Stay tuned ! "},    
+{"updatetype":"plain","updatetext":"All songs used on the website are not the property of Oasis, BITS Pilani and are not meant for commercial use"}
+
+
+]
 }

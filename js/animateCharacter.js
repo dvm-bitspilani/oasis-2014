@@ -16,6 +16,8 @@ var swimMotionIntervalSet;
 var isJumping = false;
 var halfJumpTime = 300;
 var jumpHeightFromBottom = 200;
+var point_offset = 100;
+var character_offset = -4;
 //======================SCROLL EVENT CALLING ANIMATING FUNCTIONS=====================//
 $(window).scroll(scrollevent);
 
@@ -57,8 +59,12 @@ function scrollevent() {
 
 //=============================POSITIONING CHARACTER================================//
 function position_character()
-{	$("#main_character").css("bottom",groundOffset - 8);//Height of player is 175
+{	$("#main_character").css("bottom",groundOffset + character_offset);//Height of player is 175
 	$("#main_character").css("left",0.5*window.innerWidth -100);//Width of player is 100
+	$("#point_image").css("bottom",groundOffset + point_offset);
+	$("#point_image").css("left",0.5*window.innerWidth -25);
+	$("#point_image").css("opacity",0);
+	
 }
 
 //=============================ANIMATING CHARACTER==================================//
@@ -75,7 +81,9 @@ function animate_main_character()
 function swimUp()
 {	
 	$("#main_character").stop();
+	$("#point_image").stop();
 	$("#main_character").animate({bottom:"300px"},swimUpTime);
+	$("#point_image").animate({bottom:"418px"},swimUpTime);
 	swimFrameChange();
 	swimMotionIntervalSet = setInterval(function(){swimFrameChange();},swimFramChangeTime);
 	swimming = true;
@@ -89,8 +97,11 @@ function swimFrameChange()
 }
 
 function swimDown()
-{	$("#main_character").stop();
-	$("#main_character").animate({bottom:groundOffset - 8},swimDownTime,function(){resetCharacter();});
+{	
+	$("#main_character").stop();
+	$("#point_image").stop();
+	$("#main_character").animate({bottom:groundOffset + character_offset},swimDownTime,function(){resetCharacter();});
+	$("#point_image").animate({bottom:groundOffset + point_offset},swimDownTime,function(){resetCharacter();});
 	clearInterval(swimMotionIntervalSet);
 	swimming = false;
 }
@@ -119,10 +130,19 @@ function jump()
 	{	isJumping = true;
 		setBackgroundPositionX("-1200px",$("#main_character"));
 		$("#main_character").animate({bottom:jumpHeightFromBottom+"px"},halfJumpTime);
+		$("#point_image").animate({bottom:(jumpHeightFromBottom + 108)+"px"},halfJumpTime);
 		setTimeout(function(){setBackgroundPositionX("-1400px",$("#main_character"));},halfJumpTime);
-		$("#main_character").animate({bottom:(groundOffset - 8)+"px"},halfJumpTime);
+		$("#main_character").animate({bottom:(groundOffset + character_offset)+"px"},halfJumpTime);
+		$("#point_image").animate({bottom:(groundOffset +point_offset)+"px"},halfJumpTime);
 		setTimeout(function(){resetCharacter();},halfJumpTime*2);
 		setTimeout(function(){isJumping = false;},halfJumpTime*2.5);
 	}
 	return;
+}
+
+function gain_point()
+{	
+	$('#point_image').animate({opacity:1},0);
+	$('#point_image').animate({bottom:(groundOffset +280)+"px",opacity:0,},1500);
+	$('#point_image').animate({bottom:(groundOffset +point_offset)+"px",opacity:0,},0);
 }

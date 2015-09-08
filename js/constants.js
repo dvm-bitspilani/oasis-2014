@@ -44,6 +44,14 @@ var hitIceBerg = scene5Offset + 5200 + (-270 - window.innerWidth/2)*layerMinus3S
 var underwater = scene6Offset + 2800 + ( - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
 var enterCave = scene7Offset+2900 + ( - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
 
+var q1 = scene2Offset;
+var q2 = scene3Offset;
+var q3 = scene4Offset;
+var q4 = scene5Offset;
+var q5 = scene6Offset;
+var q6 = scene7Offset;
+var q7 = scene8Offset;
+
 var isBoardingShip = false;
 var onShip = false;
 var shipHits = false;
@@ -53,3 +61,21 @@ var caveTransit = false;
 var inCave = false;
 
 var groundOffset = 110;
+
+function setConstants()
+{	layerMinus3LengthE = layerMinus3Length - window.innerWidth;
+	layerMinus2LengthE = layerMinus2Length - window.innerWidth;
+	layerMinus1LengthE = layerMinus1Length - window.innerWidth;
+
+	totalScroll = (layerMinus3LengthE)/layerMinus3Speed + extraScroll1;
+	totalScrollE = (layerMinus3LengthE)/layerMinus3Speed;
+
+	layerMinus2Speed = (layerMinus2LengthE)/totalScroll;
+	layerMinus1Speed = (layerMinus1LengthE)/totalScroll;
+
+	woodenDockOffset = scene5Offset + 3300 + (1000 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
+	shipBoardingPoint = scene5Offset + 4100 + (270 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
+	hitIceBerg = scene5Offset + 5200 + (-270 - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
+	underwater = scene6Offset + 2800 + ( - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
+	enterCave = scene7Offset+2900 + ( - window.innerWidth/2)*layerMinus3Speed/layerMinus1Speed;
+}
